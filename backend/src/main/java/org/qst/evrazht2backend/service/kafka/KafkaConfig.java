@@ -1,4 +1,4 @@
-package org.qst.evrazht2backend.services.kafka;
+package org.qst.evrazht2backend.service.kafka;
 
 import com.google.common.collect.ImmutableMap;
 import org.apache.kafka.clients.admin.AdminClientConfig;
