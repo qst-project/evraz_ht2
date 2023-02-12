@@ -1,6 +1,6 @@
 package org.qst.evrazht2backend.controller;
 
-import org.qst.evrazht2backend.controller.model.RestSinteringMachine;
+import org.qst.evrazht2backend.controller.model.rest.RestSinteringMachine;
 import org.qst.evrazht2backend.delegate.GetAllSinteringMachinesDelegate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

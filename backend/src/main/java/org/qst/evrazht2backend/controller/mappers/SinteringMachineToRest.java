@@ -1,8 +1,8 @@
 package org.qst.evrazht2backend.controller.mappers;
 
-import org.qst.evrazht2backend.controller.model.RestBearing;
-import org.qst.evrazht2backend.controller.model.RestExhauster;
-import org.qst.evrazht2backend.controller.model.RestSinteringMachine;
+import org.qst.evrazht2backend.controller.model.rest.RestBearing;
+import org.qst.evrazht2backend.controller.model.rest.RestExhauster;
+import org.qst.evrazht2backend.controller.model.rest.RestSinteringMachine;
 import org.qst.evrazht2backend.domain.model.SinteringMachine;
 import org.qst.evrazht2backend.service.Formatter;
 import org.springframework.stereotype.Component;

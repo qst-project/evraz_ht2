@@ -1,7 +1,7 @@
 package org.qst.evrazht2backend.delegate;
 
 import org.qst.evrazht2backend.controller.mappers.SinteringMachineToRest;
-import org.qst.evrazht2backend.controller.model.RestSinteringMachine;
+import org.qst.evrazht2backend.controller.model.rest.RestSinteringMachine;
 import org.qst.evrazht2backend.domain.usecase.GetAllSinteringMachinesUseCase;
 import org.springframework.stereotype.Component;
 

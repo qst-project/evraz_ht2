@@ -1,4 +1,4 @@
-package org.qst.evrazht2backend.controller.model;
+package org.qst.evrazht2backend.controller.model.rest;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
