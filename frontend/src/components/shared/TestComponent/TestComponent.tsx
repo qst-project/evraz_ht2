@@ -10,7 +10,7 @@ function TestComponent() {
     const socket = new SockJS(url);
     const stompClient = Stomp.over(socket);
     stompClient.connect({}, () => {
-      stompClient.subscribe('/', function (res) {
+      stompClient.subscribe('/hello', function (res) {
         console.log(res);
       });
     });
@@ -21,7 +21,7 @@ function TestComponent() {
     if (!client.current) {
       return;
     }
-    client.current.publish({ destination: '/', body: 'TEST' });
+    client.current.publish({ destination: '/hello', body: 'TEST' });
     console.log('send')
   }
 
