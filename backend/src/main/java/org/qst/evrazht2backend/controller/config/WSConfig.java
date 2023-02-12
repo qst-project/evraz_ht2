@@ -12,11 +12,11 @@ public class WSConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/test_endpoint").setAllowedOrigins("localhost").withSockJS();
+        registry.addEndpoint("/test-endpoint").setAllowedOriginPatterns("*").withSockJS();
     }
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        config.enableSimpleBroker("/topic/", "/queue/");
+        config.enableSimpleBroker("/topic/");
         config.setApplicationDestinationPrefixes("/app");
     }
 }

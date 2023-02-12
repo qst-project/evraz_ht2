@@ -8,5 +8,4 @@ public class EvrazHt2BackendApplication {
     public static void main(String[] args) {
         SpringApplication.run(EvrazHt2BackendApplication.class, args);
     }
-
 }
