@@ -1,9 +1,11 @@
-package org.qst.evrazht2backend.kafka;
+package org.qst.evrazht2backend.services.kafka;
 
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
+import java.util.Random;
 
 @Component
 @EnableScheduling
@@ -14,10 +16,16 @@ public class KafkaWriter {
         this.kafkaTemplate = kafkaTemplate;
     }
 
+    public static float randFloat(float min, float max) {
+        Random rand = new Random();
+        return rand.nextFloat() * (max - min) + min;
+
+    }
 
     @Scheduled(fixedRate = 3000)
     public void sendMessage() {
-        kafkaTemplate.send("test", "message");
+        float rand = randFloat(30.0f, 100.0f);
+        kafkaTemplate.send("test", String.valueOf(rand));
     }
 
 }

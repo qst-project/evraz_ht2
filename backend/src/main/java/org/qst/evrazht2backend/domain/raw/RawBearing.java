@@ -1,4 +1,4 @@
-package org.qst.evrazht2backend.model.raw;
+package org.qst.evrazht2backend.domain.raw;
 
 import java.math.BigDecimal;
 

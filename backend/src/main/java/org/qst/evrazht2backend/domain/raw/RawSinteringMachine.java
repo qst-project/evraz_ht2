@@ -1,4 +1,4 @@
-package org.qst.evrazht2backend.model.raw;
+package org.qst.evrazht2backend.domain.raw;
 
 public class RawSinteringMachine {
     public String id;

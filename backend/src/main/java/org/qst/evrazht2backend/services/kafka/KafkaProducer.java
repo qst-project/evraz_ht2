@@ -1,4 +1,4 @@
-package org.qst.evrazht2backend.kafka;
+package org.qst.evrazht2backend.services.kafka;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
