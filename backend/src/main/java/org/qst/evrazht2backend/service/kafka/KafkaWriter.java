@@ -1,5 +1,6 @@
 package org.qst.evrazht2backend.service.kafka;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -9,6 +10,7 @@ import java.util.Random;
 
 @Component
 @EnableScheduling
+@ConditionalOnProperty(value = "kafka.enable", havingValue = "true")
 public class KafkaWriter {
     private final KafkaTemplate<String, String> kafkaTemplate;
 

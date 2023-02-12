@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest(properties = "spring.main.lazy-initialization=true")
+@SpringBootTest(properties = "kafka.enable=false")
 @AutoConfigureMockMvc
 class RestControllerSinteringMachinesTest {
     @Autowired

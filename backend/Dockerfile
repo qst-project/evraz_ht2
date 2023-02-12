@@ -7,4 +7,6 @@ copy src src
 
 run ./mvnw -B package
 
-entrypoint ["java", "-jar", "/target/monolith.jar"]
+from openjdk:17-slim-buster
+copy --from=build /target/*.jar monolith.jar
+entrypoint ["java", "-jar", "monolith.jar"]
