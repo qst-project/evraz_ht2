@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    flex-grow: 1;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  width: 1000px;
+  max-width: 80%;
+}
+
+.cube {
+  width: 100px;
+  height: 2000px;
+  background-color: red;
+}
