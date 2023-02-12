@@ -1,12 +1,12 @@
-from openjdk:17-slim-buster as build
+FROM openjdk:17-slim-buster as build
 
-copy .mvn .mvn
-copy mvnw .
-copy pom.xml .
-copy src src
+COPY .mvn .mvn
+COPY mvnw .
+COPY pom.xml .
+COPY src src
 
-run ./mvnw -B package
+RUN ./mvnw -B package
 
-from openjdk:17-slim-buster
-copy --from=build /target/*.jar monolith.jar
-entrypoint ["java", "-jar", "monolith.jar"]
+FROM openjdk:17-slim-buster
+COPY --from=build /target/*.jar monolith.jar
+ENTRYPOINT ["java", "-jar", "monolith.jar"]
