@@ -9,7 +9,8 @@
       "@ui/*" : ["./components/ui/*"],
       "@scss/*" : ["./scss/*"],
       "@images/*" : ["./assets/images/*"],
-      "@services/*" : ["./services/*"]
+      "@services/*" : ["./services/*"],
+      "@hooks/*" : ["./hooks/*"]
     }
   }
 }

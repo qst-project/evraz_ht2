@@ -1,30 +1,9 @@
 import React from 'react';
 import { Characteristics, StatusType } from '@services/types';
-import { Colors } from '@services/constants';
+import { ReactComponent as ThermometerIcon } from '@images/thermometer.svg';
+import { ReactComponent as DropIcon } from '@images/drop.svg';
 import { BearingItemProps } from './BearingList.types';
 import styles from './BearingList.module.scss';
-
-const statusSchema = {
-  [StatusType.Default]: {
-    style: {},
-  },
-  [StatusType.Danger]: {
-    style: {
-      backgroundColor: Colors.RED_TRANSPARENT,
-      borderColor: Colors.RED,
-      boxShadow: `0 0 4px 0 ${Colors.RED}`,
-      color: Colors.RED,
-    },
-  },
-  [StatusType.Warning]: {
-    style: {
-      backgroundColor: Colors.ORANGE_TRANSPARENT,
-      borderColor: Colors.ORANGE,
-      boxShadow: `0 0 4px 0 ${Colors.ORANGE}`,
-      color: Colors.ORANGE,
-    },
-  },
-};
 
 const abbreviations = {
   [Characteristics.TEMPERATURE]: 'T',
@@ -32,17 +11,43 @@ const abbreviations = {
 };
 
 function BearingItem({ bearingData }: BearingItemProps) {
+  const getIcon = (characteristic: Characteristics, props: any = {}) => {
+    /* eslint-disable react/jsx-props-no-spreading */
+    switch (characteristic) {
+      case Characteristics.TEMPERATURE:
+        return <ThermometerIcon {...props} />;
+      case Characteristics.OIL_LEVEL:
+        return <DropIcon {...props} />;
+      default:
+        return null;
+      /* eslint-enable react/jsx-props-no-spreading */
+    }
+  };
+
+  const getCharacteristicClassName = (status: StatusType) => {
+    switch (status) {
+      case StatusType.Danger:
+        return `${styles.characteristic} ${styles['characteristic-danger']}`;
+      case StatusType.Warning:
+        return `${styles.characteristic} ${styles['characteristic-warning']}`;
+      case StatusType.Default:
+        return styles.characteristic;
+      default:
+        return styles.characteristic;
+    }
+  };
+
   return (
     <li className={styles.item}>
       <span>{bearingData.name}</span>
       <ul className={styles.characteristics}>
         {bearingData.characteristics.map((item) => (
           <li
-            className={styles.characteristic}
+            className={getCharacteristicClassName(item.status)}
             key={item.name}
-            style={statusSchema[item.status].style}
           >
             {abbreviations[item.name]}
+            {getIcon(item.name, { className: styles.icon })}
           </li>
         ))}
       </ul>
