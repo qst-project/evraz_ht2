@@ -4,6 +4,7 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
 import Header from '@layout/Header/Header';
 import Footer from '@layout/Footer/Footer';
+
 const MainPage = lazy(() => import('@pages/MainPage'))
 const ExhausterPage = lazy(() => import('@pages/ExhausterPage'))
 
