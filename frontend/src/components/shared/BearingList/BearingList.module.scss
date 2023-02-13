@@ -1,0 +1,24 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+}
+
+.characteristics {
+  display: flex;
+  gap: 4px;
+}
+
+.characteristic {
+  border: 1px solid #9f9f9f;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-weight: 700;
+}
