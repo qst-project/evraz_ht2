@@ -1,39 +1,3 @@
-export interface IBearingPropsItem {
-  value: number;
-  type: BearingPropsItemType
-  status: StatusType;
-}
-
-export interface IOilLevelData {
-  value: number;
-  status: StatusType;
-}
-
-export interface IOilPressureData {
-  value: number;
-  status: StatusType;
-}
-
-export interface IMainDriveData {
-  value: number;
-  type: MainDrivePropsItemType;
-  status: StatusType;
-}
-
-export enum MainDrivePropsItemType {
-  Amperage = 0,
-  MotorAmperage,
-  RoterVoltage,
-  StarterVoltage,
-}
-
-export enum BearingPropsItemType {
-  Temperature = 0,
-  Vertical,
-  Horizontal,
-  Axis,
-}
-
 export enum StatusType {
   Default = 0,
   Warning,

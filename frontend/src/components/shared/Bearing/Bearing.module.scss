@@ -1,0 +1,27 @@
+@use 'src/scss/vars/colors';
+@import "src/scss/mixins/card";
+
+.bearing {
+    @include card(200px);
+}
+
+.default {
+    background: colors.$grey;
+}
+
+.danger {
+    @include blink;
+    border-color: colors.$red;
+    background: colors.$red-05;
+    box-shadow: 0 0 4px 0 colors.$red;
+
+    :global path {
+        fill: colors.$orange;
+    }
+}
+
+.warning {
+    @include blink;
+    background: colors.$orange-05;
+    box-shadow: 0 0 4px 0 colors.$orange;
+}

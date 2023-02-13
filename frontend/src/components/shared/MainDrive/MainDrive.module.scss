@@ -1,0 +1,18 @@
+@use 'src/scss/vars/colors';
+@import "src/scss/mixins/card";
+
+.mainDrive {
+    @include card(350px); 
+}
+
+.default {
+    background: colors.$grey;
+}
+.danger {
+    @include blink;
+    background: colors.$red;
+}
+.warning {
+    @include blink;
+    background: colors.$orange;
+}
