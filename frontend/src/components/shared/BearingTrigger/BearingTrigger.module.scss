@@ -1,0 +1,14 @@
+@use 'src/scss/vars/colors';
+
+.default {
+    border-radius: 6;
+    background: colors.$grey;
+}
+.danger {
+    border-radius: 6;
+    background: colors.$red-05;
+}
+.warning {
+    border-radius: 6;
+    background: colors.$orange-05;
+}

@@ -1,0 +1,5 @@
+@import "src/scss/mixins/card";
+
+.gasTemperature {
+    @include card(200px); 
+}
