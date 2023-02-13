@@ -10,7 +10,8 @@ function TestComponent() {
     const socket = new SockJS(url);
     const stompClient = Stomp.over(socket);
     stompClient.connect({}, () => {
-      stompClient.subscribe('/hello', function (res) {
+      stompClient.subscribe('/hello', (res) => {
+        // eslint-disable-next-line no-console
         console.log(res);
       });
     });
@@ -22,12 +23,13 @@ function TestComponent() {
       return;
     }
     client.current.publish({ destination: '/hello', body: 'TEST' });
-    console.log('send')
-  }
+    // eslint-disable-next-line no-console
+    console.log('send');
+  };
 
   return (
     <div className="">
-      <button onClick={send}>Send</button>
+      <button type="button" onClick={send}>Send</button>
     </div>
   );
 }
