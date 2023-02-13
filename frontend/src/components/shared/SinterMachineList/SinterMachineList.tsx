@@ -9,7 +9,7 @@ function SinterMachineList({ sinterMachines }: SinterMachineListProps) {
     <Card title="Главный экран" className={styles.main}>
       <div className={styles.list}>
         {sinterMachines.map((item) => (
-          <SinterMachine sinterMachineData={item} />
+          <SinterMachine sinterMachineData={item} key={item.id} />
         ))}
       </div>
     </Card>
