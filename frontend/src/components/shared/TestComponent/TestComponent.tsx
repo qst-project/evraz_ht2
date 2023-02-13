@@ -22,7 +22,7 @@ function TestComponent() {
     if (!client.current) {
       return;
     }
-    client.current.publish({ destination: '/hello', body: 'TEST' });
+    client.current.publish({ destination: '/app/hello', body: 'TEST' });
     // eslint-disable-next-line no-console
     console.log('send');
   };
