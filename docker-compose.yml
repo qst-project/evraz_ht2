@@ -1,10 +1,38 @@
 version: '2'
 services:
+  # front
+  front:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    command: npm run --port 8080
+    stdin_open: true
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - HOST=0.0.0.0
+
+  # back
   rest-backend:
     container_name: monolith
     build:
       context: backend
       dockerfile: Dockerfile
+    network_mode: host
+
+  # prometheus
+  prometheus:
+    image: prom/prometheus:v2.37.0
+    container_name: prometheus
+    user: root
+    volumes:
+      - ./metrics/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./metrics/prometheus/prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--web.enable-admin-api'
+      - '--web.listen-address=:9099'
     network_mode: host
 
   # kafka
@@ -15,7 +43,6 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
     ports:
       - "22181:2181"
-
   kafka:
     image: confluentinc/cp-kafka:latest
     depends_on:
