@@ -9,6 +9,7 @@ import PipeContainer from '@components/shared/Pipe';
 import OilPressureContainer from '@components/shared/OilPressure';
 import TemperatureSensorContainer from '@components/shared/TemperatureSensor';
 import OilTankContainer from '@components/shared/OilTank/OilTankContainer';
+
 import styles from './ExhausterPage.module.scss'
 
 function MainPage() {
