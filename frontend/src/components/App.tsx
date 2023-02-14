@@ -10,36 +10,36 @@ const ExhausterPage = lazy(() => import('@pages/ExhausterPage'));
 const TrendsPage = lazy(() => import('@pages/TrendsPage'));
 
 function App() {
-  return (
-    <div className="app">
-      <Header />
-      <BrowserRouter>
-        <Suspense fallback={<Spin />}>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <MainPage />
-              }
-            />
-            <Route
-              path="/second"
-              element={
-                <ExhausterPage />
-              }
-            />
-            <Route
-              path="/trends"
-              element={
-                <TrendsPage />
-              }
-            />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-      <Footer />
-    </div>
-  );
+    return (
+        <div className='app'>
+            <Header />
+            <BrowserRouter>
+                <Suspense fallback={<Spin />}>
+                    <Routes>
+                        <Route
+                            path='main'
+                            element={
+                                <MainPage />
+                            }
+                        />
+                        <Route
+                            path='second'
+                            element={
+                                <ExhausterPage />
+                            }
+                        />
+                        <Route
+                            path="trends"
+                            element={
+                                <TrendsPage />
+                            }
+                        />
+                    </Routes>
+                </Suspense>
+            </BrowserRouter>
+            <Footer />
+        </div>
+    );
 }
 
 export default App;

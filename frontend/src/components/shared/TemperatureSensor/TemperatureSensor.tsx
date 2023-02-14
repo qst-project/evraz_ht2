@@ -1,8 +1,7 @@
 import { Typography } from 'antd';
-import React, { FC } from 'react'
-import { TemperatureSensorProps } from './TemperatureSensor.types';
-
+import React from 'react'
 import { StatusType } from '@services/types';
+import { TemperatureSensorProps } from './TemperatureSensor.types';
 
 const defaultStyle = {
     padding: '0.5rem',
@@ -31,16 +30,18 @@ const typeStatusStyle = new Map<number, object>([
     [StatusType.Warning, warningStyle],
 ]);
 
-function TemperatureSensor ({
+function TemperatureSensor({
     value,
-    status
+    status,
 }: TemperatureSensorProps) {
     return (
         <div
             style={typeStatusStyle.get(status)}
         >
             <Typography.Text strong>
-                {value} °C
+                {value}
+                {' '}
+                °C
             </Typography.Text>
         </div>
     )
