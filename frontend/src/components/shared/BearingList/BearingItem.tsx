@@ -5,9 +5,14 @@ import { ReactComponent as DropIcon } from '@images/drop.svg';
 import { BearingItemProps } from './BearingList.types';
 import styles from './BearingList.module.scss';
 
-const abbreviations = {
+const abbreviations: Record<Characteristics, string> = {
   [Characteristics.TEMPERATURE]: 'T',
   [Characteristics.OIL_LEVEL]: 'L',
+  [Characteristics.AXIS]: 'A',
+  [Characteristics.HORIZONTAL]: 'H',
+  [Characteristics.VERTICAL]: 'V',
+  [Characteristics.AMPERAGE]: 'A',
+  [Characteristics.OIL_PRESSURE]: 'P',
 };
 
 function BearingItem({ bearingData }: BearingItemProps) {
