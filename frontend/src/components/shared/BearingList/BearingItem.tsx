@@ -12,7 +12,6 @@ const abbreviations = {
 
 function BearingItem({ bearingData }: BearingItemProps) {
   const getIcon = (characteristic: Characteristics, props: any = {}) => {
-    /* eslint-disable react/jsx-props-no-spreading */
     switch (characteristic) {
       case Characteristics.TEMPERATURE:
         return <ThermometerIcon {...props} />;
@@ -20,7 +19,6 @@ function BearingItem({ bearingData }: BearingItemProps) {
         return <DropIcon {...props} />;
       default:
         return null;
-      /* eslint-enable react/jsx-props-no-spreading */
     }
   };
 

@@ -1,4 +1,5 @@
-import React, { FC } from 'react'
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { Card, Descriptions, Typography } from 'antd';
 
 import { StatusType } from '@services/types';
@@ -12,11 +13,11 @@ const defaultStyle = {
 }
 
 const dangerStyle = {
-    border: '1px solid #f5573b'
+    border: '1px solid #f5573b',
 }
 
 const warningStyle = {
-    border: '1px solid #f5c134'
+    border: '1px solid #f5c134',
 }
 
 const typeDataUnits = new Map<number, string>([
