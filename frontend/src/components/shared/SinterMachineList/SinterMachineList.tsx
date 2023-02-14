@@ -5,15 +5,15 @@ import styles from './SinterMachineList.module.scss';
 import { SinterMachineListProps } from './SinterMachineList.types';
 
 function SinterMachineList({ sinterMachines }: SinterMachineListProps) {
-  return (
-    <Card title="Главный экран" className={styles.main}>
-      <div className={styles.list}>
-        {sinterMachines.map((item) => (
-          <SinterMachine sinterMachineData={item} key={item.id} />
-        ))}
-      </div>
-    </Card>
-  );
+    return (
+        <Card title='Главный экран' className={styles.main}>
+            <div className={styles.list}>
+                {sinterMachines.map((item) => (
+                    <SinterMachine sinterMachineData={item} key={item.id} />
+                ))}
+            </div>
+        </Card>
+    );
 }
 
 export default SinterMachineList;

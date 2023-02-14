@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Card, Descriptions, Typography } from 'antd';
 
 import { StatusType } from '@services/types';
@@ -65,15 +64,16 @@ function Bearing({
                             <Descriptions.Item
                                 key={index}
                                 className={typeStatusClassName.get(bearingPropsData.status)}
-                                label={
+                                label={(
                                     <Typography.Text strong>
                                         {typeDataUnits.get(bearingPropsData.type)}
                                     </Typography.Text>
-                                }
+                                )}
                             >
                                 {bearingPropsData.value}
                             </Descriptions.Item>
-                        ))
+                        ),
+                    )
                 }
             </Descriptions>
         </Card>

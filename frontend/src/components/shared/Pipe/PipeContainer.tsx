@@ -1,12 +1,12 @@
-import Pipe from "./Pipe"
+import Pipe from './Pipe'
 
-interface PipeContainerProps {
+// interface PipeContainerProps {
 
-}
+// }
 
 function PipeContainer() {
     return (
-        <Pipe pipeData={[]} />
+        <Pipe />
     )
 }
 

@@ -1,19 +1,20 @@
-import { FC } from "react"
-import { Card, Col, Progress, Row, Typography } from 'antd';
-import styles from './GasTemperature.module.scss'
-import { GasTemperatureProps } from "./GasTemperature.types";
-
+import React from 'react'
+import {
+    Card, Col, Progress, Row, Typography,
+} from 'antd';
 import { StatusType } from '@services/types';
+import styles from './GasTemperature.module.scss'
+import { GasTemperatureProps } from './GasTemperature.types';
 
 const defaultStyle = {
 }
 
 const dangerStyle = {
-    border: '1px solid #f5573b'
+    border: '1px solid #f5573b',
 }
 
 const warningStyle = {
-    border: '1px solid #f5c134'
+    border: '1px solid #f5c134',
 }
 
 const typeStatusClassName = new Map<number, object>([
@@ -22,7 +23,7 @@ const typeStatusClassName = new Map<number, object>([
     [StatusType.Warning, warningStyle],
 ]);
 
-function GasTemperature ({
+function GasTemperature({
     strokeColor = '',
     value = 0,
     status = StatusType.Warning,
@@ -38,24 +39,26 @@ function GasTemperature ({
             <Col span={24}>
                 <Progress
                     showInfo
-                    strokeLinecap="butt"
+                    strokeLinecap='butt'
                     steps={6}
                     strokeColor={strokeColor}
                     format={
-                        () =>
+                        // eslint-disable-next-line react/no-unstable-nested-components
+                        () => (
                             <>
                                 {value}
                                 °C
                             </>
+                        )
                     }
-                    percent={value * 100 / 136}
+                    percent={(value * 100) / 136}
                 />
                 <Row justify='center'>
                     <Typography.Text strong>
                         Температура газа
                     </Typography.Text>
                 </Row>
-            </Col >
+            </Col>
         </Card>
     );
 }
