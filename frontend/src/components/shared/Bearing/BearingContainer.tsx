@@ -16,7 +16,7 @@ function BearingContainer({
             value: 200,
         },
         {
-            status: 0,
+            status: 1,
             type: 1,
             value: 200,
         }, {

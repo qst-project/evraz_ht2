@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card, Descriptions, Typography } from 'antd';
 
 import { StatusType } from '@services/types';
@@ -8,17 +8,6 @@ import {
 } from './Bearing.types';
 import styles from './Bearing.module.scss'
 
-// const defaultStyle = {
-// }
-
-// const dangerStyle = {
-//     border: '1px solid #f5573b',
-// }
-
-// const warningStyle = {
-//     border: '1px solid #f5c134',
-// }
-
 const typeDataUnits = new Map<number, string>([
     [BearingPropsItemType.Temperature, 'T, °C'],
     [BearingPropsItemType.Vertical, 'В, мм/c'],
@@ -26,43 +15,52 @@ const typeDataUnits = new Map<number, string>([
     [BearingPropsItemType.Axis, 'O, мм/c'],
 ]);
 
-// const typeStatusStyle = new Map<number, object>([
-//     [StatusType.Default, defaultStyle],
-//     [StatusType.Danger, dangerStyle],
-//     [StatusType.Warning, warningStyle],
-// ]);
-
 const typeStatusClassName = new Map<number, string>([
     [StatusType.Default, styles.default],
-    [StatusType.Danger, styles.characteristic_warning],
+    [StatusType.Danger, styles.characteristic_danger],
     [StatusType.Warning, styles.characteristic_warning],
 ]);
-
-// const getCharacteristicClassName = (status: StatusType) => {
-//     switch (status) {
-//         case StatusType.Danger:
-//             return `${styles.characteristic} ${styles['characteristic-danger']}`;
-//         case StatusType.Warning:
-//             return `${styles.characteristic} ${styles['characteristic-warning']}`;
-//         case StatusType.Default:
-//             return styles.characteristic;
-//         default:
-//             return styles.characteristic;
-//     }
-// };
 
 function Bearing({
     name = '9 ПС',
     status,
     bearingData,
 }: BearingProps) {
+    let stompClient: any = null;
+
+    const onMessageReceived = (msg: any) => {
+        // const notification = JSON.parse(msg.body);
+        console.log(msg)
+    };
+
+    const onConnected = () => {
+        console.log('connected')
+        stompClient.subscribe(
+            '/app/hello',
+            onMessageReceived,
+        );
+    };
+
+    const connect = () => {
+        // eslint-disable-next-line global-require
+        const Stomp = require('stompjs')
+        // eslint-disable-next-line global-require
+        let SockJS = require('sockjs-client')
+        SockJS = new SockJS('http://0.0.0.0:9090')
+        stompClient = Stomp.over(SockJS);
+        stompClient.connect({}, onConnected, (e: any) => console.warn(e))
+    };
+
+    useEffect(() => {
+        connect();
+    }, []);
+
     return (
         <Card
             bordered
             type='inner'
             title={name}
             className={styles.bearing}
-            // style={typeStatusStyle.get(status)}
             headStyle={{ backgroundColor: '#4A4B4A', color: '#ffffff' }}
             bodyStyle={{ backgroundColor: '#E0E0E0', color: '#ffffff' }}
         >
