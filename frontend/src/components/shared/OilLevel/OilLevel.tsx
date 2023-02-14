@@ -1,9 +1,11 @@
-import React, { FC } from 'react'
-import { Col, Progress, Row, Typography } from 'antd';
+import React from 'react'
+import {
+    Col, Progress, Row, Typography,
+} from 'antd';
 
 import { OilLevelProps } from './OilLevel.types';
 
-function OilLevel ({
+function OilLevel({
     strokeColor,
     value,
 }: OilLevelProps) {
@@ -12,8 +14,8 @@ function OilLevel ({
             <Row>
                 <Progress
                     showInfo
-                    strokeLinecap="butt"
-                    type="circle"
+                    strokeLinecap='butt'
+                    type='circle'
                     strokeColor={strokeColor}
                     percent={value}
                 />

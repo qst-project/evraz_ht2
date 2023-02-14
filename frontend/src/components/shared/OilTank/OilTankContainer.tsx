@@ -1,14 +1,10 @@
-import React, { FC } from 'react'
+import React from 'react'
 import OilTank from './OilTank';
 
-interface OilTankContainerProps {
-
-}
-
-const OilTankContainer: FC<OilTankContainerProps> = () => {
+function OilTankContainer() {
     return (
         <OilTank />
-    );
+    )
 }
 
 export default OilTankContainer

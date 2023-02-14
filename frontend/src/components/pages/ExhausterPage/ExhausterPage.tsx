@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Col, Row } from 'antd';
 import { Header } from 'antd/es/layout/layout';
 
-import styles from './ExhausterPage.module.scss'
-
 import BearingContainer from '@components/shared/Bearing';
 import BearingTrigger from '@components/shared/BearingTrigger';
 import MainDriveContainer from '@components/shared/MainDrive';
@@ -11,6 +9,8 @@ import PipeContainer from '@components/shared/Pipe';
 import OilPressureContainer from '@components/shared/OilPressure';
 import TemperatureSensorContainer from '@components/shared/TemperatureSensor';
 import OilTankContainer from '@components/shared/OilTank/OilTankContainer';
+
+import styles from './ExhausterPage.module.scss'
 
 function MainPage() {
     const [showBearing, setShowBearing] = useState(true)

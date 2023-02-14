@@ -1,8 +1,8 @@
-import React, { FC } from 'react'
-
-import { OilPressureContainerProps } from './OilPressure.types';
+import React from 'react'
 
 import { StatusType } from '@services/types';
+import { OilPressureContainerProps } from './OilPressure.types';
+
 import OilPressure from './OilPressure';
 
 const typeStatusColor = new Map<number, string>([

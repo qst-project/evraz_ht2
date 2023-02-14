@@ -1,9 +1,7 @@
-import React, { FC } from 'react'
-;
+import React from 'react';
+import { StatusType } from '@services/types'
 import { IOilLevelData } from './OilLevel.types';
 import OilLevel from './OilLevel'
-
-import { StatusType } from '@services/types'
 
 interface OilLevelContainerProps {
     oilLevelData: IOilLevelData
@@ -15,15 +13,15 @@ const typeStatusColor = new Map<number, string>([
     [StatusType.Warning, '#FFC930'],
 ]);
 
-const OilLevelContainer: FC<OilLevelContainerProps> = ({
+function OilLevelContainer({
     oilLevelData,
-}) => {
+}: OilLevelContainerProps) {
     return (
         <OilLevel
             value={oilLevelData.value}
             strokeColor={typeStatusColor.get(oilLevelData.status)}
         />
-    );
+    )
 }
 
 export default OilLevelContainer

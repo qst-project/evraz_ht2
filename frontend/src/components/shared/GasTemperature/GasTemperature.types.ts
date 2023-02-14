@@ -11,7 +11,6 @@ export interface GasTemperatureData {
     status: StatusType;
 }
 
-
 export interface GasTemperatureContainerProps {
     gasTemperatureData: GasTemperatureData;
 }

@@ -9,30 +9,30 @@ const MainPage = lazy(() => import('@pages/MainPage'))
 const ExhausterPage = lazy(() => import('@pages/ExhausterPage'))
 
 function App() {
-  return (
-    <div className="app">
-      <Header/>
-      <BrowserRouter>
-        <Suspense fallback={<Spin />}>
-          <Routes>
-            <Route
-              path='main'
-              element={
-                <MainPage />
-              }
-            />
-            <Route
-              path='second'
-              element={
-                <ExhausterPage />
-              }
-            />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-      <Footer />
-    </div>
-  );
+    return (
+        <div className='app'>
+            <Header />
+            <BrowserRouter>
+                <Suspense fallback={<Spin />}>
+                    <Routes>
+                        <Route
+                            path='main'
+                            element={
+                                <MainPage />
+                            }
+                        />
+                        <Route
+                            path='second'
+                            element={
+                                <ExhausterPage />
+                            }
+                        />
+                    </Routes>
+                </Suspense>
+            </BrowserRouter>
+            <Footer />
+        </div>
+    );
 }
 
 export default App;

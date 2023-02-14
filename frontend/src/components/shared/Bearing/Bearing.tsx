@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react';
 import { Card, Descriptions, Typography } from 'antd';
 
 import { StatusType } from '@services/types';
@@ -8,16 +8,16 @@ import {
 } from './Bearing.types';
 import styles from './Bearing.module.scss'
 
-const defaultStyle = {
-}
+// const defaultStyle = {
+// }
 
-const dangerStyle = {
-    border: '1px solid #f5573b'
-}
+// const dangerStyle = {
+//     border: '1px solid #f5573b',
+// }
 
-const warningStyle = {
-    border: '1px solid #f5c134'
-}
+// const warningStyle = {
+//     border: '1px solid #f5c134',
+// }
 
 const typeDataUnits = new Map<number, string>([
     [BearingPropsItemType.Temperature, 'T, °C'],
@@ -26,17 +26,30 @@ const typeDataUnits = new Map<number, string>([
     [BearingPropsItemType.Axis, 'O, мм/c'],
 ]);
 
-const typeStatusStyle = new Map<number, object>([
-    [StatusType.Default, defaultStyle],
-    [StatusType.Danger, dangerStyle],
-    [StatusType.Warning, warningStyle],
-]);
+// const typeStatusStyle = new Map<number, object>([
+//     [StatusType.Default, defaultStyle],
+//     [StatusType.Danger, dangerStyle],
+//     [StatusType.Warning, warningStyle],
+// ]);
 
 const typeStatusClassName = new Map<number, string>([
     [StatusType.Default, styles.default],
-    [StatusType.Danger, styles.danger],
-    [StatusType.Warning, styles.warning],
+    [StatusType.Danger, styles.characteristic_warning],
+    [StatusType.Warning, styles.characteristic_warning],
 ]);
+
+// const getCharacteristicClassName = (status: StatusType) => {
+//     switch (status) {
+//         case StatusType.Danger:
+//             return `${styles.characteristic} ${styles['characteristic-danger']}`;
+//         case StatusType.Warning:
+//             return `${styles.characteristic} ${styles['characteristic-warning']}`;
+//         case StatusType.Default:
+//             return styles.characteristic;
+//         default:
+//             return styles.characteristic;
+//     }
+// };
 
 function Bearing({
     name = '9 ПС',
@@ -49,7 +62,7 @@ function Bearing({
             type='inner'
             title={name}
             className={styles.bearing}
-            style={typeStatusStyle.get(status)}
+            // style={typeStatusStyle.get(status)}
             headStyle={{ backgroundColor: '#4A4B4A', color: '#ffffff' }}
             bodyStyle={{ backgroundColor: '#E0E0E0', color: '#ffffff' }}
         >
@@ -64,15 +77,16 @@ function Bearing({
                             <Descriptions.Item
                                 key={index}
                                 className={typeStatusClassName.get(bearingPropsData.status)}
-                                label={
+                                label={(
                                     <Typography.Text strong>
                                         {typeDataUnits.get(bearingPropsData.type)}
                                     </Typography.Text>
-                                }
+                                )}
                             >
                                 {bearingPropsData.value}
                             </Descriptions.Item>
-                        ))
+                        ),
+                    )
                 }
             </Descriptions>
         </Card>
