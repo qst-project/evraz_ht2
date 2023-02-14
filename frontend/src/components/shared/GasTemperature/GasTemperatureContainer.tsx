@@ -1,8 +1,8 @@
-import React, { FC } from 'react'
-import GasTemperature from './GasTemperature'
-import { GasTemperatureContainerProps } from './GasTemperature.types'
+import React from 'react'
 import { StatusType } from '@services/types';
 import { Colors } from '@services/constants';
+import GasTemperature from './GasTemperature'
+import { GasTemperatureContainerProps } from './GasTemperature.types'
 
 const typeStatusColor = new Map<number, string>([
     [StatusType.Default, Colors.GREY],
@@ -11,7 +11,7 @@ const typeStatusColor = new Map<number, string>([
 ]);
 
 function GasTemperatureContainer({
-    gasTemperatureData
+    gasTemperatureData,
 }: GasTemperatureContainerProps) {
     return (
         <GasTemperature

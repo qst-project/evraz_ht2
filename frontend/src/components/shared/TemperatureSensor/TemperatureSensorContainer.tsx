@@ -1,11 +1,8 @@
-import React, { FC } from 'react'
+import React from 'react'
 
 import TemperatureSensor from './TemperatureSensor'
 
-interface TemperatureSensorContainerProps {
-}
-
-function TemperatureSensorContainer ({}: TemperatureSensorContainerProps) {
+function TemperatureSensorContainer() {
     return (
         <TemperatureSensor
             value={100}

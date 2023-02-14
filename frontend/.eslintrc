@@ -1,10 +1,28 @@
 {
-  "extends": ["airbnb", "airbnb/hooks", "airbnb-typescript"],
+  "extends": [
+    "airbnb",
+    "airbnb/hooks",
+    "airbnb-typescript",
+    "plugin:react/jsx-runtime"
+  ],
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": "./frontend/tsconfig.json"
   },
   "rules": {
     "linebreak-style": 0,
-    "import/prefer-default-export": 0
+    "import/prefer-default-export": 0,
+    "@typescript-eslint/indent": [
+      "warn",
+      4
+    ],
+    "@typescript-eslint/semi": "off",
+    "jsx-quotes": [
+      "error",
+      "prefer-single"
+    ],
+    "react/no-array-index-key": "off",
+    "react/jsx-indent": 0,
+    "react/jsx-indent-props": 0,
+    "react/jsx-props-no-spreading": "off"
   }
 }

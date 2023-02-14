@@ -1,2 +1,3 @@
-import GasTemperature from "./GasTemperature";
+import GasTemperature from './GasTemperature';
+
 export default GasTemperature

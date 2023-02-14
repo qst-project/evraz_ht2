@@ -1,9 +1,8 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { Card } from 'antd';
 
-import { OilTankProps } from './OilTank.types';
-
 import { StatusType } from '@services/types';
+
 import { IOilLevelData } from '../OilLevel/OilLevel.types';
 import OilLevelContainer from '../OilLevel';
 
@@ -11,11 +10,11 @@ const defaultStyle = {
 }
 
 const dangerStyle = {
-    border: '1px solid #CC0000'
+    border: '1px solid #CC0000',
 }
 
 const warningStyle = {
-    border: '1px solid #FFC930'
+    border: '1px solid #FFC930',
 }
 
 const typeStatusClassName = new Map<number, object>([

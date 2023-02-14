@@ -1,10 +1,9 @@
 import React from 'react'
 import { Button, Typography } from 'antd';
 
+import { StatusType } from '@services/types';
 import styles from './BearingTrigger.module.scss'
 import { BearingTriggerProps } from './BearingTrigger.types';
-
-import { StatusType } from '@services/types';
 
 const typeStatusClassName = new Map<number, string>([
     [StatusType.Default, styles.default],
@@ -16,7 +15,7 @@ function BearingTrigger({
     bearingName = 'ПС',
     bearingStatus,
     showBearing,
-    setShowBearing
+    setShowBearing,
 }: BearingTriggerProps) {
     return (
         <Button
@@ -25,7 +24,8 @@ function BearingTrigger({
                 bearingStatus === 0
                     ? () => setShowBearing(!showBearing)
                     : () => setShowBearing(true)
-            }>
+            }
+        >
             <Typography.Text strong>{bearingName}</Typography.Text>
         </Button>
     )

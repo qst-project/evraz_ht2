@@ -6,7 +6,6 @@ export interface BearingProps {
     bearingData: IBearingPropsItem[];
 }
 
-
 export interface IBearingPropsItem {
     value: number;
     type: BearingPropsItemType
@@ -17,5 +16,5 @@ export enum BearingPropsItemType {
     Temperature = 0,
     Vertical,
     Horizontal,
-    Axis
+    Axis,
 }

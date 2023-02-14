@@ -1,13 +1,12 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { Card, Descriptions, Typography } from 'antd';
 
+import { StatusType } from '@services/types';
 import styles from './MainDrive.module.scss'
 import {
     MainDriveProps,
     MainDrivePropsItemType,
 } from './MainDrive.types';
-
-import { StatusType } from '@services/types';
 
 const defaultStyle = {
 }
@@ -41,7 +40,7 @@ const typeStatusClassName = new Map<number, string>([
 
 function MainDrive({
     status,
-    mainDriveData
+    mainDriveData,
 }: MainDriveProps) {
     return (
         <Card
@@ -62,16 +61,16 @@ function MainDrive({
                             <Descriptions.Item
                                 key={index}
                                 className={typeStatusClassName.get(mainDrivePropsData.status)}
-                                label={
+                                label={(
                                     <Typography.Text strong>
                                         {typeDataUnits.get(mainDrivePropsData.type)}
                                     </Typography.Text>
-
-                                }
+                                )}
                             >
                                 {mainDrivePropsData.value}
                             </Descriptions.Item>
-                        ))
+                        ),
+                    )
                 }
             </Descriptions>
         </Card>

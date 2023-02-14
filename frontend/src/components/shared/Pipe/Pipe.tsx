@@ -1,10 +1,9 @@
-import { FC } from "react"
-import { GasTemperatureData } from "../GasTemperature/GasTemperature.types";
-import { PipeProps } from "./Pipe.types";
-import GasTemperature from "@shared/GasTemperature";
+import React from 'react'
+import GasTemperature from '@shared/GasTemperature';
 
 import { StatusType } from '@services/types';
 import { Colors } from '@services/constants';
+import { GasTemperatureData } from '../GasTemperature/GasTemperature.types';
 
 const typeStatusColor = new Map<number, string>([
     [StatusType.Default, Colors.GREY],
@@ -12,9 +11,7 @@ const typeStatusColor = new Map<number, string>([
     [StatusType.Warning, Colors.ORANGE],
 ]);
 
-function Pipe({
-    pipeData,
-}: PipeProps) {
+function Pipe() {
     const gasTemperatureData: GasTemperatureData = {
         value: 34,
         status: 0,
