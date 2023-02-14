@@ -169,3 +169,6 @@ buildNumber.properties
 .classpath
 
 # End of https://www.toptal.com/developers/gitignore/api/jetbrains+all,maven,java
+
+# prometheus
+metrics/prometheus/prometheus-data/
