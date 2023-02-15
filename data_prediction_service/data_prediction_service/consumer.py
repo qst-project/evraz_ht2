@@ -43,12 +43,37 @@ class DataStreamer():
             value_deserializer=deserializer
         )
         
-    def start(self) -> any:
+        self.__callbacks = []
+        self.__stored_data = [] # fix amount of stored data
+        
+    def register_callback(self, callback: Callable[[any, VacuumPumpData], None]) -> None:
+        self.__callbacks.append(callback) # callback must be async
+        
+    async def __delayed_timer(self, delay: int) -> None:
+        await asyncio.sleep(delay)
+        
+    async def basic_callback(future, data): # callback example
+        await asyncio.sleep(1)
+        future.set_result(data)
+        
+    async def process(future, self) -> any:
+        context = asyncio.get_running_loop()
+        futures = [context.create_future() for _ in self.__callbacks]
+        data = next(self.__consumer) # data has been already serialized
+        assert isinstance(data, VacuumPumpData)
+            
         if self.__mode == "full":
-            pass # TODO: script for analysis
+            for i, _callback in enumerate(self.__callbacks):
+                context.create_task(
+                    _callback(futures[i], data))
+            
+            _wait_task = context.create_task(self.__delayed_timer(5))
+                
+            self.__stored_data.append(data)
+            _once_results = []
+            for i, _future in enumerate(futures):
+                _once_results.append((await _future, self.__callbacks[i].__name__))
+            await _wait_task
+            future.set_result(_once_results)
         else:
             pass # TODO async batch treatement
-        
-    
-        
-
