@@ -14,6 +14,7 @@ import styles from './ExhausterPage.module.scss'
 
 function MainPage() {
     const [showBearing, setShowBearing] = useState(true)
+
     return (
         <section className={styles.main}>
             <Header />

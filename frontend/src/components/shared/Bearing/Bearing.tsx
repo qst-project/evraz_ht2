@@ -26,37 +26,6 @@ function Bearing({
     status,
     bearingData,
 }: BearingProps) {
-    let stompClient: any = null;
-
-    const [data, setData] = useState(0)
-    const onMessageReceived = (msg: any) => {
-        const notification = JSON.parse(msg.body);
-        console.log(notification)
-        setData(notification.temp)
-    };
-
-    const onConnected = () => {
-        console.log('connected')
-        stompClient.subscribe(
-            '/user/1/queue/messages',
-            onMessageReceived,
-        );
-    };
-
-    const connect = () => {
-        // eslint-disable-next-line global-require
-        const Stomp = require('stompjs')
-        // eslint-disable-next-line global-require
-        let SockJS = require('sockjs-client')
-        SockJS = new SockJS('http://0.0.0.0:9090/ws')
-        stompClient = Stomp.over(SockJS);
-        stompClient.connect({}, onConnected, (e: any) => console.warn(e))
-    };
-
-    useEffect(() => {
-        connect();
-    }, []);
-
     return (
         <Card
             bordered
@@ -83,8 +52,8 @@ function Bearing({
                                     </Typography.Text>
                                 )}
                             >
-                                {data}
-                                {/* {bearingPropsData.value} */}
+                                {/* {data} */}
+                                {bearingPropsData.value}
                             </Descriptions.Item>
                         ),
                     )
