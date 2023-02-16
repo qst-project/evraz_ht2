@@ -1,6 +1,7 @@
 import { Characteristics } from '@services/types';
 
 export enum Colors {
+    PRIMARY = '#FAB82E',
     RED = 'rgb(255,18,18)',
     ORANGE = 'rgb(255,135,0)',
     RED_TRANSPARENT = 'rgba(255,46,46,0.5)',
