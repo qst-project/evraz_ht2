@@ -1,4 +1,7 @@
-import { Layout, Menu } from 'antd';
+import {
+    Layout,
+    Menu,
+} from 'antd';
 import { Link, useLocation } from 'react-router-dom';
 
 import {

@@ -5,6 +5,7 @@
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
     "@craco/craco": "^7.0.0",
+    "@reduxjs/toolkit": "^1.9.2",
     "@stomp/stompjs": "^7.0.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -23,8 +24,10 @@
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
+    "redux": "^4.2.1",
     "sass": "^1.57.1",
     "sockjs": "^0.3.24",
     "sockjs-client": "^1.6.1",
