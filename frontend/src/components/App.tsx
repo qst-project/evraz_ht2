@@ -11,7 +11,6 @@ const TrendsPage = lazy(() => import('@pages/TrendsPage'));
 
 function App() {
     useWebSocket(subscribe, [])
-
     return (
         <div className='app'>
             <BrowserRouter>
@@ -24,7 +23,7 @@ function App() {
                             }
                         />
                         <Route
-                            path='second'
+                            path='exhauster'
                             element={
                                 <ExhausterPage />
                             }

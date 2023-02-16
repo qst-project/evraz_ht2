@@ -10,7 +10,8 @@
       "@scss/*" : ["./scss/*"],
       "@images/*" : ["./assets/images/*"],
       "@services/*" : ["./services/*"],
-      "@hooks/*" : ["./hooks/*"]
+      "@hooks/*" : ["./hooks/*"],
+      "@reduxToolkit/*" : ["./reduxToolkit/*"]
     }
   }
 }

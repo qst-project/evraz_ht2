@@ -1,11 +1,21 @@
 import React from 'react';
 import { Button, Card } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 import BearingList from '@shared/BearingList';
 import { Colors } from '@services/constants';
+import { getExhausterState } from '@reduxToolkit/slices/exhauster';
+import { RootState } from '@reduxToolkit/index';
+
 import { ExhausterProps } from './Exhauster.type';
 import styles from './Exhauster.module.scss';
 
 function Exhauster({ exhausterData }: ExhausterProps) {
+    const navigation = useNavigate()
+    const data = useSelector(({ exhausterReducer }: RootState) => getExhausterState(exhausterReducer))
+    console.log(data.value)
+    
     return (
         <Card className={styles.main}>
             <div className={styles.header}>
@@ -20,8 +30,9 @@ function Exhauster({ exhausterData }: ExhausterProps) {
                 <h3>{exhausterData.name}</h3>
                 <Button
                     className={styles.watch}
+                    onClick={() => navigation('/exhauster')}
                 >
-          Watch
+                    Watch
                 </Button>
             </div>
             <div className={styles.rotor}>
@@ -33,7 +44,8 @@ function Exhauster({ exhausterData }: ExhausterProps) {
                 <span>{exhausterData.lastRotorReplacement}</span>
                 <div className={styles.forecast}>
                     <span>Прогноз</span>
-                    {exhausterData.forecast}
+                    {data.value}
+                    {/* {exhausterData.forecast} */}
                 </div>
             </div>
             <BearingList exhausterData={exhausterData} />
