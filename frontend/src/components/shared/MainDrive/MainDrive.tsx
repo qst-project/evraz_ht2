@@ -1,78 +1,23 @@
 import React from 'react'
-import { Card, Descriptions, Typography } from 'antd';
-
-import { StatusType } from '@services/types';
-import styles from './MainDrive.module.scss'
-import {
-    MainDriveProps,
-    MainDrivePropsItemType,
-} from './MainDrive.types';
-
-const defaultStyle = {
-}
-
-const dangerStyle = {
-    border: '1px solid #f5573b',
-}
-
-const warningStyle = {
-    border: '1px solid #f5c134',
-}
-
-const typeStatusStyles = new Map<number, object>([
-    [StatusType.Default, defaultStyle],
-    [StatusType.Danger, dangerStyle],
-    [StatusType.Warning, warningStyle],
-]);
-
-const typeDataUnits = new Map<number, string>([
-    [MainDrivePropsItemType.Amperage, 'Tок, А'],
-    [MainDrivePropsItemType.MotorAmperage, 'Ток двигателся, А'],
-    [MainDrivePropsItemType.RoterVoltage, 'Напряжение ротера, кВт'],
-    [MainDrivePropsItemType.StarterVoltage, 'Напряжение статера, кВт'],
-]);
-
-const typeStatusClassName = new Map<number, string>([
-    [StatusType.Default, styles.default],
-    [StatusType.Danger, styles.danger],
-    [StatusType.Warning, styles.warning],
-]);
+import { Card } from 'antd';
+import styles from '@shared/Bearing/Bearing.module.scss';
+import Characteristic from '@shared/Characteristic';
+import { MainDriveProps } from './MainDrive.types';
 
 function MainDrive({
-    status,
-    mainDriveData,
+    characteristics,
 }: MainDriveProps) {
     return (
         <Card
             bordered
             title='Главный привод'
-            style={typeStatusStyles.get(status)}
-            headStyle={{ backgroundColor: '#4A4B4A', color: '#ffffff' }}
-            bodyStyle={{ backgroundColor: '#E0E0E0', color: '#ffffff' }}
+            type='inner'
         >
-            <Descriptions
-                bordered
-                size='small'
-                column={1}
-            >
-                {
-                    mainDriveData.map(
-                        (mainDrivePropsData, index) => (
-                            <Descriptions.Item
-                                key={index}
-                                className={typeStatusClassName.get(mainDrivePropsData.status)}
-                                label={(
-                                    <Typography.Text strong>
-                                        {typeDataUnits.get(mainDrivePropsData.type)}
-                                    </Typography.Text>
-                                )}
-                            >
-                                {mainDrivePropsData.value}
-                            </Descriptions.Item>
-                        ),
-                    )
-                }
-            </Descriptions>
+            <div className={styles.characteristics}>
+                {characteristics.map((item) => (
+                    <Characteristic characteristic={item} />
+                ))}
+            </div>
         </Card>
     );
 }

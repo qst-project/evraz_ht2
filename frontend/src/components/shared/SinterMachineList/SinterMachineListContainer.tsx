@@ -21,7 +21,7 @@ const mock: SinterMachineData[] = [
                         characteristics: [
                             {
                                 name: Characteristics.TEMPERATURE,
-                                status: StatusType.Default,
+                                status: StatusType.DEFAULT,
                             },
                         ],
                     },
@@ -30,11 +30,11 @@ const mock: SinterMachineData[] = [
                         characteristics: [
                             {
                                 name: Characteristics.OIL_LEVEL,
-                                status: StatusType.Default,
+                                status: StatusType.DEFAULT,
                             },
                             {
                                 name: Characteristics.TEMPERATURE,
-                                status: StatusType.Default,
+                                status: StatusType.DEFAULT,
                             },
                         ],
                     },
@@ -45,7 +45,7 @@ const mock: SinterMachineData[] = [
                         characteristics: [
                             {
                                 name: Characteristics.TEMPERATURE,
-                                status: StatusType.Warning,
+                                status: StatusType.WARNING,
                             },
                         ],
                     },
@@ -54,7 +54,7 @@ const mock: SinterMachineData[] = [
                         characteristics: [
                             {
                                 name: Characteristics.TEMPERATURE,
-                                status: StatusType.Danger,
+                                status: StatusType.DANGER,
                             },
                         ],
                     },
@@ -74,7 +74,7 @@ const mock: SinterMachineData[] = [
                         characteristics: [
                             {
                                 name: Characteristics.TEMPERATURE,
-                                status: StatusType.Default,
+                                status: StatusType.DEFAULT,
                             },
                         ],
                     },
@@ -83,11 +83,11 @@ const mock: SinterMachineData[] = [
                         characteristics: [
                             {
                                 name: Characteristics.OIL_LEVEL,
-                                status: StatusType.Default,
+                                status: StatusType.DEFAULT,
                             },
                             {
                                 name: Characteristics.TEMPERATURE,
-                                status: StatusType.Default,
+                                status: StatusType.DEFAULT,
                             },
                         ],
                     },
@@ -98,7 +98,7 @@ const mock: SinterMachineData[] = [
                         characteristics: [
                             {
                                 name: Characteristics.TEMPERATURE,
-                                status: StatusType.Warning,
+                                status: StatusType.WARNING,
                             },
                         ],
                     },
@@ -107,7 +107,7 @@ const mock: SinterMachineData[] = [
                         characteristics: [
                             {
                                 name: Characteristics.TEMPERATURE,
-                                status: StatusType.Danger,
+                                status: StatusType.DANGER,
                             },
                         ],
                     },
@@ -133,7 +133,7 @@ const mock: SinterMachineData[] = [
                         characteristics: [
                             {
                                 name: Characteristics.TEMPERATURE,
-                                status: StatusType.Default,
+                                status: StatusType.DEFAULT,
                             },
                         ],
                     },
@@ -142,11 +142,11 @@ const mock: SinterMachineData[] = [
                         characteristics: [
                             {
                                 name: Characteristics.OIL_LEVEL,
-                                status: StatusType.Default,
+                                status: StatusType.DEFAULT,
                             },
                             {
                                 name: Characteristics.TEMPERATURE,
-                                status: StatusType.Default,
+                                status: StatusType.DEFAULT,
                             },
                         ],
                     },
@@ -157,7 +157,7 @@ const mock: SinterMachineData[] = [
                         characteristics: [
                             {
                                 name: Characteristics.TEMPERATURE,
-                                status: StatusType.Warning,
+                                status: StatusType.WARNING,
                             },
                         ],
                     },
@@ -166,7 +166,7 @@ const mock: SinterMachineData[] = [
                         characteristics: [
                             {
                                 name: Characteristics.TEMPERATURE,
-                                status: StatusType.Danger,
+                                status: StatusType.DANGER,
                             },
                         ],
                     },
@@ -186,7 +186,7 @@ const mock: SinterMachineData[] = [
                         characteristics: [
                             {
                                 name: Characteristics.TEMPERATURE,
-                                status: StatusType.Default,
+                                status: StatusType.DEFAULT,
                             },
                         ],
                     },
@@ -195,11 +195,11 @@ const mock: SinterMachineData[] = [
                         characteristics: [
                             {
                                 name: Characteristics.OIL_LEVEL,
-                                status: StatusType.Default,
+                                status: StatusType.DEFAULT,
                             },
                             {
                                 name: Characteristics.TEMPERATURE,
-                                status: StatusType.Default,
+                                status: StatusType.DEFAULT,
                             },
                         ],
                     },
@@ -210,7 +210,7 @@ const mock: SinterMachineData[] = [
                         characteristics: [
                             {
                                 name: Characteristics.TEMPERATURE,
-                                status: StatusType.Warning,
+                                status: StatusType.WARNING,
                             },
                         ],
                     },
@@ -219,7 +219,7 @@ const mock: SinterMachineData[] = [
                         characteristics: [
                             {
                                 name: Characteristics.TEMPERATURE,
-                                status: StatusType.Danger,
+                                status: StatusType.DANGER,
                             },
                         ],
                     },

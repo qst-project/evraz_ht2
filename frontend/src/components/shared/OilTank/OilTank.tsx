@@ -3,6 +3,7 @@ import { Card } from 'antd';
 
 import { StatusType } from '@services/types';
 
+import { Colors } from '@services/constants';
 import { IOilLevelData } from '../OilLevel/OilLevel.types';
 import OilLevelContainer from '../OilLevel';
 
@@ -10,22 +11,22 @@ const defaultStyle = {
 }
 
 const dangerStyle = {
-    border: '1px solid #CC0000',
+    boxShadow: `0 0 8px 0 ${Colors.RED}`,
 }
 
 const warningStyle = {
-    border: '1px solid #FFC930',
+    boxShadow: `0 0 8px 0 ${Colors.ORANGE}`,
 }
 
-const typeStatusClassName = new Map<number, object>([
-    [StatusType.Default, defaultStyle],
-    [StatusType.Danger, dangerStyle],
-    [StatusType.Warning, warningStyle],
+const typeStatusClassName = new Map<StatusType, object>([
+    [StatusType.DEFAULT, defaultStyle],
+    [StatusType.DANGER, dangerStyle],
+    [StatusType.WARNING, warningStyle],
 ]);
 
 function OilTank() {
     const oilLevelData: IOilLevelData = {
-        status: StatusType.Danger,
+        status: StatusType.DANGER,
         value: 5.4,
     }
 
@@ -34,8 +35,6 @@ function OilTank() {
             bordered
             title='Маслобак'
             style={typeStatusClassName.get(oilLevelData.status)}
-            headStyle={{ backgroundColor: '#4A4B4A', color: '#ffffff' }}
-            bodyStyle={{ backgroundColor: '#E0E0E0', color: '#ffffff' }}
         >
             <OilLevelContainer oilLevelData={oilLevelData} />
         </Card>

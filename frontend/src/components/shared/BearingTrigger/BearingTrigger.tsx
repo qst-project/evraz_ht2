@@ -5,10 +5,10 @@ import { StatusType } from '@services/types';
 import styles from './BearingTrigger.module.scss'
 import { BearingTriggerProps } from './BearingTrigger.types';
 
-const typeStatusClassName = new Map<number, string>([
-    [StatusType.Default, styles.default],
-    [StatusType.Danger, styles.danger],
-    [StatusType.Warning, styles.warning],
+const typeStatusClassName = new Map<StatusType, string>([
+    [StatusType.DEFAULT, styles.default],
+    [StatusType.DANGER, styles.danger],
+    [StatusType.WARNING, styles.warning],
 ]);
 
 function BearingTrigger({
@@ -21,7 +21,7 @@ function BearingTrigger({
         <Button
             className={typeStatusClassName.get(bearingStatus)}
             onClick={
-                bearingStatus === 0
+                bearingStatus === StatusType.DEFAULT
                     ? () => setShowBearing(!showBearing)
                     : () => setShowBearing(true)
             }

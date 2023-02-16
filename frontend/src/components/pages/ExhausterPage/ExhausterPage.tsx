@@ -10,6 +10,7 @@ import OilPressureContainer from '@components/shared/OilPressure';
 import TemperatureSensorContainer from '@components/shared/TemperatureSensor';
 import OilTankContainer from '@components/shared/OilTank/OilTankContainer';
 
+import { StatusType } from '@services/types';
 import styles from './ExhausterPage.module.scss'
 
 function MainPage() {
@@ -21,7 +22,7 @@ function MainPage() {
                 <Col>
                     <BearingTrigger
                         bearingName='9 ПC'
-                        bearingStatus={0}
+                        bearingStatus={StatusType.DEFAULT}
                         showBearing={showBearing}
                         setShowBearing={setShowBearing}
                     />
@@ -41,7 +42,9 @@ function MainPage() {
                     <MainDriveContainer />
                 </Col>
                 <Col>
-                    <OilPressureContainer oilPressureData={{ status: 1, value: 2.1 }} />
+                    <OilPressureContainer
+                        oilPressureData={{ status: StatusType.WARNING, value: 2.1 }}
+                    />
                 </Col>
             </Row>
             <Row>

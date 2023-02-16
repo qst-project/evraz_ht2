@@ -10,11 +10,14 @@ export enum Colors {
 }
 
 export const characteristicUnits = new Map<Characteristics, string>([
-  [Characteristics.TEMPERATURE, 'T, °C'],
-  [Characteristics.VERTICAL, 'Верт, мм/с'],
-  [Characteristics.HORIZONTAL, 'Гориз, мм/с'],
-  [Characteristics.OIL_LEVEL, 'Уровень масла, %'],
-  [Characteristics.OIL_PRESSURE, 'Давление масла, кг/см2'],
-  [Characteristics.AXIS, 'Ось, мм/с'],
-  [Characteristics.AMPERAGE, 'Ток, А'],
+    [Characteristics.TEMPERATURE, 'T, °C'],
+    [Characteristics.VERTICAL, 'Верт, мм/с'],
+    [Characteristics.HORIZONTAL, 'Гориз, мм/с'],
+    [Characteristics.OIL_LEVEL, 'Уровень масла, %'],
+    [Characteristics.OIL_PRESSURE, 'Давление масла, кг/см2'],
+    [Characteristics.AXIS, 'Ось, мм/с'],
+    [Characteristics.AMPERAGE, 'Ток, А'],
+    [Characteristics.DRIVE_AMPERAGE, 'Ток двигателя, А'],
+    [Characteristics.ROTOR_VOLTAGE, 'Напряжение ротора, кВт'],
+    [Characteristics.STARTER_VOLTAGE, 'Напряжение стартера, кВт'],
 ]);

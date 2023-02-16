@@ -18,16 +18,16 @@ const warningStyle = {
     border: '1px solid #f5c134',
 }
 
-const typeStatusClassName = new Map<number, object>([
-    [StatusType.Default, defaultStyle],
-    [StatusType.Danger, dangerStyle],
-    [StatusType.Warning, warningStyle],
+const typeStatusClassName = new Map<StatusType, object>([
+    [StatusType.DEFAULT, defaultStyle],
+    [StatusType.DANGER, dangerStyle],
+    [StatusType.WARNING, warningStyle],
 ]);
 
 function OilPressure({
     strokeColor = '',
     value = 0,
-    status = StatusType.Warning,
+    status = StatusType.WARNING,
 }: OilPressureProps) {
     return (
         <Card

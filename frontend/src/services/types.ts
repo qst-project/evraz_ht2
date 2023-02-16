@@ -1,7 +1,7 @@
 export enum StatusType {
-    Default = 0,
-    Warning,
-    Danger,
+    DEFAULT = 'DEFAULT',
+    WARNING = 'WARNING',
+    DANGER = 'DANGER',
 }
 
 export enum Characteristics {
@@ -12,6 +12,9 @@ export enum Characteristics {
     AXIS = 'AXIS',
     OIL_PRESSURE = 'OIL_PRESSURE',
     AMPERAGE = 'AMPERAGE',
+    DRIVE_AMPERAGE = 'DRIVE_AMPERAGE',
+    ROTOR_VOLTAGE = 'ROTOR_VOLTAGE',
+    STARTER_VOLTAGE = 'STARTER_VOLTAGE',
 }
 
 export interface BearingData {
@@ -40,9 +43,10 @@ export interface SinterMachineData {
     exhausters: ExhausterData[],
 }
 
-interface CharacteristicData {
-    name: Characteristics,
+export interface CharacteristicData {
+    type: Characteristics,
     value: number,
+    status: StatusType,
 }
 
 interface TrendsData {

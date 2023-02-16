@@ -4,10 +4,10 @@ import { Colors } from '@services/constants';
 import GasTemperature from './GasTemperature'
 import { GasTemperatureContainerProps } from './GasTemperature.types'
 
-const typeStatusColor = new Map<number, string>([
-    [StatusType.Default, Colors.GREY],
-    [StatusType.Danger, Colors.RED],
-    [StatusType.Warning, Colors.ORANGE],
+const typeStatusColor = new Map<StatusType, string>([
+    [StatusType.DEFAULT, Colors.GREY],
+    [StatusType.DANGER, Colors.RED],
+    [StatusType.WARNING, Colors.ORANGE],
 ]);
 
 function GasTemperatureContainer({

@@ -1,50 +1,5 @@
-@use 'src/scss/vars/colors';
-@import "src/scss/mixins/card";
-
-.bearing {
-    @include card(200px);
-}
-
-.item {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    font-weight: 700;
-}
-
 .characteristics {
     display: flex;
+    flex-direction: column;
     gap: 4px;
-}
-
-.characteristic {
-    border: 1px solid #9f9f9f;
-    border-radius: 4px;
-    padding: 2px 6px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.characteristic_warning {
-    background-color: colors.$orange-05;
-    border-color: colors.$orange;
-    box-shadow: 0 0 4px 0 colors.$orange;
-    color: colors.$orange;
-
-    :global path {
-        fill: colors.$orange;
-    }
-}
-
-.characteristic_danger {
-    background-color: colors.$red-05;
-    border-color: colors.$red;
-    box-shadow: 0 0 4px 0 colors.$red;
-    color: colors.$red;
-
-    :global path {
-        fill: colors.$red;
-    }
 }

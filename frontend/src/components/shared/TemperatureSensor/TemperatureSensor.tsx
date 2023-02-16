@@ -24,10 +24,10 @@ const warningStyle = {
     color: '#ffffff',
 }
 
-const typeStatusStyle = new Map<number, object>([
-    [StatusType.Default, defaultStyle],
-    [StatusType.Danger, dangerStyle],
-    [StatusType.Warning, warningStyle],
+const typeStatusStyle = new Map<StatusType, object>([
+    [StatusType.DEFAULT, defaultStyle],
+    [StatusType.DANGER, dangerStyle],
+    [StatusType.WARNING, warningStyle],
 ]);
 
 function TemperatureSensor({

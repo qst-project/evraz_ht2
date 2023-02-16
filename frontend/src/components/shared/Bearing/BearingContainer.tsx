@@ -1,6 +1,6 @@
 import React from 'react'
+import { Characteristics, StatusType } from '@services/types';
 import Bearing from './Bearing';
-import { IBearingPropsItem } from './Bearing.types';
 
 interface BearingContainerProps {
     isOpen: boolean;
@@ -9,35 +9,37 @@ interface BearingContainerProps {
 function BearingContainer({
     isOpen,
 }: BearingContainerProps) {
-    const bearingPropsData: IBearingPropsItem[] = [
+    const characteristics = [
         {
-            status: 2,
-            type: 0,
+            status: StatusType.DANGER,
+            type: Characteristics.TEMPERATURE,
             value: 200,
         },
         {
-            status: 1,
-            type: 1,
+            status: StatusType.WARNING,
+            type: Characteristics.VERTICAL,
+            value: 140,
+        },
+        {
+            status: StatusType.DEFAULT,
+            type: Characteristics.HORIZONTAL,
+            value: 298,
+        },
+        {
+            status: StatusType.DEFAULT,
+            type: Characteristics.AXIS,
             value: 200,
-        }, {
+        },
+    ];
 
-            status: 0,
-            type: 2,
-            value: 200,
-        }, {
-
-            status: 0,
-            type: 3,
-            value: 200,
-        }]
     return (
         isOpen
             ? (
                 <Bearing
                     key={1}
                     name='9 ПС'
-                    status={1}
-                    bearingData={bearingPropsData}
+                    status={StatusType.WARNING}
+                    characteristics={characteristics}
                 />
             )
             : null

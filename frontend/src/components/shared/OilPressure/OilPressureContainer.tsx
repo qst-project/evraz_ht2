@@ -1,14 +1,15 @@
 import React from 'react'
 
 import { StatusType } from '@services/types';
+import { Colors } from '@services/constants';
 import { OilPressureContainerProps } from './OilPressure.types';
 
 import OilPressure from './OilPressure';
 
-const typeStatusColor = new Map<number, string>([
-    [StatusType.Default, 'green'],
-    [StatusType.Danger, '#f5573b'],
-    [StatusType.Warning, '#f5c134'],
+const typeStatusColor = new Map<StatusType, string>([
+    [StatusType.DEFAULT, Colors.GREEN],
+    [StatusType.DANGER, Colors.RED],
+    [StatusType.WARNING, Colors.ORANGE],
 ]);
 
 function OilPressureContainer({

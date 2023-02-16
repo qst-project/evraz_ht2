@@ -1,33 +1,33 @@
 import React from 'react'
+import { Characteristics, StatusType } from '@services/types';
 import MainDrive from './MainDrive';
-import { IMainDriveData } from './MainDrive.types';
 
 function MainDriveContainer() {
-    const mainDriveData: IMainDriveData[] = [
+    const characteristics = [
         {
-            status: 1,
-            type: 0,
-            value: 205,
+            status: StatusType.WARNING,
+            type: Characteristics.AMPERAGE,
+            value: 10,
         },
         {
-            status: 0,
-            type: 1,
+            status: StatusType.DEFAULT,
+            type: Characteristics.DRIVE_AMPERAGE,
             value: 0,
         }, {
 
-            status: 0,
-            type: 2,
+            status: StatusType.DEFAULT,
+            type: Characteristics.ROTOR_VOLTAGE,
             value: 0,
         }, {
 
-            status: 0,
-            type: 3,
+            status: StatusType.DEFAULT,
+            type: Characteristics.STARTER_VOLTAGE,
             value: 0,
         }]
     return (
         <MainDrive
-            status={1}
-            mainDriveData={mainDriveData}
+            status={StatusType.WARNING}
+            characteristics={characteristics}
         />
     )
 }

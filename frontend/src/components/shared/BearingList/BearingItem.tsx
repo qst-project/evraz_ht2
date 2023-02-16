@@ -5,7 +5,7 @@ import { ReactComponent as DropIcon } from '@images/drop.svg';
 import { BearingItemProps } from './BearingList.types';
 import styles from './BearingList.module.scss';
 
-const abbreviations: Record<Characteristics, string> = {
+const abbreviations: Record<string, string> = {
     [Characteristics.TEMPERATURE]: 'T',
     [Characteristics.OIL_LEVEL]: 'L',
     [Characteristics.AXIS]: 'A',
@@ -29,11 +29,11 @@ function BearingItem({ bearingData }: BearingItemProps) {
 
     const getCharacteristicClassName = (status: StatusType) => {
         switch (status) {
-            case StatusType.Danger:
+            case StatusType.DANGER:
                 return `${styles.characteristic} ${styles['characteristic-danger']}`;
-            case StatusType.Warning:
+            case StatusType.WARNING:
                 return `${styles.characteristic} ${styles['characteristic-warning']}`;
-            case StatusType.Default:
+            case StatusType.DEFAULT:
                 return styles.characteristic;
             default:
                 return styles.characteristic;
