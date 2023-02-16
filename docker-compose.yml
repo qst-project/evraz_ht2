@@ -14,12 +14,12 @@ services:
      - HOST=0.0.0.0
 
   # back
-#  rest-backend:
-#    container_name: monolith
-#    build:
-#      context: backend
-#      dockerfile: Dockerfile
-#    network_mode: host
+  rest-backend:
+    container_name: monolith
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    network_mode: host
 
   # prometheus
   prometheus:
