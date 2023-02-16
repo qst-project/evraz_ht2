@@ -1,7 +1,8 @@
+import React from 'react'
 import {
     Card, Col, Progress, Row, Typography,
 } from 'antd';
-import React from 'react'
+import { Colors } from '@services/constants'
 import { StatusType } from '@services/types';
 import { OilPressureProps } from './OilPressure.types';
 
@@ -11,11 +12,11 @@ const defaultStyle = {
 }
 
 const dangerStyle = {
-    border: '1px solid #f5573b',
+    boxShadow: `0 0 8px 0 ${Colors.RED}`,
 }
 
 const warningStyle = {
-    border: '1px solid #f5c134',
+    boxShadow: `0 0 8px 0 ${Colors.ORANGE}`,
 }
 
 const typeStatusClassName = new Map<StatusType, object>([
@@ -34,8 +35,6 @@ function OilPressure({
             bordered
             className={styles.oilPressure}
             style={typeStatusClassName.get(status)}
-            headStyle={{ backgroundColor: '#4A4B4A', color: '#ffffff' }}
-            bodyStyle={{ backgroundColor: '#E0E0E0', color: '#ffffff' }}
         >
             <Col span={24}>
                 <Progress

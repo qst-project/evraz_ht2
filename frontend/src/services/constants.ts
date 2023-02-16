@@ -20,4 +20,6 @@ export const characteristicUnits = new Map<Characteristics, string>([
     [Characteristics.DRIVE_AMPERAGE, 'Ток двигателя, А'],
     [Characteristics.ROTOR_VOLTAGE, 'Напряжение ротора, кВт'],
     [Characteristics.STARTER_VOLTAGE, 'Напряжение стартера, кВт'],
+    [Characteristics.UNDERPRESSURE, 'Разряжение, мм, в ст '],
+    [Characteristics.DUST_LEVEL, 'Уровень пыли, мг/м3 '],
 ]);

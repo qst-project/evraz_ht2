@@ -1,34 +1,23 @@
-import { Typography } from 'antd';
 import React from 'react'
+import { Typography } from 'antd';
+
 import { StatusType } from '@services/types';
+
 import { TemperatureSensorProps } from './TemperatureSensor.types';
+import styles from './TemperatureSensor.module.scss'
 
-const defaultStyle = {
-    padding: '0.5rem',
-    borderRadius: '10px',
-    background: '#9f9f9e',
-    color: '#',
+const getStatusClassName = (status: StatusType, baseStyle: string) => {
+    switch (status) {
+        case StatusType.WARNING:
+            return `${baseStyle} ${styles.warning}`;
+        case StatusType.DANGER:
+            return `${baseStyle} ${styles.danger}`;
+        case StatusType.DEFAULT:
+            return baseStyle;
+        default:
+            return baseStyle;
+    }
 }
-
-const dangerStyle = {
-    padding: '0.5rem',
-    borderRadius: '10px',
-    background: '#f5573b',
-    color: '#ffffff',
-}
-
-const warningStyle = {
-    padding: '0.5rem',
-    borderRadius: '10px',
-    background: '#f5c134',
-    color: '#ffffff',
-}
-
-const typeStatusStyle = new Map<StatusType, object>([
-    [StatusType.DEFAULT, defaultStyle],
-    [StatusType.DANGER, dangerStyle],
-    [StatusType.WARNING, warningStyle],
-]);
 
 function TemperatureSensor({
     value,
@@ -36,7 +25,7 @@ function TemperatureSensor({
 }: TemperatureSensorProps) {
     return (
         <div
-            style={typeStatusStyle.get(status)}
+            className={getStatusClassName(status, styles.wrapper)}
         >
             <Typography.Text strong>
                 {value}

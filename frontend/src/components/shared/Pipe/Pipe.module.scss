@@ -1,0 +1,33 @@
+@use 'src/scss/vars/colors';
+@import "src/scss/mixins/card";
+
+.pipe {
+    @include card(300px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    min-width: 160px;
+    padding: 6px 12px;
+    background: colors.$grey;
+    border: 1px solid colors.$dark-grey;
+    border-radius: 6px;
+    z-index: 100;
+}
+
+.warning {
+    background-color: #ffc27f;
+    border-color: colors.$orange;
+    color: colors.$orange-dark;
+}
+
+.danger {
+    background-color: #ff7f7f;
+    border-color: colors.$red;
+    color: colors.$red-dark;
+}

@@ -15,6 +15,8 @@ export enum Characteristics {
     DRIVE_AMPERAGE = 'DRIVE_AMPERAGE',
     ROTOR_VOLTAGE = 'ROTOR_VOLTAGE',
     STARTER_VOLTAGE = 'STARTER_VOLTAGE',
+    UNDERPRESSURE = 'UNDERPRESSURE',
+    DUST_LEVEL = 'DUST_LEVEL',
 }
 
 export interface BearingData {
