@@ -2,7 +2,7 @@
 @import "src/scss/mixins/card";
 
 .pipe {
-    @include card(300px);
+    @include card(270px);
     display: flex;
     align-items: center;
     justify-content: center;
