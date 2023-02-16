@@ -14,32 +14,6 @@ function App() {
     useWebSocket(subscribe, [])
     return (
         <div className='app'>
-<<<<<<< HEAD
-            <BrowserRouter>
-                <Suspense fallback={<Spin />}>
-                    <Routes>
-                        <Route
-                            path='/'
-                            element={
-                                <MainPage />
-                            }
-                        />
-                        <Route
-                            path='exhauster'
-                            element={
-                                <ExhausterPage />
-                            }
-                        />
-                        <Route
-                            path='trends'
-                            element={
-                                <TrendsPage />
-                            }
-                        />
-                    </Routes>
-                </Suspense>
-            </BrowserRouter>
-=======
             <ConfigProvider
                 theme={{
                     token: {
@@ -57,7 +31,7 @@ function App() {
                                 }
                             />
                             <Route
-                                path='second'
+                                path='exhauster'
                                 element={
                                     <ExhausterPage />
                                 }
@@ -72,7 +46,6 @@ function App() {
                     </Suspense>
                 </BrowserRouter>
             </ConfigProvider>
->>>>>>> 2d9258d6e9f660080b8d4df3a74b97568033afca
         </div>
     );
 }
