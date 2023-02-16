@@ -1,9 +1,10 @@
 import React, { lazy, Suspense } from 'react';
-import { Spin } from 'antd';
+import { ConfigProvider, Spin } from 'antd';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
 import useWebSocket from '@hooks/useWebSocket';
 import { subscribe } from '@services/subscriptions';
+import { Colors } from '@services/constants';
 
 const MainPage = lazy(() => import('@pages/MainPage'));
 const ExhausterPage = lazy(() => import('@pages/ExhausterPage'));
@@ -14,30 +15,38 @@ function App() {
 
     return (
         <div className='app'>
-            <BrowserRouter>
-                <Suspense fallback={<Spin />}>
-                    <Routes>
-                        <Route
-                            path='/'
-                            element={
-                                <MainPage />
-                            }
-                        />
-                        <Route
-                            path='second'
-                            element={
-                                <ExhausterPage />
-                            }
-                        />
-                        <Route
-                            path='trends'
-                            element={
-                                <TrendsPage />
-                            }
-                        />
-                    </Routes>
-                </Suspense>
-            </BrowserRouter>
+            <ConfigProvider
+                theme={{
+                    token: {
+                        colorPrimary: Colors.PRIMARY,
+                    },
+                }}
+            >
+                <BrowserRouter>
+                    <Suspense fallback={<Spin />}>
+                        <Routes>
+                            <Route
+                                path='/'
+                                element={
+                                    <MainPage />
+                                }
+                            />
+                            <Route
+                                path='second'
+                                element={
+                                    <ExhausterPage />
+                                }
+                            />
+                            <Route
+                                path='trends'
+                                element={
+                                    <TrendsPage />
+                                }
+                            />
+                        </Routes>
+                    </Suspense>
+                </BrowserRouter>
+            </ConfigProvider>
         </div>
     );
 }
