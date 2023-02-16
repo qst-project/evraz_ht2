@@ -8,14 +8,13 @@ import PipeContainer from '@components/shared/Pipe';
 import OilPressureContainer from '@components/shared/OilPressure';
 import TemperatureSensorContainer from '@components/shared/TemperatureSensor';
 import OilTankContainer from '@components/shared/OilTank/OilTankContainer';
-import PageLayout from '@components/layout/PageLayout/PageLayout';
 
 import { StatusType } from '@services/types';
 
 function MainPage() {
     const [showBearing, setShowBearing] = useState(true)
     return (
-        <PageLayout>
+        <>
             <Row justify='space-around'>
                 <Col>
                     <BearingTrigger
@@ -50,8 +49,7 @@ function MainPage() {
                     <PipeContainer />
                 </Col>
             </Row>
-        </PageLayout>
-
+        </>
     );
 }
 
