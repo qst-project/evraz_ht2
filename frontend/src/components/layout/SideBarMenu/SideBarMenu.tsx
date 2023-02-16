@@ -7,6 +7,7 @@ import {
     LineChartOutlined,
 } from '@ant-design/icons'
 
+import { Colors } from '@services/constants';
 import { MenuProps } from './SideBarMenu.types';
 
 function SideBarMenu({ collapsed }: MenuProps) {
@@ -28,10 +29,12 @@ function SideBarMenu({ collapsed }: MenuProps) {
             trigger={null}
             collapsible
             collapsed={collapsed}
+            style={{ backgroundColor: Colors.GREY_DARK }}
         >
             <Menu
                 theme='dark'
                 mode='inline'
+                style={{ backgroundColor: Colors.GREY_DARK }}
                 defaultSelectedKeys={[selectedKeys]}
             >
                 <Menu.Item key='1'>

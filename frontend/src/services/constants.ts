@@ -8,6 +8,7 @@ export enum Colors {
     ORANGE_TRANSPARENT = 'rgba(255,157,46,0.5)',
     GREEN = '#2bde00',
     GREY = '#9f9f9e',
+    GREY_DARK = 'rgb(34, 40, 40)',
 }
 
 export const characteristicUnits = new Map<Characteristics, string>([
