@@ -4,11 +4,17 @@ import { Characteristics, StatusType } from '@services/types';
 import MainDrive from '@shared/MainDrive/MainDrive';
 import OilTank from '@shared/OilTank';
 import Pipe from '@shared/Pipe/Pipe';
+import BearingTrigger from '../BearingTrigger';
+
 import styles from './Exhauster.module.scss';
 
 function Exhauster() {
     return (
         <section className={styles.main}>
+            <BearingTrigger
+                bearingName='9'
+                bearingStatus={StatusType.WARNING}
+            />
             <Bearing
                 name='1 ПС'
                 status={StatusType.DEFAULT}
