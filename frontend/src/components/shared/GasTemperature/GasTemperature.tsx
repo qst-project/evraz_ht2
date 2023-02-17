@@ -10,31 +10,32 @@ function GasTemperature({
     value = 0,
 }: GasTemperatureProps) {
     return (
-
         <Col span={24}>
-            <Progress
-                showInfo
-                strokeLinecap='butt'
-                steps={6}
-                strokeColor={strokeColor}
-                format={
-                    // eslint-disable-next-line react/no-unstable-nested-components
-                    () => (
-                        <>
-                            {value}
-                            °C
-                        </>
-                    )
-                }
-                percent={(value * 100) / 136}
-            />
             <Row justify='center'>
-                <Typography.Text strong>
+                <Progress
+                    showInfo
+                    strokeLinecap='butt'
+                    steps={6}
+                    trailColor='grey'
+                    strokeColor={strokeColor}
+                    format={
+                        // eslint-disable-next-line react/no-unstable-nested-components
+                        () => (
+                            <div style={{ color: 'white' }}>
+                                {value}
+                                °C
+                            </div>
+                        )
+                    }
+                    percent={(value * 100) / 136}
+                />
+            </Row>
+            <Row justify='center'>
+                <Typography.Text strong style={{ color: 'white' }}>
                     Температура газа
                 </Typography.Text>
             </Row>
         </Col>
-
     );
 }
 
