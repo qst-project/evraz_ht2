@@ -5,6 +5,7 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import useWebSocket from '@hooks/useWebSocket';
 import { subscribe } from '@services/subscriptions';
 import { Colors } from '@services/constants';
+import PageLayout from './layout/PageLayout';
 
 const MainPage = lazy(() => import('@pages/MainPage'));
 const ExhausterPage = lazy(() => import('@pages/ExhausterPage'));
@@ -23,26 +24,28 @@ function App() {
             >
                 <BrowserRouter>
                     <Suspense fallback={<Spin />}>
-                        <Routes>
-                            <Route
-                                path='/'
-                                element={
-                                    <MainPage />
-                                }
-                            />
-                            <Route
-                                path='exhauster'
-                                element={
-                                    <ExhausterPage />
-                                }
-                            />
-                            <Route
-                                path='trends'
-                                element={
-                                    <TrendsPage />
-                                }
-                            />
-                        </Routes>
+                        <PageLayout>
+                            <Routes>
+                                <Route
+                                    path='/'
+                                    element={
+                                        <MainPage />
+                                    }
+                                />
+                                <Route
+                                    path='exhauster'
+                                    element={
+                                        <ExhausterPage />
+                                    }
+                                />
+                                <Route
+                                    path='trends'
+                                    element={
+                                        <TrendsPage />
+                                    }
+                                />
+                            </Routes>
+                        </PageLayout>
                     </Suspense>
                 </BrowserRouter>
             </ConfigProvider>
