@@ -4,6 +4,8 @@ WORKDIR /wrk
 
 COPY go.mod ./
 COPY go.sum ./
+COPY .extras/YandexCA.crt /usr/local/share/ca-certificates/Yandex/YandexCA.crt
+
 RUN go mod download
 
 COPY *.go ./
