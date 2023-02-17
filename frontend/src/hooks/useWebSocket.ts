@@ -6,7 +6,7 @@ const Stomp = require('stompjs')
 const SockJS = require('sockjs-client')
 
 function useWebSocket(onConnected: Function, deps: Array<any>) {
-    const sockJS = new SockJS('http://0.0.0.0:9090/ws')
+    const sockJS = new SockJS('http://localhost:9090/ws')
     const stompClient = Stomp.over(sockJS)
 
     const dispatch = useDispatch()

@@ -3,22 +3,26 @@
 .wrapper {
     position: relative;
     display: flex;
-    justify-content: space-between;
-    padding: 6px;
+    justify-content: center;
+    padding: 1px;
+    width: 55px;
     background: colors.$grey;
-    border: 1px solid colors.$dark-grey;
+    border-color: colors.$dark-grey;
+    background: colors.$grey;
     border-radius: 6px;
     z-index: 100;
 }
 
 .warning {
-    background-color: #ffc27f;
-    border-color: colors.$orange;
+    border: 1px solid;
+    background: colors.$orange-06;
+    box-shadow: 0 0 4px 0 colors.$orange;
     color: colors.$orange-dark;
 }
 
 .danger {
-    background-color: #ff7f7f;
-    border-color: colors.$red;
+    border: 1px solid;
+    background: colors.$red-06;
     color: colors.$red-dark;
+    box-shadow: 0 0 4px 0 colors.$red;
 }

@@ -16,7 +16,7 @@ const dangerStyle = {
 }
 
 const warningStyle = {
-    boxShadow: `0 0 8px 0 ${Colors.ORANGE}`,
+    boxShadow: `0 0 8px 0 ${Colors.ORANGE_TRANSPARENT}`,
 }
 
 const typeStatusClassName = new Map<StatusType, object>([

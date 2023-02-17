@@ -1,17 +1,15 @@
-
 import { createSlice } from '@reduxjs/toolkit'
-import { StatusType } from '@services/types'
+import { ExhausterData, StatusType } from '@services/types'
 
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface ExhausterState {
     status: StatusType;
-    value: number;
+    exhauster?: ExhausterData;
 }
 
 const initialState: ExhausterState = {
     status: StatusType.DANGER,
-    value: 0,
 }
 
 // actions
@@ -20,13 +18,14 @@ export const exhausterSlice = createSlice({
     name: 'exhauster',
     initialState,
     reducers: {
-        setData(state, action: PayloadAction<number>) {
-            state.value = action.payload
+        setExhauster(state, action: PayloadAction<ExhausterData>) {
+            // eslint-disable-next-line no-param-reassign
+            state.exhauster = action.payload;
         },
     },
 })
 
-export const { setData } = exhausterSlice.actions
+export const { setExhauster } = exhausterSlice.actions
 export const getExhausterState = (state: ExhausterState) => state
 
 export default exhausterSlice.reducer

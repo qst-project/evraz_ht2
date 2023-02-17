@@ -47,10 +47,10 @@ function BearingItem({ bearingData }: BearingItemProps) {
                 {bearingData.characteristics.map((item) => (
                     <li
                         className={getCharacteristicClassName(item.status)}
-                        key={item.name}
+                        key={item.type}
                     >
-                        {abbreviations[item.name]}
-                        {getIcon(item.name, { className: styles.icon })}
+                        {abbreviations[item.type]}
+                        {getIcon(item.type, { className: styles.icon })}
                     </li>
                 ))}
             </ul>

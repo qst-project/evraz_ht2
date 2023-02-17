@@ -1,21 +1,15 @@
 import React from 'react';
 import { Button, Card } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 import BearingList from '@shared/BearingList';
 import { Colors } from '@services/constants';
-import { getExhausterState } from '@reduxToolkit/slices/exhauster';
-import { RootState } from '@reduxToolkit/index';
 
 import { ExhausterProps } from '@shared/ExhausterCard/ExhausterCard.types';
 import styles from './ExhausterCard.module.scss';
 
 function ExhausterCard({ exhausterData }: ExhausterProps) {
     const navigation = useNavigate()
-    const data = useSelector(
-        ({ exhausterReducer }: RootState) => getExhausterState(exhausterReducer),
-    )
 
     return (
         <Card className={styles.main}>
@@ -45,8 +39,7 @@ function ExhausterCard({ exhausterData }: ExhausterProps) {
                 <span>{exhausterData.lastRotorReplacement}</span>
                 <div className={styles.forecast}>
                     <span>Прогноз</span>
-                    {data.value}
-                    {/* {exhausterData.forecast} */}
+                    {exhausterData.forecast}
                 </div>
             </div>
             <BearingList exhausterData={exhausterData} />

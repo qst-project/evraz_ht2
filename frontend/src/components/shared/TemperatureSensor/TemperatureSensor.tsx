@@ -27,7 +27,7 @@ function TemperatureSensor({
         <div
             className={getStatusClassName(status, styles.wrapper)}
         >
-            <Typography.Text strong>
+            <Typography.Text>
                 {value}
                 {' '}
                 °C
