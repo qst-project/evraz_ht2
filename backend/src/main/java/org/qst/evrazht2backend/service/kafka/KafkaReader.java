@@ -5,33 +5,69 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.MapType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import lombok.extern.log4j.Log4j2;
+import org.apache.kafka.clients.consumer.*;
+import org.apache.kafka.common.serialization.StringDeserializer;
 import org.qst.evrazht2backend.controller.WSController;
+import org.qst.evrazht2backend.controller.model.WSSinteringMachineListResponse;
 import org.qst.evrazht2backend.repository.InMemoryStorage;
 import org.qst.evrazht2backend.repository.model.RawExhauster;
 import org.qst.evrazht2backend.repository.model.RawSinteringMachine;
+import org.qst.evrazht2backend.service.kafka.model.KafkaSinteringMachine;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.time.Instant;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.*;
 
 @Component
 @Log4j2
+@EnableScheduling
 @ConditionalOnProperty(value = "kafka.enable", havingValue = "true")
 public class KafkaReader {
     private final InMemoryStorage inMemoryStorage;
+    private final Consumer<String, String> consumer;
 
     final WSController wsController;
 
-    public KafkaReader(InMemoryStorage inMemoryStorage, WSController wsController) {
+    public KafkaReader(
+            WSController wsController,
+            InMemoryStorage inMemoryStorage,
+            @Value("${kafka.user}") String user,
+            @Value("${kafka.pass}") String pass,
+            @Value("${kafka.host}") String host,
+            @Value("${kafka.ts-file}") String tsFile,
+            @Value("${kafka.ts-pass}") String tsPass,
+            @Value("${kafka.topic}") String topicName
+    ) {
         this.inMemoryStorage = inMemoryStorage;
         this.wsController = wsController;
+
+        String jaasTemplate = "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"%s\" password=\"%s\";";
+        String jaasCfg = String.format(jaasTemplate, user, pass);
+        String GROUP = "qst-backend-test-1";
+
+        String deserializer = StringDeserializer.class.getName();
+        Properties props = new Properties();
+        props.put("bootstrap.servers", host);
+        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
+        props.put("group.id", GROUP);
+        props.put("key.deserializer", deserializer);
+        props.put("value.deserializer", deserializer);
+        props.put("security.protocol", "SASL_SSL");
+        props.put("sasl.mechanism", "SCRAM-SHA-512");
+        props.put("sasl.jaas.config", jaasCfg);
+        props.put("ssl.truststore.location", tsFile);
+        props.put("ssl.truststore.password", tsPass);
+
+        consumer = new KafkaConsumer<>(props);
+        consumer.subscribe(Arrays.asList(new String[]{topicName}));
     }
 
-    @KafkaListener(topics = "test", groupId = "group1")
     public void listener(String message) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         TypeFactory typeFactory = mapper.getTypeFactory();
@@ -45,6 +81,36 @@ public class KafkaReader {
         log.info("accepted a message\t" + message);
         RawSinteringMachine rawSinteringMachine = new RawSinteringMachine(message, rawExhauster, rawExhauster);
         inMemoryStorage.update(Collections.singletonList(rawSinteringMachine));
-        wsController.sendUpdate(new SampleMessage(map.get("id"), new BigDecimal(map.get("temp")), Instant.parse(map.get("timestamp"))));
+    }
+
+    @Scheduled(fixedRate = 1000)
+    public void poll() {
+        ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
+        final Iterator<ConsumerRecord<String, String>> itr = records.iterator();
+        if (!itr.hasNext()) {
+            return;
+        }
+        ConsumerRecord<String, String> last = itr.next();
+        while (itr.hasNext()) {
+            last = itr.next();
+        }
+        if (last == null) {
+            return;
+        }
+        String rawData = last.value();
+        System.out.println(records.count());
+
+        Map<String, Object> data;
+        try {
+            data = new ObjectMapper().readValue(rawData, HashMap.class);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+        WSSinteringMachineListResponse response = new WSSinteringMachineListResponse(
+                data.get("moment").toString(),
+                KafkaDataParser.parse(data)
+        );
+        System.out.println(data.get("moment").toString());
+        wsController.sendUpdate(response);
     }
 }

@@ -53,7 +53,7 @@ function SideBarMenu({ collapsed }: MenuProps) {
                 <Menu.Item key='3'>
                     <ReadOutlined />
                     <span>Журнал</span>
-                    <Link to='/' />
+                    <Link to='/notifications' />
                 </Menu.Item>
             </Menu>
         </Layout.Sider>
