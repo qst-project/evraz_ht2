@@ -2,10 +2,12 @@
 @import "src/scss/mixins/card";
 
 .pipe {
-    @include card(270px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: transparent;
+    border: none;
+
+    &:global > .ant-card-body {
+        padding: 2px !important;
+    }
 }
 
 .wrapper {

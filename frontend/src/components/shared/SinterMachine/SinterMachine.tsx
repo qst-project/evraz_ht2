@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from 'antd';
-import Exhauster from '@shared/Exhauster/Exhauster';
+import ExhausterCard from '@shared/ExhausterCard';
 import { SinterMachineProps } from './SinterMachine.types';
 import styles from './SinterMachine.module.scss';
 
@@ -12,7 +12,7 @@ function SinterMachine({ sinterMachineData }: SinterMachineProps) {
             </Card>
             <div className={styles.exhausters}>
                 {sinterMachineData.exhausters.map((item) => (
-                    <Exhauster exhausterData={item} key={item.id} />
+                    <ExhausterCard exhausterData={item} key={item.id} />
                 ))}
             </div>
         </div>

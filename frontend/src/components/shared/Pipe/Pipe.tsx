@@ -8,16 +8,15 @@ import { Colors } from '@services/constants';
 import styles from './Pipe.module.scss'
 import { GasTemperatureData } from '../GasTemperature/GasTemperature.types';
 import Characteristic from '../Characteristic';
+import { PipeProps } from './Pipe.types';
 
 const defaultStyle = {
 }
 
 const dangerStyle = {
-    boxShadow: `0 0 8px 0 ${Colors.RED}`,
 }
 
 const warningStyle = {
-    boxShadow: `0 0 8px 0 ${Colors.ORANGE}`,
 }
 
 const typeStatusClassName = new Map<StatusType, object>([
@@ -32,7 +31,7 @@ const typeStatusColor = new Map<StatusType, string>([
     [StatusType.WARNING, Colors.ORANGE],
 ]);
 
-function Pipe() {
+function Pipe({ style }: PipeProps) {
     const gasTemperatureData: GasTemperatureData = {
         value: 34,
         status: StatusType.DANGER,
@@ -55,7 +54,10 @@ function Pipe() {
         <Card
             bordered
             className={styles.pipe}
-            style={typeStatusClassName.get(gasTemperatureData.status)}
+            style={{
+                ...typeStatusClassName.get(gasTemperatureData.status),
+                ...style,
+            }}
         >
             <GasTemperature
                 status={StatusType.DEFAULT}
