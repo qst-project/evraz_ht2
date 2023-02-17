@@ -46,6 +46,7 @@ public class KafkaReader {
             @Value("${kafka.ts-file}") String tsFile,
             @Value("${kafka.ts-pass}") String tsPass,
             @Value("${kafka.topic}") String topicName,
+            @Value("${kafka.group-id}") String groupId,
             KafkaSinteringMachineToWS kafkaSinteringMachineToWS) {
         this.inMemoryStorage = inMemoryStorage;
         this.wsController = wsController;
@@ -53,7 +54,7 @@ public class KafkaReader {
 
         String jaasTemplate = "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"%s\" password=\"%s\";";
         String jaasCfg = String.format(jaasTemplate, user, pass);
-        String GROUP = "qst-backend-test-1";
+        String GROUP = groupId;
 
         String deserializer = StringDeserializer.class.getName();
         Properties props = new Properties();
