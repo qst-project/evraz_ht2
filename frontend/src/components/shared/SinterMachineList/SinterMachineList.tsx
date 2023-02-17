@@ -4,7 +4,7 @@ import { Card } from 'antd';
 import styles from './SinterMachineList.module.scss';
 import { SinterMachineListProps } from './SinterMachineList.types';
 
-function SinterMachineList({ sinterMachines }: SinterMachineListProps) {
+function SinterMachineList({ sinterMachines = [] }: SinterMachineListProps) {
     return (
         <Card title='Главный экран' className={styles.main}>
             <div className={styles.list}>

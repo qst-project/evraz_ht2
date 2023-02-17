@@ -1,4 +1,4 @@
-import { setExhauster } from '@reduxToolkit/slices/exhauster';
+import { setSinterMachines } from '@reduxToolkit/slices/sinter_machines';
 import { mapSinterMachinesResponse } from '@services/mappers';
 
 export function subscribe(
@@ -9,8 +9,9 @@ export function subscribe(
         '/user/1/queue/messages',
         (msg: any) => {
             const res = JSON.parse(msg.body);
-            const exhausters = (mapSinterMachinesResponse(res));
-            dispatch(setExhauster(exhausters[0].exhausters[0]));
+            const [exhausters, moment] = (mapSinterMachinesResponse(res));
+            console.log(res)
+            dispatch(setSinterMachines([exhausters, moment]));
         },
     );
 }

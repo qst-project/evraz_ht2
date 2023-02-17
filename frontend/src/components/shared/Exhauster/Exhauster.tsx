@@ -6,11 +6,12 @@ import OilTank from '@shared/OilTank';
 import Pipe from '@shared/Pipe/Pipe';
 import BearingTrigger from '@shared/BearingTrigger';
 import TemperatureSensorContainer from '@shared/TemperatureSensor';
+import { ExhausterState } from '@reduxToolkit/slices/exhauster';
 
 import styles from './Exhauster.module.scss';
 import OilPressureContainer from '../OilPressure';
 
-function Exhauster() {
+function Exhauster({ status, exhauster }: ExhausterState) {
     return (
         <section className={styles.main}>
             <TemperatureSensorContainer
@@ -37,33 +38,16 @@ function Exhauster() {
                     left: '993px',
                 }}
             />
-            <Bearing
-                name='1 ПС'
-                status={StatusType.DEFAULT}
-                characteristics={[
-                    {
-                        status: StatusType.DANGER,
-                        type: Characteristics.TEMPERATURE,
-                        value: 210,
-                    },
-                    {
-                        status: StatusType.WARNING,
-                        type: Characteristics.VERTICAL,
-                        value: 210,
-                    },
-                    {
-                        status: StatusType.DEFAULT,
-                        type: Characteristics.HORIZONTAL,
-                        value: 210,
-                    },
-                    {
-                        status: StatusType.DEFAULT,
-                        type: Characteristics.OIL_LEVEL,
-                        value: 210,
-                    },
-                ]}
-                style={{ top: '468px', right: '174px' }}
-            />
+            {exhauster
+                ? (
+                    <Bearing
+                        name='1 ПС'
+                        status={StatusType.DEFAULT}
+                        characteristics={exhauster?.bearings[0].characteristics}
+                        style={{ top: '468px', right: '174px' }}
+                    />
+                ) : null}
+
             <BearingTrigger
                 bearingName='1'
                 bearingStatus={StatusType.WARNING}
@@ -73,33 +57,15 @@ function Exhauster() {
                     left: '1241px',
                 }}
             />
-            <Bearing
-                name='2 ПС'
-                status={StatusType.DEFAULT}
-                characteristics={[
-                    {
-                        status: StatusType.DANGER,
-                        type: Characteristics.TEMPERATURE,
-                        value: 210,
-                    },
-                    {
-                        status: StatusType.WARNING,
-                        type: Characteristics.VERTICAL,
-                        value: 210,
-                    },
-                    {
-                        status: StatusType.DEFAULT,
-                        type: Characteristics.HORIZONTAL,
-                        value: 210,
-                    },
-                    {
-                        status: StatusType.DEFAULT,
-                        type: Characteristics.OIL_LEVEL,
-                        value: 210,
-                    },
-                ]}
-                style={{ top: '504px', left: '842px' }}
-            />
+            {exhauster
+                ? (
+                    <Bearing
+                        name='2 ПС'
+                        status={StatusType.DEFAULT}
+                        characteristics={exhauster?.bearings[1].characteristics}
+                        style={{ top: '504px', left: '842px' }}
+                    />
+                ) : null}
             <BearingTrigger
                 bearingName='2'
                 bearingStatus={StatusType.WARNING}
@@ -109,18 +75,15 @@ function Exhauster() {
                     left: '911px',
                 }}
             />
-            <Bearing
-                name='3 ПС'
-                status={StatusType.DEFAULT}
-                characteristics={[
-                    {
-                        status: StatusType.WARNING,
-                        type: Characteristics.TEMPERATURE,
-                        value: 210,
-                    },
-                ]}
-                style={{ bottom: '482px', right: '833px' }}
-            />
+            {exhauster
+                ? (
+                    <Bearing
+                        name='3 ПС'
+                        status={StatusType.DEFAULT}
+                        characteristics={exhauster?.bearings[2].characteristics}
+                        style={{ bottom: '482px', right: '833px' }}
+                    />
+                ) : null}
             <BearingTrigger
                 bearingName='5'
                 bearingStatus={StatusType.WARNING}
@@ -130,18 +93,15 @@ function Exhauster() {
                     left: '719px',
                 }}
             />
-            <Bearing
-                name='4 ПС'
-                status={StatusType.DEFAULT}
-                characteristics={[
-                    {
-                        status: StatusType.WARNING,
-                        type: Characteristics.TEMPERATURE,
-                        value: 210,
-                    },
-                ]}
-                style={{ bottom: '482px', left: '706px' }}
-            />
+            {exhauster
+                ? (
+                    <Bearing
+                        name='4 ПС'
+                        status={StatusType.DEFAULT}
+                        characteristics={exhauster?.bearings[3].characteristics}
+                        style={{ bottom: '482px', left: '706px' }}
+                    />
+                ) : null}
             <BearingTrigger
                 bearingName='4'
                 bearingStatus={StatusType.WARNING}
@@ -151,18 +111,15 @@ function Exhauster() {
                     left: '719px',
                 }}
             />
-            <Bearing
-                name='5 ПС'
-                status={StatusType.DEFAULT}
-                characteristics={[
-                    {
-                        status: StatusType.WARNING,
-                        type: Characteristics.TEMPERATURE,
-                        value: 210,
-                    },
-                ]}
-                style={{ top: '504px', left: '706px' }}
-            />
+            {exhauster
+                ? (
+                    <Bearing
+                        name='5 ПС'
+                        status={StatusType.DEFAULT}
+                        characteristics={exhauster?.bearings[4].characteristics}
+                        style={{ top: '504px', left: '706px' }}
+                    />
+                ) : null}
             <BearingTrigger
                 bearingName='3'
                 bearingStatus={StatusType.WARNING}
@@ -172,18 +129,15 @@ function Exhauster() {
                     left: '637px',
                 }}
             />
-            <Bearing
-                name='6 ПС'
-                status={StatusType.DEFAULT}
-                characteristics={[
-                    {
-                        status: StatusType.DANGER,
-                        type: Characteristics.TEMPERATURE,
-                        value: 210,
-                    },
-                ]}
-                style={{ top: '504px', right: '833px' }}
-            />
+            {exhauster
+                ? (
+                    <Bearing
+                        name='6 ПС'
+                        status={StatusType.DEFAULT}
+                        characteristics={exhauster?.bearings[5].characteristics}
+                        style={{ top: '504px', right: '833px' }}
+                    />
+                ) : null}
             <BearingTrigger
                 bearingName='6'
                 bearingStatus={StatusType.WARNING}
@@ -193,33 +147,15 @@ function Exhauster() {
                     left: '637px',
                 }}
             />
-            <Bearing
-                name='7 ПС'
-                status={StatusType.DEFAULT}
-                characteristics={[
-                    {
-                        status: StatusType.DANGER,
-                        type: Characteristics.TEMPERATURE,
-                        value: 210,
-                    },
-                    {
-                        status: StatusType.WARNING,
-                        type: Characteristics.VERTICAL,
-                        value: 210,
-                    },
-                    {
-                        status: StatusType.DEFAULT,
-                        type: Characteristics.HORIZONTAL,
-                        value: 210,
-                    },
-                    {
-                        status: StatusType.DEFAULT,
-                        type: Characteristics.OIL_LEVEL,
-                        value: 210,
-                    },
-                ]}
-                style={{ top: '586px', right: '865px' }}
-            />
+            {exhauster
+                ? (
+                    <Bearing
+                        name='7 ПС'
+                        status={StatusType.DEFAULT}
+                        characteristics={exhauster?.bearings[6].characteristics}
+                        style={{ top: '586px', right: '865px' }}
+                    />
+                ) : null}
             <BearingTrigger
                 bearingName='7'
                 bearingStatus={StatusType.WARNING}
@@ -229,33 +165,15 @@ function Exhauster() {
                     left: '426px',
                 }}
             />
-            <Bearing
-                name='8 ПС'
-                status={StatusType.DEFAULT}
-                characteristics={[
-                    {
-                        status: StatusType.DANGER,
-                        type: Characteristics.TEMPERATURE,
-                        value: 210,
-                    },
-                    {
-                        status: StatusType.WARNING,
-                        type: Characteristics.VERTICAL,
-                        value: 210,
-                    },
-                    {
-                        status: StatusType.DEFAULT,
-                        type: Characteristics.HORIZONTAL,
-                        value: 210,
-                    },
-                    {
-                        status: StatusType.DEFAULT,
-                        type: Characteristics.OIL_LEVEL,
-                        value: 210,
-                    },
-                ]}
-                style={{ top: '436px', right: '1304px' }}
-            />
+            {exhauster
+                ? (
+                    <Bearing
+                        name='8 ПС'
+                        status={StatusType.DEFAULT}
+                        characteristics={exhauster?.bearings[7].characteristics}
+                        style={{ top: '436px', right: '1304px' }}
+                    />
+                ) : null}
             <BearingTrigger
                 bearingName='8'
                 bearingStatus={StatusType.WARNING}
@@ -265,33 +183,15 @@ function Exhauster() {
                     left: '234px',
                 }}
             />
-            <Bearing
-                name='9 ПС'
-                status={StatusType.DEFAULT}
-                characteristics={[
-                    {
-                        status: StatusType.DANGER,
-                        type: Characteristics.TEMPERATURE,
-                        value: 210,
-                    },
-                    {
-                        status: StatusType.WARNING,
-                        type: Characteristics.VERTICAL,
-                        value: 210,
-                    },
-                    {
-                        status: StatusType.DEFAULT,
-                        type: Characteristics.HORIZONTAL,
-                        value: 210,
-                    },
-                    {
-                        status: StatusType.DEFAULT,
-                        type: Characteristics.OIL_LEVEL,
-                        value: 210,
-                    },
-                ]}
-                style={{ bottom: '364px', right: '1304px' }}
-            />
+            {exhauster
+                ? (
+                    <Bearing
+                        name='9 ПС'
+                        status={StatusType.DEFAULT}
+                        characteristics={exhauster?.bearings[8].characteristics}
+                        style={{ bottom: '364px', right: '1304px' }}
+                    />
+                ) : null}
             <BearingTrigger
                 bearingName='9'
                 bearingStatus={StatusType.DANGER}
