@@ -4,9 +4,11 @@ import SinterMachineList from './SinterMachineList';
 
 const mock: SinterMachineData[] = [
     {
+        id: 1,
         name: 'Агломашина №1',
         exhausters: [
             {
+                id: 1,
                 name: 'Эксгаустер У-171',
                 isActive: false,
                 rotorName: 'Ротор №35к',
@@ -59,6 +61,7 @@ const mock: SinterMachineData[] = [
                 ],
             },
             {
+                id: 2,
                 name: 'Эксгаустер У-172',
                 isActive: true,
                 rotorName: 'Ротор №35к',
@@ -113,9 +116,11 @@ const mock: SinterMachineData[] = [
         ],
     },
     {
+        id: 2,
         name: 'Агломашина №2',
         exhausters: [
             {
+                id: 1,
                 name: 'Эксгаустер У-171',
                 isActive: true,
                 rotorName: 'Ротор №35к',
@@ -168,6 +173,7 @@ const mock: SinterMachineData[] = [
                 ],
             },
             {
+                id: 2,
                 name: 'Эксгаустер У-172',
                 isActive: false,
                 rotorName: 'Ротор №35к',

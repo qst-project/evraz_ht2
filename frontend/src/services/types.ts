@@ -27,22 +27,8 @@ export interface BearingData {
     }[],
 }
 
-function bearingFromKafka({
-    temperature,
-    vibrationAxial,
-    vibrationHorizontal,
-    vibrationVertical,
-}: KafkaBearing): CharacteristicData[] {
-    const bearingData: CharacteristicData[] = []
-    bearingData.push({
-        type,
-        value,
-        status,
-    })
-    return bearingData
-}
-
 export interface ExhausterData {
+    id: number,
     isActive: boolean,
     name: string,
     rotorName: string,
@@ -54,6 +40,7 @@ export interface ExhausterData {
 }
 
 export interface SinterMachineData {
+    id: number,
     name: string,
     exhausters: ExhausterData[],
 }
@@ -64,18 +51,6 @@ export interface CharacteristicData {
     status: StatusType,
 }
 
-function characteristicDataFromKafka(
-    characteristicKafka: Characteristic,
-    characteristicType: Characteristics,
-): CharacteristicData {
-    const characteristicData: CharacteristicData = {
-        type: characteristicType,
-        status: characteristicKafka.status,
-        value: characteristicKafka.value,
-    }
-    return characteristicData
-}
-
 interface TrendsData {
     name: string,
     characteristics: CharacteristicData[],
@@ -83,39 +58,5 @@ interface TrendsData {
 
 export interface ExhausterTrends {
     bearings: TrendsData[],
-    other: TrendsData[]
-}
-
-interface Characteristic {
-    status: StatusType,
-    value: number,
-}
-
-interface KafkaBearing {
-    temperature: Characteristic,
-    vibrationAxial: Characteristic,
-    vibrationHorizontal: Characteristic,
-    vibrationVertical: Characteristic,
-}
-
-interface KafkaBearingList {
-    warn: KafkaBearing[],
-    other: KafkaBearing[],
-}
-
-interface KafkaExhauster {
-    name: string,
-    number: string,
-    rotorName: string,
-    bearings: KafkaBearingList,
-}
-
-export interface KafkaSinteringMachine {
-    number: number;
-    exhausters: KafkaExhauster[];
-}
-
-export interface KafkaMessage {
-    moment: string,
-    machines: KafkaSinteringMachine[],
+    other: TrendsData[],
 }

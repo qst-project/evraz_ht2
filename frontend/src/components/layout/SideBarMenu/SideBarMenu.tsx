@@ -23,9 +23,6 @@ function SideBarMenu({ collapsed }: MenuProps) {
         case '/trends':
             selectedKeys = '2'
             break;
-        case '/notifications':
-            selectedKeys = '3'
-            break;
         default:
             selectedKeys = '1'
     }
@@ -56,7 +53,7 @@ function SideBarMenu({ collapsed }: MenuProps) {
                 <Menu.Item key='3'>
                     <ReadOutlined />
                     <span>Журнал</span>
-                    <Link to='/notifications' />
+                    <Link to='/' />
                 </Menu.Item>
             </Menu>
         </Layout.Sider>
