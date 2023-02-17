@@ -1,6 +1,5 @@
-import { setData } from '@reduxToolkit/slices/exhauster';
-// import { Dispatch } from 'react';
-// import { AnyAction } from 'redux';
+import { setExhauster } from '@reduxToolkit/slices/exhauster';
+import { mapSinterMachinesResponse } from '@services/mappers';
 
 export function subscribe(
     stompClient: any,
@@ -9,9 +8,9 @@ export function subscribe(
     stompClient.subscribe(
         '/user/1/queue/messages',
         (msg: any) => {
-            const notification = JSON.parse(msg.body);
-            console.log(notification)
-            dispatch(setData(notification?.temp))
+            const res = JSON.parse(msg.body);
+            const exhausters = (mapSinterMachinesResponse(res));
+            dispatch(setExhauster(exhausters[0].exhausters[0]));
         },
     );
 }

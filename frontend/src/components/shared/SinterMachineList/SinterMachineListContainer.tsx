@@ -20,8 +20,9 @@ const mock: SinterMachineData[] = [
                         name: '№7 п-к',
                         characteristics: [
                             {
-                                name: Characteristics.TEMPERATURE,
+                                type: Characteristics.TEMPERATURE,
                                 status: StatusType.DEFAULT,
+                                value: 0,
                             },
                         ],
                     },
@@ -29,12 +30,14 @@ const mock: SinterMachineData[] = [
                         name: '№8 п-к',
                         characteristics: [
                             {
-                                name: Characteristics.OIL_LEVEL,
+                                type: Characteristics.OIL_LEVEL,
                                 status: StatusType.DEFAULT,
+                                value: 0,
                             },
                             {
-                                name: Characteristics.TEMPERATURE,
+                                type: Characteristics.TEMPERATURE,
                                 status: StatusType.DEFAULT,
+                                value: 0,
                             },
                         ],
                     },
@@ -44,8 +47,9 @@ const mock: SinterMachineData[] = [
                         name: '№9 п-к',
                         characteristics: [
                             {
-                                name: Characteristics.TEMPERATURE,
+                                type: Characteristics.TEMPERATURE,
                                 status: StatusType.WARNING,
+                                value: 0,
                             },
                         ],
                     },
@@ -53,8 +57,9 @@ const mock: SinterMachineData[] = [
                         name: '№3 п-к',
                         characteristics: [
                             {
-                                name: Characteristics.TEMPERATURE,
+                                type: Characteristics.TEMPERATURE,
                                 status: StatusType.DANGER,
+                                value: 0,
                             },
                         ],
                     },
@@ -73,8 +78,9 @@ const mock: SinterMachineData[] = [
                         name: '№7 п-к',
                         characteristics: [
                             {
-                                name: Characteristics.TEMPERATURE,
+                                type: Characteristics.TEMPERATURE,
                                 status: StatusType.DEFAULT,
+                                value: 0,
                             },
                         ],
                     },
@@ -82,12 +88,14 @@ const mock: SinterMachineData[] = [
                         name: '№8 п-к',
                         characteristics: [
                             {
-                                name: Characteristics.OIL_LEVEL,
+                                type: Characteristics.OIL_LEVEL,
                                 status: StatusType.DEFAULT,
+                                value: 0,
                             },
                             {
-                                name: Characteristics.TEMPERATURE,
+                                type: Characteristics.TEMPERATURE,
                                 status: StatusType.DEFAULT,
+                                value: 0,
                             },
                         ],
                     },
@@ -97,8 +105,9 @@ const mock: SinterMachineData[] = [
                         name: '№9 п-к',
                         characteristics: [
                             {
-                                name: Characteristics.TEMPERATURE,
+                                type: Characteristics.TEMPERATURE,
                                 status: StatusType.WARNING,
+                                value: 0,
                             },
                         ],
                     },
@@ -106,8 +115,9 @@ const mock: SinterMachineData[] = [
                         name: '№3 п-к',
                         characteristics: [
                             {
-                                name: Characteristics.TEMPERATURE,
+                                type: Characteristics.TEMPERATURE,
                                 status: StatusType.DANGER,
+                                value: 0,
                             },
                         ],
                     },
@@ -132,8 +142,9 @@ const mock: SinterMachineData[] = [
                         name: '№7 п-к',
                         characteristics: [
                             {
-                                name: Characteristics.TEMPERATURE,
+                                type: Characteristics.TEMPERATURE,
                                 status: StatusType.DEFAULT,
+                                value: 0,
                             },
                         ],
                     },
@@ -141,12 +152,14 @@ const mock: SinterMachineData[] = [
                         name: '№8 п-к',
                         characteristics: [
                             {
-                                name: Characteristics.OIL_LEVEL,
+                                type: Characteristics.OIL_LEVEL,
                                 status: StatusType.DEFAULT,
+                                value: 0,
                             },
                             {
-                                name: Characteristics.TEMPERATURE,
+                                type: Characteristics.TEMPERATURE,
                                 status: StatusType.DEFAULT,
+                                value: 0,
                             },
                         ],
                     },
@@ -156,8 +169,9 @@ const mock: SinterMachineData[] = [
                         name: '№9 п-к',
                         characteristics: [
                             {
-                                name: Characteristics.TEMPERATURE,
+                                type: Characteristics.TEMPERATURE,
                                 status: StatusType.WARNING,
+                                value: 0,
                             },
                         ],
                     },
@@ -165,8 +179,9 @@ const mock: SinterMachineData[] = [
                         name: '№3 п-к',
                         characteristics: [
                             {
-                                name: Characteristics.TEMPERATURE,
+                                type: Characteristics.TEMPERATURE,
                                 status: StatusType.DANGER,
+                                value: 0,
                             },
                         ],
                     },
@@ -185,8 +200,9 @@ const mock: SinterMachineData[] = [
                         name: '№7 п-к',
                         characteristics: [
                             {
-                                name: Characteristics.TEMPERATURE,
+                                type: Characteristics.TEMPERATURE,
                                 status: StatusType.DEFAULT,
+                                value: 0,
                             },
                         ],
                     },
@@ -194,12 +210,14 @@ const mock: SinterMachineData[] = [
                         name: '№8 п-к',
                         characteristics: [
                             {
-                                name: Characteristics.OIL_LEVEL,
+                                type: Characteristics.OIL_LEVEL,
                                 status: StatusType.DEFAULT,
+                                value: 0,
                             },
                             {
-                                name: Characteristics.TEMPERATURE,
+                                type: Characteristics.TEMPERATURE,
                                 status: StatusType.DEFAULT,
+                                value: 0,
                             },
                         ],
                     },
@@ -209,8 +227,9 @@ const mock: SinterMachineData[] = [
                         name: '№9 п-к',
                         characteristics: [
                             {
-                                name: Characteristics.TEMPERATURE,
+                                type: Characteristics.TEMPERATURE,
                                 status: StatusType.WARNING,
+                                value: 0,
                             },
                         ],
                     },
@@ -218,8 +237,9 @@ const mock: SinterMachineData[] = [
                         name: '№3 п-к',
                         characteristics: [
                             {
-                                name: Characteristics.TEMPERATURE,
+                                type: Characteristics.TEMPERATURE,
                                 status: StatusType.DANGER,
+                                value: 0,
                             },
                         ],
                     },
