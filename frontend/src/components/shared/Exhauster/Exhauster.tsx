@@ -328,7 +328,7 @@ function Exhauster() {
                 style={{ top: '276px', left: '966px' }}
             />
             <OilTank style={{ top: '36px', right: '530px' }} />
-            <Pipe style={{ top: '169px', left: '274px' }} />
+            <Pipe style={{ top: '169px', left: '272px' }} />
             <OilPressureContainer
                 style={{
                     top: '202px',
