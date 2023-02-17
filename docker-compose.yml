@@ -17,6 +17,14 @@ services:
   rest-backend:
     container_name: monolith
     build:
+      context: backend
+      dockerfile: Dockerfile
+    network_mode: host
+
+  # metrics
+  metrics:
+    container_name: metrics
+    build:
       context: metrics
       dockerfile: Dockerfile
     ports:
