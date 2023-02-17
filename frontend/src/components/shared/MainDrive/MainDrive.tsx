@@ -4,36 +4,25 @@ import styles from '@shared/Bearing/Bearing.module.scss';
 import Characteristic from '@shared/Characteristic';
 
 import { Colors } from '@services/constants'
-import { StatusType } from '@services/types';
 
 import { MainDriveProps } from './MainDrive.types';
 
-const defaultStyle = {
-}
-
-const dangerStyle = {
-    boxShadow: `0 0 8px 0 ${Colors.RED}`,
-}
-
-const warningStyle = {
-    boxShadow: `0 0 8px 0 ${Colors.ORANGE}`,
-}
-
-const typeStatusClassName = new Map<StatusType, object>([
-    [StatusType.DEFAULT, defaultStyle],
-    [StatusType.DANGER, dangerStyle],
-    [StatusType.WARNING, warningStyle],
-]);
-
 function MainDrive({
     characteristics,
+    style,
 }: MainDriveProps) {
     return (
         <Card
             bordered
             title='Главный привод'
-            type='inner'
-            style={typeStatusClassName.get(StatusType.WARNING)}
+            style={style}
+            bodyStyle={{ padding: '12px', backgroundColor: Colors.GREY_DARK }}
+            headStyle={{
+                minHeight: '0',
+                textAlign: 'center',
+                backgroundColor: Colors.GREY_DARK,
+                color: '#fff',
+            }}
         >
             <div className={styles.characteristics}>
                 {characteristics.map((item) => (

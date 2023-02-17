@@ -1,7 +1,8 @@
 import { StatusType } from '@services/types';
+import React from 'react';
 
 export interface PipeProps {
-    pipeData: IPipeData[];
+    style?: React.CSSProperties,
 }
 
 export interface IPipeData {
