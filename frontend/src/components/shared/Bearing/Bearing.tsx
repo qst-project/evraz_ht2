@@ -27,7 +27,10 @@ function Bearing({
         >
             <div className={styles.characteristics}>
                 {characteristics.map((item) => (
-                    <Characteristic characteristic={item} />
+                    <Characteristic
+                        characteristic={item}
+                        key={item.type}
+                    />
                 ))}
             </div>
         </Card>
