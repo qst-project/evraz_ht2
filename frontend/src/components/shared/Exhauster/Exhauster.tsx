@@ -5,6 +5,7 @@ import MainDrive from '@shared/MainDrive/MainDrive';
 import OilTank from '@shared/OilTank';
 import Pipe from '@shared/Pipe/Pipe';
 import BearingTrigger from '@shared/BearingTrigger';
+import TemperatureSensorContainer from '@shared/TemperatureSensor';
 
 import styles from './Exhauster.module.scss';
 import OilPressureContainer from '../OilPressure';
@@ -12,6 +13,30 @@ import OilPressureContainer from '../OilPressure';
 function Exhauster() {
     return (
         <section className={styles.main}>
+            <TemperatureSensorContainer
+                style={{
+                    top: '25px',
+                    left: '1067px',
+                }}
+            />
+            <TemperatureSensorContainer
+                style={{
+                    top: '25px',
+                    left: '1150px',
+                }}
+            />
+            <TemperatureSensorContainer
+                style={{
+                    top: '195px',
+                    left: '1110px',
+                }}
+            />
+            <TemperatureSensorContainer
+                style={{
+                    top: '119px',
+                    left: '993px',
+                }}
+            />
             <Bearing
                 name='1 ПС'
                 status={StatusType.DEFAULT}
@@ -302,7 +327,7 @@ function Exhauster() {
                 ]}
                 style={{ top: '276px', left: '966px' }}
             />
-            <OilTank style={{ top: '36px', right: '476px' }} />
+            <OilTank style={{ top: '36px', right: '530px' }} />
             <Pipe style={{ top: '169px', left: '274px' }} />
             <OilPressureContainer
                 style={{
