@@ -8,8 +8,8 @@ function SinterMachineList({ sinterMachines }: SinterMachineListProps) {
     return (
         <Card title='Главный экран' className={styles.main}>
             <div className={styles.list}>
-                {sinterMachines.map((item, index) => (
-                    <SinterMachine sinterMachineData={item} key={index} />
+                {sinterMachines.map((item) => (
+                    <SinterMachine sinterMachineData={item} key={item.id} />
                 ))}
             </div>
         </Card>
