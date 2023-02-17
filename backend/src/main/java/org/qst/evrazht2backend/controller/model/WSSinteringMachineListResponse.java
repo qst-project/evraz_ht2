@@ -10,5 +10,5 @@ import java.util.List;
 @AllArgsConstructor
 public class WSSinteringMachineListResponse {
     String moment;
-    List<KafkaSinteringMachine> machines;
+    List<WSSinteringMachine> machines;
 }

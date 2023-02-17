@@ -12,6 +12,9 @@ public class NormalizedToWS implements Function<Normalized, WSNormalized> {
 
     @Override
     public WSNormalized apply(Normalized normalized) {
+        if (normalized == null) {
+            return null;
+        }
         boolean alarm = normalized.alarm();
         boolean warn = normalized.warn();
         String status = null;

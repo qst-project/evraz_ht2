@@ -8,10 +8,12 @@ import lombok.extern.log4j.Log4j2;
 import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.qst.evrazht2backend.controller.WSController;
+import org.qst.evrazht2backend.controller.model.WSSinteringMachine;
 import org.qst.evrazht2backend.controller.model.WSSinteringMachineListResponse;
 import org.qst.evrazht2backend.repository.InMemoryStorage;
 import org.qst.evrazht2backend.repository.model.RawExhauster;
 import org.qst.evrazht2backend.repository.model.RawSinteringMachine;
+import org.qst.evrazht2backend.service.kafka.mapper.KafkaSinteringMachineToWS;
 import org.qst.evrazht2backend.service.kafka.model.KafkaSinteringMachine;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -19,10 +21,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
 import java.time.Duration;
-import java.time.Instant;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Component
 @Log4j2
@@ -34,6 +35,8 @@ public class KafkaReader {
 
     final WSController wsController;
 
+    final KafkaSinteringMachineToWS kafkaSinteringMachineToWS;
+
     public KafkaReader(
             WSController wsController,
             InMemoryStorage inMemoryStorage,
@@ -42,10 +45,11 @@ public class KafkaReader {
             @Value("${kafka.host}") String host,
             @Value("${kafka.ts-file}") String tsFile,
             @Value("${kafka.ts-pass}") String tsPass,
-            @Value("${kafka.topic}") String topicName
-    ) {
+            @Value("${kafka.topic}") String topicName,
+            KafkaSinteringMachineToWS kafkaSinteringMachineToWS) {
         this.inMemoryStorage = inMemoryStorage;
         this.wsController = wsController;
+        this.kafkaSinteringMachineToWS = kafkaSinteringMachineToWS;
 
         String jaasTemplate = "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"%s\" password=\"%s\";";
         String jaasCfg = String.format(jaasTemplate, user, pass);
@@ -106,9 +110,11 @@ public class KafkaReader {
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
+        List<KafkaSinteringMachine> parsedData = KafkaDataParser.parse(data);
+        List<WSSinteringMachine> wsSinteringMachines = parsedData.stream().map(kafkaSinteringMachineToWS).collect(Collectors.toList());
         WSSinteringMachineListResponse response = new WSSinteringMachineListResponse(
                 data.get("moment").toString(),
-                KafkaDataParser.parse(data)
+                wsSinteringMachines
         );
         System.out.println(data.get("moment").toString());
         wsController.sendUpdate(response);

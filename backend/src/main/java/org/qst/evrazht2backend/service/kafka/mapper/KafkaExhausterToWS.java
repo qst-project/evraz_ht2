@@ -12,6 +12,7 @@ import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 @Component
@@ -24,13 +25,12 @@ public class KafkaExhausterToWS implements Function<KafkaExhauster, WSExhauster>
 
     @Override
     public WSExhauster apply(KafkaExhauster kafkaExhauster) {
-        Predicate<List<String>> hasNonNullElement = strings -> strings.stream().anyMatch(Objects::nonNull);
-        Predicate<WSBearing> isWarned = b -> hasNonNullElement.test(List.of(
-                b.getTemperature().getStatus(),
-                b.getVibrationAxial().getStatus(),
-                b.getVibrationVertical().getStatus(),
-                b.getVibrationHorizontal().getStatus()
-        ));
+        Predicate<WSBearing> isWarned = b -> Stream.of(
+                b.getTemperature() != null ? b.getTemperature().getStatus() : null,
+                b.getVibrationAxial() != null ? b.getVibrationAxial().getStatus() : null,
+                b.getVibrationVertical() != null ? b.getVibrationVertical().getStatus() : null,
+                b.getVibrationHorizontal() != null ? b.getVibrationHorizontal().getStatus() : null
+        ).anyMatch(Objects::nonNull);
         Map<Boolean, List<WSBearing>> partitionedBearings = kafkaExhauster.getBearings().stream()
                 .map(kafkaBearingToWS)
                 .collect(Collectors.partitioningBy(isWarned));
