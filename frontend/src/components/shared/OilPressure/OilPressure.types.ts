@@ -13,4 +13,5 @@ export interface IOilPressureData {
 
 export interface OilPressureContainerProps {
     oilPressureData: IOilPressureData;
+    style: any,
 }

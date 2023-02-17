@@ -14,14 +14,11 @@ const typeStatusClassName = new Map<StatusType, string>([
 function BearingTrigger({
     bearingName = 'ПС',
     bearingStatus,
+    style,
 }: BearingTriggerProps) {
     return (
         <div
-            style={{
-                position: 'absolute',
-                top: '372px',
-                left: '233px',
-            }}
+            style={style}
             className={typeStatusClassName.get(bearingStatus)}
         >
             <Typography.Text strong>{bearingName}</Typography.Text>
