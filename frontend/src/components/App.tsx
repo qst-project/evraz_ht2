@@ -1,16 +1,16 @@
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { ConfigProvider, Spin } from 'antd';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
 import useWebSocket from '@hooks/useWebSocket';
 import { subscribe } from '@services/subscriptions';
 import { Colors } from '@services/constants';
-import PageLayout from './layout/PageLayout';
 
-const MainPage = lazy(() => import('@pages/MainPage'));
-const ExhausterPage = lazy(() => import('@pages/ExhausterPage'));
-const TrendsPage = lazy(() => import('@pages/TrendsPage'));
-const NotificationsPage = lazy(() => import('@pages/NotificationsPage'));
+import MainPage from '@pages/MainPage';
+import ExhausterPage from '@pages/ExhausterPage';
+import TrendsPage from '@pages/TrendsPage';
+import NotificationsPage from '@pages/NotificationsPage';
+import PageLayout from './layout/PageLayout';
 
 function App() {
     useWebSocket(subscribe, [])
