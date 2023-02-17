@@ -14,13 +14,16 @@ const typeStatusColor = new Map<StatusType, string>([
 
 function OilPressureContainer({
     oilPressureData,
+    style,
 }: OilPressureContainerProps) {
     return (
-        <OilPressure
-            status={oilPressureData.status}
-            value={oilPressureData.value}
-            strokeColor={typeStatusColor.get(oilPressureData.status)}
-        />
+        <div style={style}>
+            <OilPressure
+                status={oilPressureData.status}
+                value={oilPressureData.value}
+                strokeColor={typeStatusColor.get(oilPressureData.status)}
+            />
+        </div>
     );
 }
 
