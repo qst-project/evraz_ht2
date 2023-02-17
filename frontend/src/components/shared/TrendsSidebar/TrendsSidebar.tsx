@@ -11,16 +11,16 @@ const mock: ExhausterTrends = {
         {
             name: '1 ПС',
             characteristics: [
-                { type: Characteristics.TEMPERATURE, value: 233, status: StatusType.DEFAULT },
-                { type: Characteristics.VERTICAL, value: 12, status: StatusType.DEFAULT },
-                { type: Characteristics.HORIZONTAL, value: 423, status: StatusType.DEFAULT },
-                { type: Characteristics.AXIS, value: 23, status: StatusType.DEFAULT },
+                { name: Characteristics.TEMPERATURE, value: 233, status: StatusType.DEFAULT },
+                { name: Characteristics.VERTICAL, value: 12, status: StatusType.DEFAULT },
+                { name: Characteristics.HORIZONTAL, value: 423, status: StatusType.DEFAULT },
+                { name: Characteristics.AXIS, value: 23, status: StatusType.DEFAULT },
             ],
         },
         {
             name: '2 ПС',
             characteristics: [
-                { type: Characteristics.TEMPERATURE, value: 0, status: StatusType.DEFAULT },
+                { name: Characteristics.TEMPERATURE, value: 0, status: StatusType.DEFAULT },
             ],
         },
     ],
@@ -28,14 +28,14 @@ const mock: ExhausterTrends = {
         {
             name: 'Маслоблок',
             characteristics: [
-                { type: Characteristics.OIL_LEVEL, value: 233, status: StatusType.DEFAULT },
-                { type: Characteristics.OIL_PRESSURE, value: 12, status: StatusType.DEFAULT },
+                { name: Characteristics.OIL_LEVEL, value: 233, status: StatusType.DEFAULT },
+                { name: Characteristics.OIL_PRESSURE, value: 12, status: StatusType.DEFAULT },
             ],
         },
         {
             name: 'Главный привод',
             characteristics: [
-                { type: Characteristics.AMPERAGE, value: 5, status: StatusType.DEFAULT },
+                { name: Characteristics.AMPERAGE, value: 5, status: StatusType.DEFAULT },
             ],
         },
     ],
@@ -50,7 +50,7 @@ function TrendsSidebar() {
                         {mock.bearings.map((item) => (
                             <Panel key={item.name} header={item.name}>
                                 {item.characteristics.map((_item) => (
-                                    <TrendsOption name={_item.type} value={_item.value} />
+                                    <TrendsOption name={_item.name} value={_item.value} />
                                 ))}
                             </Panel>
                         ))}
@@ -59,7 +59,7 @@ function TrendsSidebar() {
                 {mock.other.map((item) => (
                     <Panel key={item.name} header={item.name}>
                         {item.characteristics.map((_item) => (
-                            <TrendsOption name={_item.type} value={_item.value} />
+                            <TrendsOption name={_item.name} value={_item.value} />
                         ))}
                     </Panel>
                 ))}

@@ -21,25 +21,7 @@ export enum Characteristics {
 
 export interface BearingData {
     name: string,
-    characteristics: {
-        name: Characteristics,
-        status: StatusType,
-    }[],
-}
-
-function bearingFromKafka({
-    temperature,
-    vibrationAxial,
-    vibrationHorizontal,
-    vibrationVertical,
-}: KafkaBearing): CharacteristicData[] {
-    const bearingData: CharacteristicData[] = []
-    bearingData.push({
-        type,
-        value,
-        status,
-    })
-    return bearingData
+    characteristics: CharacteristicData[],
 }
 
 export interface ExhausterData {
@@ -59,7 +41,7 @@ export interface SinterMachineData {
 }
 
 export interface CharacteristicData {
-    type: Characteristics,
+    name: Characteristics,
     value: number,
     status: StatusType,
 }
@@ -69,7 +51,7 @@ function characteristicDataFromKafka(
     characteristicType: Characteristics,
 ): CharacteristicData {
     const characteristicData: CharacteristicData = {
-        type: characteristicType,
+        name: characteristicType,
         status: characteristicKafka.status,
         value: characteristicKafka.value,
     }
@@ -85,6 +67,16 @@ export interface ExhausterTrends {
     bearings: TrendsData[],
     other: TrendsData[]
 }
+
+// function fromKafkaBearing(kafkaBearing: KafkaBearing):BearingData {
+//     // const bearingData: BearingData = {
+//     //     // name: ,
+//     //     characteristics: [],
+//     // }
+//     return bearingData
+// }
+
+/// /////////////////////////////////////////////////////////
 
 interface Characteristic {
     status: StatusType,

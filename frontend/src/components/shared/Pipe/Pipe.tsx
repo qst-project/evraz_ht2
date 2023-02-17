@@ -41,12 +41,12 @@ function Pipe() {
     const characteristics = [
         {
             status: StatusType.WARNING,
-            type: Characteristics.UNDERPRESSURE,
+            name: Characteristics.UNDERPRESSURE,
             value: 10,
         },
         {
             status: StatusType.DEFAULT,
-            type: Characteristics.DUST_LEVEL,
+            name: Characteristics.DUST_LEVEL,
             value: 0,
         },
     ]

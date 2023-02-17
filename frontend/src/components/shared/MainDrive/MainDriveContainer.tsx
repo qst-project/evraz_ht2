@@ -7,22 +7,22 @@ function MainDriveContainer() {
     const characteristics = [
         {
             status: StatusType.WARNING,
-            type: Characteristics.AMPERAGE,
+            name: Characteristics.AMPERAGE,
             value: 10,
         },
         {
             status: StatusType.DEFAULT,
-            type: Characteristics.DRIVE_AMPERAGE,
+            name: Characteristics.DRIVE_AMPERAGE,
             value: 0,
         }, {
 
             status: StatusType.DEFAULT,
-            type: Characteristics.ROTOR_VOLTAGE,
+            name: Characteristics.ROTOR_VOLTAGE,
             value: 0,
         }, {
 
             status: StatusType.DEFAULT,
-            type: Characteristics.STARTER_VOLTAGE,
+            name: Characteristics.STARTER_VOLTAGE,
             value: 0,
         }]
     return (
