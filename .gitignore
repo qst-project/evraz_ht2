@@ -172,3 +172,7 @@ buildNumber.properties
 
 # prometheus
 metrics/prometheus/prometheus-data/
+backend/.extras
+metrics/.extras
+frontend/.extras
+datascience/.extras

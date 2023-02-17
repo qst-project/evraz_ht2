@@ -17,9 +17,10 @@ services:
   rest-backend:
     container_name: monolith
     build:
-      context: backend
+      context: metrics
       dockerfile: Dockerfile
-    network_mode: host
+    ports:
+      - "2112:2112"
 
   # prometheus
   prometheus:
@@ -34,6 +35,7 @@ services:
       - '--web.enable-admin-api'
       - '--web.listen-address=:9099'
     network_mode: host
+
   # kafka
   #  zookeeper:
   #    image: confluentinc/cp-zookeeper:latest
