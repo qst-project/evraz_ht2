@@ -2,8 +2,6 @@ package org.qst.evrazht2backend.service.kafka;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.MapType;
-import com.fasterxml.jackson.databind.type.TypeFactory;
 import lombok.extern.log4j.Log4j2;
 import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -11,8 +9,7 @@ import org.qst.evrazht2backend.controller.WSController;
 import org.qst.evrazht2backend.controller.model.WSSinteringMachine;
 import org.qst.evrazht2backend.controller.model.WSSinteringMachineListResponse;
 import org.qst.evrazht2backend.repository.InMemoryStorage;
-import org.qst.evrazht2backend.repository.model.RawExhauster;
-import org.qst.evrazht2backend.repository.model.RawSinteringMachine;
+import org.qst.evrazht2backend.repository.KafkaDataCacher;
 import org.qst.evrazht2backend.service.kafka.mapper.KafkaSinteringMachineToWS;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -78,21 +75,6 @@ public class KafkaReader {
 
         consumer = new KafkaConsumer<>(props);
         consumer.subscribe(Collections.singletonList(topicName));
-    }
-
-    public void listener(String message) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        TypeFactory typeFactory = mapper.getTypeFactory();
-        MapType mapType = typeFactory.constructMapType(HashMap.class, String.class, String.class);
-        HashMap<String, String> map = mapper.readValue(message, mapType);
-
-        RawExhauster rawExhauster = new RawExhauster();
-        rawExhauster.rotorNumber = 1;
-        rawExhauster.number = Integer.valueOf(map.get("id"));
-        rawExhauster.name = map.get("temp");
-        log.info("accepted a message\t" + message);
-        RawSinteringMachine rawSinteringMachine = new RawSinteringMachine(message, rawExhauster, rawExhauster);
-        inMemoryStorage.update(Collections.singletonList(rawSinteringMachine));
     }
 
     @Scheduled(fixedRate = 500)

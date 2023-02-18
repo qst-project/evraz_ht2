@@ -1,4 +1,4 @@
-package org.qst.evrazht2backend.service.kafka;
+package org.qst.evrazht2backend.repository;
 
 import org.qst.evrazht2backend.service.kafka.model.KafkaSinteringMachine;
 import org.springframework.stereotype.Component;
