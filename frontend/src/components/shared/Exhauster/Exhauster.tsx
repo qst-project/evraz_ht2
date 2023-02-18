@@ -6,16 +6,16 @@ import OilTank from '@shared/OilTank';
 import Pipe from '@shared/Pipe/Pipe';
 import BearingTrigger from '@shared/BearingTrigger';
 import TemperatureSensorContainer from '@shared/TemperatureSensor';
-import { ExhausterState } from '@reduxToolkit/slices/exhauster';
 import TimingInfo from '@shared/TimingInfo';
 
 import styles from './Exhauster.module.scss';
 import OilPressureContainer from '../OilPressure';
+import { ExhausterProps } from './Exhauster.types';
 
-function Exhauster({ status, exhauster }: ExhausterState) {
+function Exhauster({ exhauster, moment, delay }: ExhausterProps) {
     return (
         <section className={styles.main}>
-            <TimingInfo time='2.34.0' />
+            <TimingInfo moment={moment} delay={delay} />
             <TemperatureSensorContainer
                 style={{
                     top: '25px',
@@ -46,7 +46,12 @@ function Exhauster({ status, exhauster }: ExhausterState) {
                         <Bearing
                             name='1 ПС'
                             status={StatusType.DEFAULT}
-                            characteristics={exhauster?.bearings[0].characteristics}
+                            characteristics={
+                                exhauster?.bearings
+                                    .find((bearing) => bearing.number === 1)?.characteristics
+                                || exhauster?.problems
+                                    .find((problem) => problem.number === 1)?.characteristics
+                            }
                             style={{ top: '468px', right: '174px' }}
                         />
                         <BearingTrigger
@@ -61,7 +66,12 @@ function Exhauster({ status, exhauster }: ExhausterState) {
                         <Bearing
                             name='2 ПС'
                             status={StatusType.DEFAULT}
-                            characteristics={exhauster?.bearings[1].characteristics}
+                            characteristics={
+                                exhauster?.bearings
+                                    .find((bearing) => bearing.number === 2)?.characteristics
+                                || exhauster?.problems
+                                    .find((problem) => problem.number === 2)?.characteristics
+                            }
                             style={{ top: '504px', left: '842px' }}
                         />
                         <BearingTrigger
@@ -76,7 +86,12 @@ function Exhauster({ status, exhauster }: ExhausterState) {
                         <Bearing
                             name='3 ПС'
                             status={StatusType.DEFAULT}
-                            characteristics={exhauster?.bearings[2].characteristics}
+                            characteristics={
+                                exhauster?.bearings
+                                    .find((bearing) => bearing.number === 3)?.characteristics
+                                || exhauster?.problems
+                                    .find((problem) => problem.number === 3)?.characteristics
+                            }
                             style={{ bottom: '482px', right: '833px' }}
                         />
                         <BearingTrigger
@@ -91,7 +106,12 @@ function Exhauster({ status, exhauster }: ExhausterState) {
                         <Bearing
                             name='4 ПС'
                             status={StatusType.DEFAULT}
-                            characteristics={exhauster?.bearings[3].characteristics}
+                            characteristics={
+                                exhauster?.bearings
+                                    .find((bearing) => bearing.number === 4)?.characteristics
+                                || exhauster?.problems
+                                    .find((problem) => problem.number === 4)?.characteristics
+                            }
                             style={{ bottom: '482px', left: '706px' }}
                         />
                         <BearingTrigger
@@ -106,7 +126,12 @@ function Exhauster({ status, exhauster }: ExhausterState) {
                         <Bearing
                             name='5 ПС'
                             status={StatusType.DEFAULT}
-                            characteristics={exhauster?.bearings[4].characteristics}
+                            characteristics={
+                                exhauster?.bearings
+                                    .find((bearing) => bearing.number === 5)?.characteristics
+                                || exhauster?.problems
+                                    .find((problem) => problem.number === 5)?.characteristics
+                            }
                             style={{ top: '504px', left: '706px' }}
                         />
                         <BearingTrigger
@@ -121,7 +146,12 @@ function Exhauster({ status, exhauster }: ExhausterState) {
                         <Bearing
                             name='6 ПС'
                             status={StatusType.DEFAULT}
-                            characteristics={exhauster?.bearings[5].characteristics}
+                            characteristics={
+                                exhauster?.bearings
+                                    .find((bearing) => bearing.number === 6)?.characteristics
+                                || exhauster?.problems
+                                    .find((problem) => problem.number === 6)?.characteristics
+                            }
                             style={{ top: '504px', right: '833px' }}
                         />
                         <BearingTrigger
@@ -136,7 +166,12 @@ function Exhauster({ status, exhauster }: ExhausterState) {
                         <Bearing
                             name='7 ПС'
                             status={StatusType.DEFAULT}
-                            characteristics={exhauster?.bearings[6].characteristics}
+                            characteristics={
+                                exhauster?.bearings
+                                    .find((bearing) => bearing.number === 7)?.characteristics
+                                || exhauster?.problems
+                                    .find((problem) => problem.number === 7)?.characteristics
+                            }
                             style={{ top: '586px', right: '900px' }}
                         />
                         <BearingTrigger
@@ -151,7 +186,12 @@ function Exhauster({ status, exhauster }: ExhausterState) {
                         <Bearing
                             name='8 ПС'
                             status={StatusType.DEFAULT}
-                            characteristics={exhauster?.bearings[7].characteristics}
+                            characteristics={
+                                exhauster?.bearings
+                                    .find((bearing) => bearing.number === 8)?.characteristics
+                                || exhauster?.problems
+                                    .find((problem) => problem.number === 8)?.characteristics
+                            }
                             style={{ top: '436px', right: '1304px' }}
                         />
                         <BearingTrigger
@@ -166,7 +206,12 @@ function Exhauster({ status, exhauster }: ExhausterState) {
                         <Bearing
                             name='9 ПС'
                             status={StatusType.DEFAULT}
-                            characteristics={exhauster?.bearings[8].characteristics}
+                            characteristics={
+                                exhauster?.bearings
+                                    .find((bearing) => bearing.number === 9)?.characteristics
+                                || exhauster?.problems
+                                    .find((problem) => problem.number === 9)?.characteristics
+                            }
                             style={{ bottom: '364px', right: '1304px' }}
                         />
                         <BearingTrigger

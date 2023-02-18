@@ -17,19 +17,20 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
             sinterMachineId: machine.number,
             bearings: ex.bearings.other.map((bearing) => {
                 const res: BearingData = {
+                    number: bearing.number,
                     name: `ПС ${bearing.number}`,
                     characteristics: [],
                 };
                 // eslint-disable-next-line no-restricted-syntax
                 for (const [key, value] of Object.entries(bearing)) {
-                    if (!value) {
+                    if (value?.value === null) {
                         break;
                     }
                     if (Object.values(Characteristics).includes(key as Characteristics)) {
                         res.characteristics.push({
                             type: key as Characteristics,
                             status: StatusType.DEFAULT,
-                            value: value.value.toFixed(2),
+                            value: value.value?.toFixed(2) || null,
                         })
                     }
                 }
@@ -37,12 +38,13 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
             }),
             problems: ex.bearings.warn.map((bearing) => {
                 const res: BearingData = {
+                    number: bearing.number,
                     name: `ПС ${bearing.number}`,
                     characteristics: [],
                 };
                 // eslint-disable-next-line no-restricted-syntax
                 for (const [key, value] of Object.entries(bearing)) {
-                    if (!value) {
+                    if (value?.value === null) {
                         break;
                     }
                     let status: StatusType;
@@ -61,7 +63,7 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
                         res.characteristics.push({
                             type: key as Characteristics,
                             status,
-                            value: value.value.toFixed(2),
+                            value: value.value.toFixed(2) || null,
                         })
                     }
                 }

@@ -26,6 +26,7 @@ export interface CharacteristicData {
 }
 
 export interface BearingData {
+    number: number;
     name: string,
     characteristics: CharacteristicData[],
 }

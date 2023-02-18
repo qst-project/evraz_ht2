@@ -2,8 +2,9 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@reduxToolkit/index';
 import { useSearchParams } from 'react-router-dom';
 
-import { getExhausterState } from '@reduxToolkit/slices/sinterMachines';
-import { StatusType } from '@services/types';
+import { getExhausterState, getSinterMachinesTiming } from '@reduxToolkit/slices/sinterMachines';
+import { ExhausterData, StatusType } from '@services/types';
+import { ExhausterState } from '@reduxToolkit/slices/exhauster';
 
 import Exhauster from './Exhauster';
 
@@ -16,11 +17,17 @@ function ExhausterContainer() {
             sinter_machines,
         }: RootState) => getExhausterState(sinter_machines, machineId, exhausterId),
     )
+    const timing = useSelector(
+        ({
+            sinter_machines,
+        }: RootState) => getSinterMachinesTiming(sinter_machines),
+    )
     return exhausterState
         ? (
             <Exhauster
-                status={StatusType.DEFAULT}
-                exhauster={exhausterState}
+                moment={timing[0] as string}
+                delay={timing[1] as number}
+                exhauster={exhausterState as ExhausterData}
             />
         ) : null
 }
