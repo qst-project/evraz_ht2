@@ -22,7 +22,7 @@ export const exhausterMock: ExhausterData = {
             ],
         },
         {
-            number: 1,
+            number: 2,
             name: 'PS 2',
             characteristics: [
                 {
@@ -33,7 +33,7 @@ export const exhausterMock: ExhausterData = {
             ],
         },
         {
-            number: 1,
+            number: 3,
             name: 'PS 3',
             characteristics: [
                 {
@@ -59,7 +59,7 @@ export const exhausterMock: ExhausterData = {
             ],
         },
         {
-            number: 1,
+            number: 4,
             name: 'PS 4',
             characteristics: [
                 {
