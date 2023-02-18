@@ -1,3 +1,7 @@
+.rangePicker {
+  margin-bottom: 16px;
+}
+
 .content {
   display: flex;
   gap: 16px;
@@ -13,9 +17,11 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  flex-grow: 1;
-  font-size: 24px;
-  font-weight: 500;
-  background-color: #c7c7c7;
+  width: 1200px;
+  padding: 16px;
+  background-color: #f5f5f5;
   border-radius: 6px;
+  & .chart-container {
+    width: 100% !important;
+  }
 }
