@@ -13,7 +13,11 @@ export function subscribe(
             const res = JSON.parse(msg.body);
             const [exhausters, moment] = (mapSinterMachinesResponse(res));
             const delay = ((nowGMT - new Date(moment).valueOf()) / 1000).toFixed(2)
-            dispatch(setSinterMachines([exhausters, moment, Number(delay)]));
+            dispatch(setSinterMachines([
+                exhausters,
+                new Date(new Date(moment).valueOf() - (now.getTimezoneOffset() * 60000)).toLocaleString('ru'),
+                Number(delay)],
+            ));
         },
     );
 }

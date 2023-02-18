@@ -105,6 +105,7 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
             gasValveOpen: ex.gasValveOpen,
             gasValveClosed: ex.gasValveClosed,
             gasCollectorTemperatureBefore: Number(ex.gasCollectorTemperatureBefore.toFixed(2)),
+            gasCollectorUnderPressureBefore: Number(ex.gasCollectorUnderPressureBefore.toFixed(2)),
             rotorName: '',
             lastRotorReplacement: '',
         })),

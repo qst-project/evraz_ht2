@@ -241,8 +241,8 @@ function Exhauster({ exhauster, moment, delay }: ExhausterProps) {
             />
             <Pipe
                 temperature={exhauster.gasCollectorTemperatureBefore}
-                underpressure={10}
-                style={{ top: '169px', left: '272px' }}
+                underpressure={exhauster.gasCollectorUnderPressureBefore}
+                style={{ top: '186px', left: '259px' }}
             />
             <OilPressureContainer
                 style={{
@@ -254,7 +254,11 @@ function Exhauster({ exhauster, moment, delay }: ExhausterProps) {
                     value: exhauster.oilPressure,
                 }}
             />
-            <GasValve value={exhauster.gasValvePosition} />
+            <GasValve
+                gasValveOpen={exhauster.gasValveOpen}
+                gasValveClosed={exhauster.gasValveClosed}
+                value={exhauster.gasValvePosition}
+            />
         </section>
     );
 }
