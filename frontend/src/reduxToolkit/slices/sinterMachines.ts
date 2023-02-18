@@ -6,23 +6,23 @@ import {
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface SinterMachinesState {
-    delay?: string;
-    moment?: string;
+    delay: number;
+    moment: string;
     machines?: SinterMachineData[];
 }
 
 const initialState: SinterMachinesState = {
+    delay: 0,
+    moment: '',
 }
-
-// actions
 
 export const sinterMachinesSlice = createSlice({
     name: 'sinterMachines',
     initialState,
     reducers: {
-        setSinterMachines(state, action: PayloadAction<[SinterMachineData[], string]>) {
+        setSinterMachines(state, action: PayloadAction<[SinterMachineData[], string, number]>) {
             // eslint-disable-next-line no-param-reassign
-            [state.machines, state.moment] = action.payload;
+            [state.machines, state.moment, state.delay] = action.payload;
         },
     },
 })
