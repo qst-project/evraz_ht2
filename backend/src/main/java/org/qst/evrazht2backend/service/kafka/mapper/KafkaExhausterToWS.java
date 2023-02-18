@@ -45,7 +45,7 @@ public class KafkaExhausterToWS implements Function<KafkaExhauster, WSExhauster>
                 kafkaExhauster.getCoolerWaterTemperatureBefore(),
                 kafkaExhauster.getCoolerWaterTemperatureAfter(),
                 kafkaExhauster.getGasCollectorTemperatureBefore(),
-                kafkaExhauster.getGasCollectorTemperatureAfter(),
+                kafkaExhauster.getGasCollectorUnderPressureBefore(),
                 kafkaExhauster.getGasValveClosed(),
                 kafkaExhauster.getGasValveOpen(),
                 kafkaExhauster.getGasValvePosition(),

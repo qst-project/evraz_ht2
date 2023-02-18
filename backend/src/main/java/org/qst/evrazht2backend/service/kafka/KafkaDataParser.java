@@ -89,7 +89,7 @@ public class KafkaDataParser {
             case "gas" -> {
                 switch (valueWithSchema.getSchema().signal) {
                     case "temperature_before" -> exhauster.setGasCollectorTemperatureBefore((Double) value);
-                    case "underpressure_before" -> exhauster.setGasCollectorTemperatureAfter((Double) value);
+                    case "underpressure_before" -> exhauster.setGasCollectorUnderPressureBefore((Double) value);
                 }
             }
             case "valve_pos" -> {

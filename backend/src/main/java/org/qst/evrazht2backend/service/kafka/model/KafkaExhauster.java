@@ -16,7 +16,7 @@ public class KafkaExhauster {
     Double coolerWaterTemperatureBefore;
     Double coolerWaterTemperatureAfter;
     Double gasCollectorTemperatureBefore;
-    Double gasCollectorTemperatureAfter;
+    Double gasCollectorUnderPressureBefore;
     Boolean gasValveClosed;
     Boolean gasValveOpen;
     Double gasValvePosition;

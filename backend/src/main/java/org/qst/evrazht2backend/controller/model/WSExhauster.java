@@ -15,7 +15,7 @@ public class WSExhauster {
     public Double coolerWaterTemperatureBefore;
     public Double coolerWaterTemperatureAfter;
     public Double gasCollectorTemperatureBefore;
-    public Double gasCollectorTemperatureAfter;
+    public Double gasCollectorUnderPressureBefore;
     public Boolean gasValveClosed;
     public Boolean gasValveOpen;
     public Double gasValvePosition;
