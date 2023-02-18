@@ -10,7 +10,7 @@ RUN ./mvnw -B package
 FROM openjdk:17-slim-buster
 COPY --from=build /target/*.jar monolith.jar
 
-COPY ../.extras/YandexCA.crt /usr/local/share/ca-certificates/Yandex/YandexCA.crt
+COPY .extras/YandexCA.crt /usr/local/share/ca-certificates/Yandex/YandexCA.crt
 RUN chmod 655 /usr/local/share/ca-certificates/Yandex/YandexCA.crt
 RUN cd /etc/security/ && keytool -importcert \
                  -alias YandexCA -file /usr/local/share/ca-certificates/Yandex/YandexCA.crt \

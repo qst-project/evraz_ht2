@@ -10,6 +10,7 @@ COPY .extras/YandexCA.crt /usr/local/share/ca-certificates/Yandex/YandexCA.crt
 RUN go mod download
 
 COPY *.go ./
+COPY .extras/schema.csv .extras/schema.csv
 
 RUN go build -o /app
 

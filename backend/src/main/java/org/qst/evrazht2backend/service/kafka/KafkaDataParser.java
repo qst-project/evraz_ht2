@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Component
@@ -19,7 +20,7 @@ public class KafkaDataParser {
     Map<String, List<SchemaCsv>> schemaByCode;
 
     KafkaDataParser(@Value("${schema-path}") String schemaPath) throws FileNotFoundException {
-        if (schemaPath == null) {
+        if (Objects.equals(schemaPath, "")) {
             schemaPath = KafkaDataParser.class.getClassLoader().getResource("schema.csv").getPath();
         }
         CsvToBeanBuilder<SchemaCsv> beanBuilder = new CsvToBeanBuilder<>(new InputStreamReader(new FileInputStream(schemaPath)));

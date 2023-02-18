@@ -6,6 +6,7 @@ type Config struct {
 	kafkaGroupId  string
 	kafkaUser     string
 	kafkaPassword string
+	schemaCsvPath string
 }
 
 //kafka.host = rc1a-b5e65f36lm3an1d5.mdb.yandexcloud.net:9091
@@ -21,4 +22,5 @@ var config = Config{
 	kafkaGroupId:  "qst-group-test-4",
 	kafkaUser:     "9433_reader",
 	kafkaPassword: "eUIpgWu0PWTJaTrjhjQD3.hoyhntiK",
+	schemaCsvPath: ".extras/schema.csv",
 }
