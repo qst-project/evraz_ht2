@@ -1,5 +1,6 @@
 package org.qst.evrazht2backend.controller;
 
+import org.qst.evrazht2backend.model.SinteringMachineListResponse;
 import org.qst.evrazht2backend.model.ws.WSSinteringMachine;
 import org.qst.evrazht2backend.repository.KafkaDataCacher;
 import org.qst.evrazht2backend.mapper.KafkaSinteringMachineToWS;
@@ -20,7 +21,8 @@ public class WebRestController {
     }
 
     @GetMapping("/sin_machines")
-    public List<WSSinteringMachine> machines() {
-        return kafkaDataCacher.getCache().values().stream().map(kafkaSinteringMachineToWS).collect(Collectors.toList());
+    public SinteringMachineListResponse machines() {
+        List<WSSinteringMachine> wsSinteringMachines = kafkaDataCacher.getCache().values().stream().map(kafkaSinteringMachineToWS).collect(Collectors.toList());
+        return new SinteringMachineListResponse(kafkaDataCacher.getLatestMoment(), wsSinteringMachines);
     }
 }

@@ -1,7 +1,7 @@
 package org.qst.evrazht2backend.controller;
 
 import lombok.extern.log4j.Log4j2;
-import org.qst.evrazht2backend.model.ws.WSSinteringMachineListResponse;
+import org.qst.evrazht2backend.model.SinteringMachineListResponse;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
@@ -24,7 +24,7 @@ public class WSController {
 //    }
 
 
-    public void sendUpdate(WSSinteringMachineListResponse sinteringMachineList) {
+    public void sendUpdate(SinteringMachineListResponse sinteringMachineList) {
         messagingTemplate.convertAndSendToUser("1", "/queue/messages", sinteringMachineList);
     }
 }

@@ -8,7 +8,7 @@ import org.apache.kafka.common.serialization.StringDeserializer;
 import org.qst.evrazht2backend.controller.WSController;
 import org.qst.evrazht2backend.mapper.KafkaSinteringMachineToWS;
 import org.qst.evrazht2backend.model.ws.WSSinteringMachine;
-import org.qst.evrazht2backend.model.ws.WSSinteringMachineListResponse;
+import org.qst.evrazht2backend.model.SinteringMachineListResponse;
 import org.qst.evrazht2backend.repository.KafkaDataCacher;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -94,7 +94,7 @@ public class KafkaReader {
     //    @Scheduled(fixedRate = 500)
     private void sendCacheToWS() {
         List<WSSinteringMachine> wsSinteringMachines = kafkaDataCacher.getCache().values().stream().map(kafkaSinteringMachineToWS).collect(Collectors.toList());
-        WSSinteringMachineListResponse response = new WSSinteringMachineListResponse(kafkaDataCacher.getLatestMoment(), wsSinteringMachines);
+        SinteringMachineListResponse response = new SinteringMachineListResponse(kafkaDataCacher.getLatestMoment(), wsSinteringMachines);
         wsController.sendUpdate(response);
     }
 }
