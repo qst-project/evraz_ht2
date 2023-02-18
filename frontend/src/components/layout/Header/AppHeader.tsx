@@ -4,7 +4,7 @@ import {
     MenuUnfoldOutlined,
 } from '@ant-design/icons'
 import { Col, Row } from 'antd';
-import NotificationIconContainer from '@components/shared/NotificationIcon';
+import NotificationModal from '@components/shared/NotificationModal/NotificationModal';
 
 import { HeaderProps } from './AppHeader.types';
 
@@ -23,7 +23,7 @@ function AppHeader({ setCollapsed, collapsed }: HeaderProps) {
                 }
             </Col>
             <Col span={2}>
-                <NotificationIconContainer />
+                <NotificationModal />
             </Col>
         </Row>
     );

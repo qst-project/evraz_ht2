@@ -1,4 +1,4 @@
-import { setSinterMachines } from '@reduxToolkit/slices/sinterMachines';
+import { setSinterMachines, setWebSockerConnectionError } from '@reduxToolkit/slices/sinterMachines';
 import { mapSinterMachinesResponse } from '@services/mappers';
 
 export function subscribe(
@@ -8,6 +8,7 @@ export function subscribe(
     stompClient.subscribe(
         '/user/1/queue/messages',
         (msg: any) => {
+            dispatch(setWebSockerConnectionError(false))
             const now = new Date();
             const nowGMT = now.valueOf() + (now.getTimezoneOffset() * 60000)
             const res = JSON.parse(msg.body);
@@ -16,8 +17,7 @@ export function subscribe(
             dispatch(setSinterMachines([
                 exhausters,
                 new Date(new Date(moment).valueOf() - (now.getTimezoneOffset() * 60000)).toLocaleString('ru'),
-                Number(delay)],
-            ));
+                Number(delay)]));
         },
     );
 }
