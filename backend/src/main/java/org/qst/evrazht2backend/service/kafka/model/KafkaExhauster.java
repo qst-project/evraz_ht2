@@ -1,15 +1,31 @@
 package org.qst.evrazht2backend.service.kafka.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Data
-@AllArgsConstructor
+@NoArgsConstructor
 public class KafkaExhauster {
     String name;
     Integer number;
-    String rotorName;
-    List<KafkaBearing> bearings;
+    Double coolerOilTemperatureBefore;
+    Double coolerOilTemperatureAfter;
+    Double coolerWaterTemperatureBefore;
+    Double coolerWaterTemperatureAfter;
+    Double gasCollectorTemperatureBefore;
+    Double gasCollectorTemperatureAfter;
+    Boolean gasValveClosed;
+    Boolean gasValveOpen;
+    Double gasValvePosition;
+    Double mainDriveRotorCurrent;
+    Double mainDriveRotorVoltage;
+    Double mainDriveStatorCurrent;
+    Double mainDriveStatorVoltage;
+    Double oilLevel;
+    Double oilPressure;
+    Boolean work;
+    Map<Integer, KafkaBearing> bearings = new HashMap<>();
 }

@@ -50,7 +50,11 @@ function TrendsSidebar() {
                         {mock.bearings.map((item) => (
                             <Panel key={item.name} header={item.name}>
                                 {item.characteristics.map((_item) => (
-                                    <TrendsOption name={_item.type} value={_item.value} />
+                                    <TrendsOption
+                                        name={_item.type}
+                                        value={_item.value}
+                                        key={_item.type}
+                                    />
                                 ))}
                             </Panel>
                         ))}
@@ -59,7 +63,11 @@ function TrendsSidebar() {
                 {mock.other.map((item) => (
                     <Panel key={item.name} header={item.name}>
                         {item.characteristics.map((_item) => (
-                            <TrendsOption name={_item.type} value={_item.value} />
+                            <TrendsOption
+                                name={_item.type}
+                                value={_item.value}
+                                key={_item.type}
+                            />
                         ))}
                     </Panel>
                 ))}
