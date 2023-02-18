@@ -28,7 +28,7 @@ class DataStreamer():
         self.__security_protocol = "SASL_SSL"
         self.__sasl_mechanism = "SCRAM-SHA-512"
         self.__sasl_plain_username = "9433_reader"
-        self.__group_id = "qst-data-service"
+        self.__group_id = "qst-data-service-testing"
         self.__sasl_plain_password = "eUIpgWu0PWTJaTrjhjQD3.hoyhntiK"
         self.__ssl_cafile = "/usr/local/share/ca-certificates/Yandex/YandexCA.crt"
         self.__auto_offset_reset = "earliest"
@@ -53,49 +53,28 @@ class DataStreamer():
             enable_auto_commit=self.__enable_auto_commit,
             auto_commit_interval_ms=self.__auto_commit_interval_ms,
             group_id=self.__group_id,
+            fetch_max_wait_ms=20
         )
         
-        self.__topic_partition = TopicPartition("zsmk-9433-dev-01", 0)
+        self.__topic_partition = TopicPartition(self.__topic, 0)
         self.__consumer.assign([self.__topic_partition])
         
         self.__callbacks = []
-        self.stored_data = [] # fix amount of stored data
+        self.stored_data = []
         
-    def get_data_batch(self, batch_size: int) -> None:
+    def close(self):
+        self.__consumer.close()
+        
+    def set_to_start(self):
+        self.__consumer.seek_to_beginning()
+        
+    def set_real_time(self):
+        self.__consumer.seek_to_end()
+        
+    def get_data_batch(self, batch_size: int, interval: int = 0) -> None:
         for _ in range(batch_size):
             msg = next(self.__consumer)
+            print("Message retieved with offset " + str(msg.offset))
             self.stored_data.append(msg)
-            
-    # to fix callbacks sync
-        
-    # def register_callback(self, callback: Callable[[any, data.VacuumPumpData], None]) -> None:
-    #     self.__callbacks.append(callback) # callback must be async
-        
-    # async def __delayed_timer(self, delay: int) -> None:
-    #     await asyncio.sleep(delay)
-        
-    # async def basic_callback(future, data): # callback example
-    #     await asyncio.sleep(1)
-    #     future.set_result(data)
-        
-    # async def process(future, self) -> any:
-    #     context = asyncio.get_running_loop()
-    #     futures = [context.create_future() for _ in self.__callbacks]
-    #     data = next(self.__consumer) # data has been already serialized
-    #     assert isinstance(data, VacuumPumpData)
-            
-    #     if self.__mode == "full":
-    #         for i, _callback in enumerate(self.__callbacks):
-    #             context.create_task(
-    #                 _callback(futures[i], data))
-            
-    #         _wait_task = context.create_task(self.__delayed_timer(5))
-                
-    #         self.__stored_data.append(data)
-    #         _once_results = []
-    #         for i, _future in enumerate(futures):
-    #             _once_results.append((await _future, self.__callbacks[i].__name__))
-    #         await _wait_task
-    #         future.set_result(_once_results)
-    #     else:
-    #         pass # TODO async batch treatement
+            self.__consumer.seek(self.__topic_partition, msg.offset + interval)
+            print("Offset changed")
