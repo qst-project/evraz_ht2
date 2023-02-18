@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@reduxToolkit/index';
-import { getSinterMachinesState } from '@reduxToolkit/slices/sinter_machines';
+import { getSinterMachinesState } from '@reduxToolkit/slices/sinterMachines';
 
 import SinterMachineList from './SinterMachineList';
 

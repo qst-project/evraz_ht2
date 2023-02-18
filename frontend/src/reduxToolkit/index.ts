@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 
 import exhausterReducer from './slices/exhauster'
-import sinter_machines from './slices/sinter_machines'
+import sinter_machines from './slices/sinterMachines'
 
 const rootReducer = combineReducers({
     exhausterReducer,

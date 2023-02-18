@@ -14,6 +14,7 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
         exhausters: machine.exhausters.map((ex) => ({
             name: ex.name,
             id: ex.number,
+            sinterMachineId: machine.number,
             bearings: ex.bearings.other.map((bearing) => {
                 const res: BearingData = {
                     name: `ПС ${bearing.number}`,

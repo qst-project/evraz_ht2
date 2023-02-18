@@ -6,6 +6,7 @@ import {
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface SinterMachinesState {
+    delay?: string;
     moment?: string;
     machines?: SinterMachineData[];
 }
@@ -33,6 +34,12 @@ export const getExhausterState = (
     sinterMachineNumber: number,
     exhausterNumber: number,
 ) => (
-    state.machines ? state.machines[sinterMachineNumber].exhausters[exhausterNumber] : null
+    state.machines
+        ? state.machines
+            .find((machine) => machine.id === sinterMachineNumber)?.exhausters
+            .find((exhauster) => exhauster.id === exhausterNumber)
+        : null
 )
+export const getSinterMachinesMoment = (state: SinterMachinesState) => state.moment
+
 export default sinterMachinesSlice.reducer
