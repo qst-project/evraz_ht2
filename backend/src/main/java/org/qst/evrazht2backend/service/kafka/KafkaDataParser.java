@@ -111,12 +111,10 @@ public class KafkaDataParser {
         }
     }
 
-    public Map<Integer, KafkaSinteringMachine> parse(Map<String, Object> data) {
-        Map<Integer, KafkaSinteringMachine> machines = new HashMap<>(6);
-        data.entrySet().stream()
+    public void update(Map<Integer, KafkaSinteringMachine> storage, Map<String, Object> newData) {
+        newData.entrySet().stream()
                 .filter(e -> schemaByCode.containsKey(e.getKey()))
                 .map(e -> new ValueWithSchema(e.getValue(), schemaByCode.get(e.getKey()).get(0)))
-                .forEach(e -> append(machines, e));
-        return machines;
+                .forEach(e -> append(storage, e));
     }
 }
