@@ -5,7 +5,7 @@ WORKDIR /data_prediction_service
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 
-COPY ws_prediction_server .
+COPY data_prediction_service/ws_prediction_server.py ws_prediction_server.py
 
 EXPOSE 8765
 
