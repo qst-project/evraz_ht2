@@ -52,6 +52,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8765:8765"
+    network_mode: host
 
   # kafka
   #  zookeeper:

@@ -7,6 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class WSBearing {
     Integer number;
+    String status;
     WSNormalized temperature;
     WSNormalized vibrationAxial;
     WSNormalized vibrationVertical;

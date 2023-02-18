@@ -1,16 +1,18 @@
 package org.qst.evrazht2backend.mapper;
 
+import org.qst.evrazht2backend.model.TimestampedValue;
 import org.qst.evrazht2backend.model.ws.WSNormalized;
 
 
 public class NormalizedToWS {
-    Double value;
-    Double alarmMax;
-    Double alarmMin;
-    Double warnMax;
-    Double warnMin;
+    TimestampedValue<Double> value;
+    TimestampedValue<Double> alarmMax;
+    TimestampedValue<Double> alarmMin;
+    TimestampedValue<Double> warnMax;
+    TimestampedValue<Double> warnMin;
+    
 
-    NormalizedToWS(Double value, Double alarmMax, Double alarmMin, Double warnMax, Double warnMin) {
+    NormalizedToWS(TimestampedValue<Double> value, TimestampedValue<Double> alarmMax, TimestampedValue<Double> alarmMin, TimestampedValue<Double> warnMax, TimestampedValue<Double> warnMin) {
         this.value = value;
         this.alarmMax = alarmMax;
         this.alarmMin = alarmMin;
@@ -22,14 +24,14 @@ public class NormalizedToWS {
         if (value == null || warnMin == null || warnMax == null) {
             return false;
         }
-        return value < warnMin || value > warnMax;
+        return value.getValue() < warnMin.getValue() || value.getValue() > warnMax.getValue();
     }
 
     public boolean alarm() {
         if (value == null || warnMin == null || warnMax == null) {
             return false;
         }
-        return value < alarmMin || value > alarmMax;
+        return value.getValue() < alarmMin.getValue() || value.getValue() > alarmMax.getValue();
     }
 
     public WSNormalized apply() {

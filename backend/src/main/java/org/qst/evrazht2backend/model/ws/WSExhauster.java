@@ -2,28 +2,29 @@ package org.qst.evrazht2backend.model.ws;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.qst.evrazht2backend.model.TimestampedValue;
 
 @Data
 @AllArgsConstructor
 public class WSExhauster {
-    public String name;
-    public Integer number;
-//    public String rotorName;
-    public WSBearings bearings;
-    public Double coolerOilTemperatureBefore;
-    public Double coolerOilTemperatureAfter;
-    public Double coolerWaterTemperatureBefore;
-    public Double coolerWaterTemperatureAfter;
-    public Double gasCollectorTemperatureBefore;
-    public Double gasCollectorUnderPressureBefore;
-    public Boolean gasValveClosed;
-    public Boolean gasValveOpen;
-    public Double gasValvePosition;
-    public Double mainDriveRotorCurrent;
-    public Double mainDriveRotorVoltage;
-    public Double mainDriveStatorCurrent;
-    public Double mainDriveStatorVoltage;
-    public Double oilLevel;
-    public Double oilPressure;
-    public Boolean work;
+    String name;
+    Integer number;
+    String status;
+    WSBearings bearings;
+    TimestampedValue<Double> coolerOilTemperatureBefore;
+    TimestampedValue<Double> coolerOilTemperatureAfter;
+    TimestampedValue<Double> coolerWaterTemperatureBefore;
+    TimestampedValue<Double> coolerWaterTemperatureAfter;
+    TimestampedValue<Double> gasCollectorTemperatureBefore;
+    TimestampedValue<Double> gasCollectorUnderPressureBefore;
+    TimestampedValue<Boolean> gasValveClosed;
+    TimestampedValue<Boolean> gasValveOpen;
+    TimestampedValue<Double> gasValvePosition;
+    TimestampedValue<Double> mainDriveRotorCurrent;
+    TimestampedValue<Double> mainDriveRotorVoltage;
+    TimestampedValue<Double> mainDriveStatorCurrent;
+    TimestampedValue<Double> mainDriveStatorVoltage;
+    TimestampedValue<Double> oilLevel;
+    TimestampedValue<Double> oilPressure;
+    TimestampedValue<Boolean> work;
 }

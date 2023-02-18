@@ -1,9 +1,9 @@
 package org.qst.evrazht2backend.mapper;
 
+import org.qst.evrazht2backend.model.kafka.KafkaExhauster;
 import org.qst.evrazht2backend.model.ws.WSBearing;
 import org.qst.evrazht2backend.model.ws.WSBearings;
 import org.qst.evrazht2backend.model.ws.WSExhauster;
-import org.qst.evrazht2backend.model.kafka.KafkaExhauster;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -31,14 +31,15 @@ public class KafkaExhausterToWS implements Function<KafkaExhauster, WSExhauster>
                 b.getVibrationVertical() != null ? b.getVibrationVertical().getStatus() : null,
                 b.getVibrationHorizontal() != null ? b.getVibrationHorizontal().getStatus() : null
         ).anyMatch(Objects::nonNull);
-        Map<Boolean, List<WSBearing>> partitionedBearings = kafkaExhauster.getBearings().values().stream()
-                .map(kafkaBearingToWS)
-                .collect(Collectors.partitioningBy(isWarned));
+        List<WSBearing> bearings = kafkaExhauster.getBearings().values().stream().map(kafkaBearingToWS).toList();
+        Map<Boolean, List<WSBearing>> partitionedBearings = bearings.stream().collect(Collectors.partitioningBy(isWarned));
         List<WSBearing> warn = partitionedBearings.get(true);
         List<WSBearing> other = partitionedBearings.get(false);
+        String status = bearings.stream().map(WSBearing::getStatus).filter(Objects::nonNull).max(new StatusComparator()).orElse(null);
         return new WSExhauster(
                 kafkaExhauster.getName(),
                 kafkaExhauster.getNumber(),
+                status,
                 new WSBearings(warn, other),
                 kafkaExhauster.getCoolerOilTemperatureBefore(),
                 kafkaExhauster.getCoolerOilTemperatureAfter(),

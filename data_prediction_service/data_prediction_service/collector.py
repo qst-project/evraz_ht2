@@ -11,10 +11,11 @@ if __name__ == "__main__":
     path_to_csv = sys.argv[1]
     batch_size = int(sys.argv[2])
     interval = int(sys.argv[3])
+    scale = float(sys.argv[4])
     
     streamer.set_to_start()
     streamer.get_data_batch(batch_size, interval)
     for _data in streamer.stored_data:
-        u171.kafka_msg_to_row(_data)
+        u171.kafka_msg_to_row(_data, scale)
     
     u171.get_data_frame().to_csv(path_to_csv)
