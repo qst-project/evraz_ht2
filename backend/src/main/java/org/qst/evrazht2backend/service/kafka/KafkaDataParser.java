@@ -4,12 +4,12 @@ import com.opencsv.bean.CsvToBeanBuilder;
 import org.qst.evrazht2backend.service.kafka.model.KafkaBearing;
 import org.qst.evrazht2backend.service.kafka.model.KafkaExhauster;
 import org.qst.evrazht2backend.service.kafka.model.KafkaSinteringMachine;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -18,8 +18,10 @@ import java.util.stream.Collectors;
 public class KafkaDataParser {
     Map<String, List<SchemaCsv>> schemaByCode;
 
-    KafkaDataParser() throws FileNotFoundException {
-        String schemaPath = KafkaDataParser.class.getClassLoader().getResource("schema.csv").getPath();
+    KafkaDataParser(@Value("${schema-path}") String schemaPath) throws FileNotFoundException {
+        if (schemaPath == null) {
+            schemaPath = KafkaDataParser.class.getClassLoader().getResource("schema.csv").getPath();
+        }
         CsvToBeanBuilder<SchemaCsv> beanBuilder = new CsvToBeanBuilder<>(new InputStreamReader(new FileInputStream(schemaPath)));
         beanBuilder.withType(SchemaCsv.class);
         schemaByCode = beanBuilder.build().parse().stream()
