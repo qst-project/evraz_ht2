@@ -19,7 +19,7 @@ public class KafkaSinteringMachineToWS implements Function<KafkaSinteringMachine
     public WSSinteringMachine apply(KafkaSinteringMachine kafkaSinteringMachine) {
         return new WSSinteringMachine(
                 kafkaSinteringMachine.getNumber(),
-                kafkaSinteringMachine.getExhausters().stream().map(kafkaExhausterToWS).collect(Collectors.toList())
+                kafkaSinteringMachine.getExhausters().values().stream().map(kafkaExhausterToWS).collect(Collectors.toList())
         );
     }
 }

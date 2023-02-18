@@ -37,6 +37,8 @@ public class KafkaReader {
 
     final KafkaSinteringMachineToWS kafkaSinteringMachineToWS;
 
+    final KafkaDataParser kafkaDataParser;
+
     public KafkaReader(
             WSController wsController,
             InMemoryStorage inMemoryStorage,
@@ -47,7 +49,7 @@ public class KafkaReader {
             @Value("${kafka.ts-pass}") String tsPass,
             @Value("${kafka.topic}") String topicName,
             @Value("${kafka.group-id}") String groupId,
-            KafkaSinteringMachineToWS kafkaSinteringMachineToWS) {
+            KafkaSinteringMachineToWS kafkaSinteringMachineToWS, KafkaDataParser kafkaDataParser) {
         this.inMemoryStorage = inMemoryStorage;
         this.wsController = wsController;
         this.kafkaSinteringMachineToWS = kafkaSinteringMachineToWS;
@@ -71,6 +73,7 @@ public class KafkaReader {
 
         consumer = new KafkaConsumer<>(props);
         consumer.subscribe(Arrays.asList(new String[]{topicName}));
+        this.kafkaDataParser = kafkaDataParser;
     }
 
     public void listener(String message) throws JsonProcessingException {
@@ -111,8 +114,8 @@ public class KafkaReader {
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
-        List<KafkaSinteringMachine> parsedData = KafkaDataParser.parse(data);
-        List<WSSinteringMachine> wsSinteringMachines = parsedData.stream().map(kafkaSinteringMachineToWS).collect(Collectors.toList());
+        Map<Integer, KafkaSinteringMachine> parsedData = kafkaDataParser.parse(data);
+        List<WSSinteringMachine> wsSinteringMachines = parsedData.values().stream().map(kafkaSinteringMachineToWS).collect(Collectors.toList());
         WSSinteringMachineListResponse response = new WSSinteringMachineListResponse(
                 data.get("moment").toString(),
                 wsSinteringMachines

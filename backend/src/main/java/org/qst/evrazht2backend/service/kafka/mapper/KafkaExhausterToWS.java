@@ -31,7 +31,7 @@ public class KafkaExhausterToWS implements Function<KafkaExhauster, WSExhauster>
                 b.getVibrationVertical() != null ? b.getVibrationVertical().getStatus() : null,
                 b.getVibrationHorizontal() != null ? b.getVibrationHorizontal().getStatus() : null
         ).anyMatch(Objects::nonNull);
-        Map<Boolean, List<WSBearing>> partitionedBearings = kafkaExhauster.getBearings().stream()
+        Map<Boolean, List<WSBearing>> partitionedBearings = kafkaExhauster.getBearings().values().stream()
                 .map(kafkaBearingToWS)
                 .collect(Collectors.partitioningBy(isWarned));
         List<WSBearing> warn = partitionedBearings.get(true);
@@ -39,8 +39,23 @@ public class KafkaExhausterToWS implements Function<KafkaExhauster, WSExhauster>
         return new WSExhauster(
                 kafkaExhauster.getName(),
                 kafkaExhauster.getNumber(),
-                kafkaExhauster.getRotorName(),
-                new WSBearings(warn, other)
+                new WSBearings(warn, other),
+                kafkaExhauster.getCoolerOilTemperatureBefore(),
+                kafkaExhauster.getCoolerOilTemperatureAfter(),
+                kafkaExhauster.getCoolerWaterTemperatureBefore(),
+                kafkaExhauster.getCoolerWaterTemperatureAfter(),
+                kafkaExhauster.getGasCollectorTemperatureBefore(),
+                kafkaExhauster.getGasCollectorTemperatureAfter(),
+                kafkaExhauster.getGasValveClosed(),
+                kafkaExhauster.getGasValveOpen(),
+                kafkaExhauster.getGasValvePosition(),
+                kafkaExhauster.getMainDriveRotorCurrent(),
+                kafkaExhauster.getMainDriveRotorVoltage(),
+                kafkaExhauster.getMainDriveStatorCurrent(),
+                kafkaExhauster.getMainDriveStatorVoltage(),
+                kafkaExhauster.getOilLevel(),
+                kafkaExhauster.getOilPressure(),
+                kafkaExhauster.getWork()
         );
     }
 }

@@ -1,29 +1,45 @@
 package org.qst.evrazht2backend.service.kafka.mapper;
 
 import org.qst.evrazht2backend.controller.model.WSNormalized;
-import org.qst.evrazht2backend.service.kafka.model.Normalized;
-import org.springframework.stereotype.Component;
-
-import java.util.function.Function;
 
 
-@Component
-public class NormalizedToWS implements Function<Normalized, WSNormalized> {
+public class NormalizedToWS {
+    Double value;
+    Double alarmMax;
+    Double alarmMin;
+    Double warnMax;
+    Double warnMin;
 
-    @Override
-    public WSNormalized apply(Normalized normalized) {
-        if (normalized == null) {
-            return null;
+    NormalizedToWS(Double value, Double alarmMax, Double alarmMin, Double warnMax, Double warnMin) {
+        this.value = value;
+        this.alarmMax = alarmMax;
+        this.alarmMin = alarmMin;
+        this.warnMax = warnMax;
+        this.warnMin = warnMin;
+    }
+
+    public boolean warn() {
+        if (value == null || warnMin == null || warnMax == null) {
+            return false;
         }
-        boolean alarm = normalized.alarm();
-        boolean warn = normalized.warn();
+        return value < warnMin || value > warnMax;
+    }
+
+    public boolean alarm() {
+        if (value == null || warnMin == null || warnMax == null) {
+            return false;
+        }
+        return value < alarmMin || value > alarmMax;
+    }
+
+    public WSNormalized apply() {
         String status = null;
-        if (warn) {
+        if (warn()) {
             status = "warn";
         }
-        if (alarm) {
+        if (alarm()) {
             status = "alarm";
         }
-        return new WSNormalized(normalized.getValue(), status);
+        return new WSNormalized(value, status);
     }
 }
