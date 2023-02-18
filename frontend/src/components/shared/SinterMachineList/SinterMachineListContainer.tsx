@@ -14,7 +14,13 @@ function SinterMachineListContainer() {
         <>
             {
                 sinterMachineState.machines
-                    ? (<SinterMachineList sinterMachines={sinterMachineState?.machines} />)
+                    ? (
+                        <SinterMachineList
+                            moment={sinterMachineState.moment}
+                            delay={sinterMachineState.delay}
+                            sinterMachines={sinterMachineState?.machines}
+                        />
+                    )
                     : null
             }
         </>

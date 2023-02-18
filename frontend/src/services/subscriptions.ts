@@ -8,15 +8,12 @@ export function subscribe(
     stompClient.subscribe(
         '/user/1/queue/messages',
         (msg: any) => {
-            console.log('now')
-            const now = new Date().valueOf();
-            console.log(now)
+            const now = new Date();
+            const nowGMT = now.valueOf() + (now.getTimezoneOffset() * 60000)
             const res = JSON.parse(msg.body);
-            console.log('delay')
             const [exhausters, moment] = (mapSinterMachinesResponse(res));
-            const delay = now - new Date(moment).valueOf()
-            console.log(delay)
-            dispatch(setSinterMachines([exhausters, moment]));
+            const delay = ((nowGMT - new Date(moment).valueOf()) / 1000).toFixed(2)
+            dispatch(setSinterMachines([exhausters, moment, Number(delay)]));
         },
     );
 }

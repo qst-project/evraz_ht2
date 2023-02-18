@@ -1,13 +1,14 @@
 import { Descriptions } from 'antd'
 
-function ExhausterInfo({ time }: any) {
+function ExhausterInfo({ moment, delay }: any) {
     return (
         <Descriptions>
             <Descriptions.Item label='Последнее обновление'>
-                {time}
+                {moment}
             </Descriptions.Item>
             <Descriptions.Item label='Задержка'>
-                {time}
+                {delay}
+                <pre> c</pre>
             </Descriptions.Item>
         </Descriptions>
     )
