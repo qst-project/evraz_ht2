@@ -51,7 +51,7 @@ func NewYandexKafkaClient() (res YandexKafkaClient) {
 	}
 	topic := config.kafkaTopic
 
-	res.PartitionConsumer, err = res.Consumer.ConsumePartition(topic, 0, sarama.OffsetOldest)
+	res.PartitionConsumer, err = res.Consumer.ConsumePartition(topic, 0, sarama.OffsetNewest)
 	if err != nil {
 		panic(err)
 	}
