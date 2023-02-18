@@ -1,0 +1,57 @@
+@use 'src/scss/vars/colors';
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+}
+
+.characteristics {
+  display: flex;
+  gap: 4px;
+}
+
+.characteristic {
+  border: 1px solid #9f9f9f;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.characteristic-danger {
+  background-color: colors.$red-05;
+  border-color: colors.$red;
+  box-shadow: 0 0 4px 0 colors.$red;
+  color: colors.$red;
+
+  :global path {
+    fill: colors.$red;
+  }
+}
+
+.characteristic-warning {
+  background-color: colors.$orange-05;
+  border-color: colors.$orange;
+  box-shadow: 0 0 4px 0 colors.$orange;
+  color: colors.$orange;
+
+  :global path {
+    fill: colors.$orange;
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  fill: green !important;
+}

@@ -1,0 +1,36 @@
+@mixin card ($width: auto, $border: none) {
+    width: $width;
+    border: $border;
+}
+
+@keyframes blinker {
+    from {
+        opacity: 0.3;
+    }
+
+    to {
+        opacity: 1.0;
+    }
+}
+
+@mixin danger {
+    background-color: colors.$red-05;
+    border-color: colors.$red;
+    box-shadow: 0 0 4px 0 colors.$red;
+    color: colors.$red;
+
+    :global path {
+        fill: colors.$red;
+    }
+}
+
+@mixin warning {
+    background-color: colors.$orange-05;
+    border-color: colors.$orange;
+    box-shadow: 0 0 4px 0 colors.$orange;
+    color: colors.$orange;
+
+    :global path {
+        fill: colors.$orange;
+    }
+}

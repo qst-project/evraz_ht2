@@ -1,0 +1,10 @@
+.main {
+    position: relative;
+    width: 1512px;
+    height: 792px;
+    background-image: url('../../../assets/images/exhauster.png');
+
+    &:global > * {
+        position: absolute;
+    }
+}

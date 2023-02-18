@@ -1,0 +1,28 @@
+@use 'src/scss/vars/colors';
+
+.wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 1px;
+    width: 55px;
+    background: colors.$grey;
+    border-color: colors.$dark-grey;
+    background: colors.$grey;
+    border-radius: 6px;
+    z-index: 100;
+}
+
+.warning {
+    border: 1px solid;
+    background: colors.$orange-06;
+    box-shadow: 0 0 4px 0 colors.$orange;
+    color: colors.$orange-dark;
+}
+
+.danger {
+    border: 1px solid;
+    background: colors.$red-06;
+    color: colors.$red-dark;
+    box-shadow: 0 0 4px 0 colors.$red;
+}

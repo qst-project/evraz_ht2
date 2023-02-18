@@ -9,7 +9,9 @@
       "@ui/*" : ["./components/ui/*"],
       "@scss/*" : ["./scss/*"],
       "@images/*" : ["./assets/images/*"],
-      "@utils/*" : ["./services/utils/*"]
+      "@services/*" : ["./services/*"],
+      "@hooks/*" : ["./hooks/*"],
+      "@reduxToolkit/*" : ["./reduxToolkit/*"]
     }
   }
 }
