@@ -7,9 +7,10 @@ import org.qst.evrazht2backend.model.TimestampedValue;
 @Data
 @AllArgsConstructor
 public class WSExhauster {
-    public String name;
-    public Integer number;
-    public WSBearings bearings;
+    String name;
+    Integer number;
+    String status;
+    WSBearings bearings;
     TimestampedValue<Double> coolerOilTemperatureBefore;
     TimestampedValue<Double> coolerOilTemperatureAfter;
     TimestampedValue<Double> coolerWaterTemperatureBefore;
