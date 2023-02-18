@@ -26,6 +26,6 @@ export const exhausterSlice = createSlice({
 })
 
 export const { setExhauster } = exhausterSlice.actions
-export const getExhausterState = (state: ExhausterState) => state
+// export const getExhausterState = (state: ExhausterState) => state
 
 export default exhausterSlice.reducer

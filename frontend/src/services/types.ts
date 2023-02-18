@@ -32,6 +32,7 @@ export interface BearingData {
 
 export interface ExhausterData {
     id: number,
+    sinterMachineId: number;
     isActive: boolean,
     name: string,
     rotorName: string,

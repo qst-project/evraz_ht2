@@ -25,7 +25,7 @@ function ExhausterCard({ exhausterData }: ExhausterProps) {
                 <h3>{exhausterData.name}</h3>
                 <Button
                     className={styles.watch}
-                    onClick={() => navigation('/exhauster')}
+                    onClick={() => navigation(`/exhauster?machine_id=${exhausterData.sinterMachineId}&exhauster_id=${exhausterData.id}`)}
                 >
                     Watch
                 </Button>

@@ -1,3 +1,3 @@
-import Exhauster from './Exhauster';
+import ExhausterContainer from './ExhausterContainer';
 
-export default Exhauster;
+export default ExhausterContainer

@@ -1,14 +1,20 @@
 import {
-    BearingData, Characteristics, SinterMachineData, SinterMachinesResponse, StatusType,
+    BearingData,
+    Characteristics,
+    SinterMachineData,
+    SinterMachinesResponse,
+    StatusType,
 } from '@services/types';
 
-export const mapSinterMachinesResponse = (response: SinterMachinesResponse) => {
+export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
+: [SinterMachineData[], string] => {
     const sinterMachines: SinterMachineData[] = response.machines.map((machine) => ({
         name: `Агломашина №${machine.number}`,
         id: machine.number,
         exhausters: machine.exhausters.map((ex) => ({
             name: ex.name,
             id: ex.number,
+            sinterMachineId: machine.number,
             bearings: ex.bearings.other.map((bearing) => {
                 const res: BearingData = {
                     name: `ПС ${bearing.number}`,
@@ -23,7 +29,7 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse) => {
                         res.characteristics.push({
                             type: key as Characteristics,
                             status: StatusType.DEFAULT,
-                            value: value.value,
+                            value: value.value.toFixed(2),
                         })
                     }
                 }
@@ -55,7 +61,7 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse) => {
                         res.characteristics.push({
                             type: key as Characteristics,
                             status,
-                            value: value.value,
+                            value: value.value.toFixed(2),
                         })
                     }
                 }
@@ -69,5 +75,5 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse) => {
             lastRotorReplacement: '',
         })),
     }))
-    return sinterMachines;
+    return [sinterMachines, response.moment];
 }
