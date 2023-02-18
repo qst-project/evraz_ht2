@@ -1,7 +1,7 @@
-package org.qst.evrazht2backend.service.kafka.mapper;
+package org.qst.evrazht2backend.mapper;
 
-import org.qst.evrazht2backend.controller.model.WSSinteringMachine;
-import org.qst.evrazht2backend.service.kafka.model.KafkaSinteringMachine;
+import org.qst.evrazht2backend.model.ws.WSSinteringMachine;
+import org.qst.evrazht2backend.model.kafka.KafkaSinteringMachine;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Function;

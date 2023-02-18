@@ -1,9 +1,8 @@
-package org.qst.evrazht2backend.controller.model;
+package org.qst.evrazht2backend.model.ws;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Data

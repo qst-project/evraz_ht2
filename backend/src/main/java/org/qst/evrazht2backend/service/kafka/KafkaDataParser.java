@@ -1,9 +1,9 @@
 package org.qst.evrazht2backend.service.kafka;
 
 import com.opencsv.bean.CsvToBeanBuilder;
-import org.qst.evrazht2backend.service.kafka.model.KafkaBearing;
-import org.qst.evrazht2backend.service.kafka.model.KafkaExhauster;
-import org.qst.evrazht2backend.service.kafka.model.KafkaSinteringMachine;
+import org.qst.evrazht2backend.model.kafka.KafkaBearing;
+import org.qst.evrazht2backend.model.kafka.KafkaExhauster;
+import org.qst.evrazht2backend.model.kafka.KafkaSinteringMachine;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

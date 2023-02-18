@@ -1,7 +1,7 @@
 package org.qst.evrazht2backend.controller;
 
 import lombok.extern.log4j.Log4j2;
-import org.qst.evrazht2backend.controller.model.WSSinteringMachineListResponse;
+import org.qst.evrazht2backend.model.ws.WSSinteringMachineListResponse;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 

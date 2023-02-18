@@ -1,9 +1,9 @@
-package org.qst.evrazht2backend.service.kafka.mapper;
+package org.qst.evrazht2backend.mapper;
 
-import org.qst.evrazht2backend.controller.model.WSBearing;
-import org.qst.evrazht2backend.controller.model.WSBearings;
-import org.qst.evrazht2backend.controller.model.WSExhauster;
-import org.qst.evrazht2backend.service.kafka.model.KafkaExhauster;
+import org.qst.evrazht2backend.model.ws.WSBearing;
+import org.qst.evrazht2backend.model.ws.WSBearings;
+import org.qst.evrazht2backend.model.ws.WSExhauster;
+import org.qst.evrazht2backend.model.kafka.KafkaExhauster;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

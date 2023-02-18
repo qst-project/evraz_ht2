@@ -1,8 +1,8 @@
-package org.qst.evrazht2backend.service.kafka.mapper;
+package org.qst.evrazht2backend.mapper;
 
-import org.qst.evrazht2backend.controller.model.WSBearing;
-import org.qst.evrazht2backend.controller.model.WSNormalized;
-import org.qst.evrazht2backend.service.kafka.model.KafkaBearing;
+import org.qst.evrazht2backend.model.ws.WSBearing;
+import org.qst.evrazht2backend.model.ws.WSNormalized;
+import org.qst.evrazht2backend.model.kafka.KafkaBearing;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Function;

@@ -1,4 +1,4 @@
-package org.qst.evrazht2backend.service.kafka.model;
+package org.qst.evrazht2backend.model.kafka;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

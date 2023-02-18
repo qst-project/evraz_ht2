@@ -6,11 +6,10 @@ import lombok.extern.log4j.Log4j2;
 import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.qst.evrazht2backend.controller.WSController;
-import org.qst.evrazht2backend.controller.model.WSSinteringMachine;
-import org.qst.evrazht2backend.controller.model.WSSinteringMachineListResponse;
-import org.qst.evrazht2backend.repository.InMemoryStorage;
+import org.qst.evrazht2backend.mapper.KafkaSinteringMachineToWS;
+import org.qst.evrazht2backend.model.ws.WSSinteringMachine;
+import org.qst.evrazht2backend.model.ws.WSSinteringMachineListResponse;
 import org.qst.evrazht2backend.repository.KafkaDataCacher;
-import org.qst.evrazht2backend.service.kafka.mapper.KafkaSinteringMachineToWS;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -26,7 +25,6 @@ import java.util.stream.Collectors;
 @EnableScheduling
 @ConditionalOnProperty(value = "kafka.enable", havingValue = "true")
 public class KafkaReader {
-    private final InMemoryStorage inMemoryStorage;
     private final Consumer<String, String> consumer;
 
     final WSController wsController;
@@ -39,7 +37,6 @@ public class KafkaReader {
 
     public KafkaReader(
             WSController wsController,
-            InMemoryStorage inMemoryStorage,
             KafkaSinteringMachineToWS kafkaSinteringMachineToWS,
             KafkaDataParser kafkaDataParser,
             KafkaDataCacher kafkaDataCacher,
@@ -51,7 +48,6 @@ public class KafkaReader {
             @Value("${kafka.topic}") String topicName,
             @Value("${kafka.group-id}") String groupId
     ) {
-        this.inMemoryStorage = inMemoryStorage;
         this.wsController = wsController;
         this.kafkaSinteringMachineToWS = kafkaSinteringMachineToWS;
         this.kafkaDataParser = kafkaDataParser;

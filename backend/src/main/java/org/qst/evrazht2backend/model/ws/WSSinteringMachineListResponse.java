@@ -1,8 +1,7 @@
-package org.qst.evrazht2backend.controller.model;
+package org.qst.evrazht2backend.model.ws;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.qst.evrazht2backend.service.kafka.model.KafkaSinteringMachine;
 
 import java.util.List;
 

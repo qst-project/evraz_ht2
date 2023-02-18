@@ -1,8 +1,8 @@
 package org.qst.evrazht2backend.controller;
 
-import org.qst.evrazht2backend.controller.model.WSSinteringMachine;
+import org.qst.evrazht2backend.model.ws.WSSinteringMachine;
 import org.qst.evrazht2backend.repository.KafkaDataCacher;
-import org.qst.evrazht2backend.service.kafka.mapper.KafkaSinteringMachineToWS;
+import org.qst.evrazht2backend.mapper.KafkaSinteringMachineToWS;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

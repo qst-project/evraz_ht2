@@ -1,6 +1,6 @@
-package org.qst.evrazht2backend.service.kafka.mapper;
+package org.qst.evrazht2backend.mapper;
 
-import org.qst.evrazht2backend.controller.model.WSNormalized;
+import org.qst.evrazht2backend.model.ws.WSNormalized;
 
 
 public class NormalizedToWS {
