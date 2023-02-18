@@ -113,7 +113,7 @@ public class KafkaReader {
         sendCacheToWS();
     }
 
-    @Scheduled(fixedRate = 500)
+    //    @Scheduled(fixedRate = 500)
     private void sendCacheToWS() {
         List<WSSinteringMachine> wsSinteringMachines = kafkaDataCacher.getCache().values().stream().map(kafkaSinteringMachineToWS).collect(Collectors.toList());
         WSSinteringMachineListResponse response = new WSSinteringMachineListResponse(kafkaDataCacher.getLatestMoment(), wsSinteringMachines);
