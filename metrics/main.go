@@ -20,6 +20,10 @@ func unmarshalTime(message json.RawMessage) (res time.Time) {
 	}
 	return
 }
+func unmarshalFloat(message json.RawMessage) (res float64) {
+	unmarshal(message, &res)
+	return
+}
 func main() {
 	schemasByCode := ReadSchemas()
 	collector := NewPrometheusCollector(schemasByCode)
@@ -31,8 +35,7 @@ func main() {
 			if code == "moment" {
 				continue
 			}
-			var value float64
-			unmarshal(rawValue, &value)
+			value := unmarshalFloat(rawValue)
 			collector.UpdateMetric(code, value, moment)
 		}
 	})
