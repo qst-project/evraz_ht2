@@ -43,7 +43,11 @@ public class KafkaDataParser {
         });
         Object value = valueWithSchema.getValue();
         if (valueWithSchema.getSchema().getBearingNumber() != null) {
-            KafkaBearing bearing = exhauster.getBearings().computeIfAbsent(valueWithSchema.getSchema().getBearingNumber(), e -> new KafkaBearing());
+            KafkaBearing bearing = exhauster.getBearings().computeIfAbsent(valueWithSchema.getSchema().getBearingNumber(), e -> {
+                KafkaBearing newBearing = new KafkaBearing();
+                newBearing.setNumber(valueWithSchema.getSchema().getBearingNumber());
+                return newBearing;
+            });
             switch (valueWithSchema.getSchema().measure) {
                 case "bearing_temperature" -> bearing.setTemperature((Double) value);
                 case "bearing_temperature_alarm_max" -> bearing.setTemperatureAlarmMax((Double) value);
