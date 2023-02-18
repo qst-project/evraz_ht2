@@ -8,7 +8,7 @@ import {
 
 export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
     : [SinterMachineData[], string] => {
-    const sinterMachines: SinterMachineData[] = response.machines.map((machine) => ({
+    const sinterMachines: SinterMachineData[] = response.machines?.map((machine) => ({
         name: `Агломашина №${machine.number}`,
         id: machine.number,
         exhausters: machine.exhausters.map((ex) => ({
