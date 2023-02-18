@@ -9,6 +9,5 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class SinteringMachineListResponse {
-    String moment;
     List<WSSinteringMachine> machines;
 }

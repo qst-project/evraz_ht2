@@ -23,6 +23,6 @@ public class WebRestController {
     @GetMapping("/sin_machines")
     public SinteringMachineListResponse machines() {
         List<WSSinteringMachine> wsSinteringMachines = kafkaDataCacher.getCache().values().stream().map(kafkaSinteringMachineToWS).collect(Collectors.toList());
-        return new SinteringMachineListResponse(kafkaDataCacher.getLatestMoment(), wsSinteringMachines);
+        return new SinteringMachineListResponse(wsSinteringMachines);
     }
 }

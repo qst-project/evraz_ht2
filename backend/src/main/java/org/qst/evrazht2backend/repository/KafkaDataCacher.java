@@ -9,7 +9,6 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class KafkaDataCacher {
     ConcurrentHashMap<Integer, KafkaSinteringMachine> cache;
-    String latestMoment = "";
 
     KafkaDataCacher() {
         cache = new ConcurrentHashMap<>();
@@ -19,11 +18,5 @@ public class KafkaDataCacher {
         return cache;
     }
 
-    public String getLatestMoment() {
-        return latestMoment;
-    }
 
-    public void setLatestMoment(String latestMoment) {
-        this.latestMoment = latestMoment;
-    }
 }

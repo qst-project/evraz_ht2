@@ -7,8 +7,8 @@ import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.qst.evrazht2backend.controller.WSController;
 import org.qst.evrazht2backend.mapper.KafkaSinteringMachineToWS;
-import org.qst.evrazht2backend.model.ws.WSSinteringMachine;
 import org.qst.evrazht2backend.model.SinteringMachineListResponse;
+import org.qst.evrazht2backend.model.ws.WSSinteringMachine;
 import org.qst.evrazht2backend.repository.KafkaDataCacher;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -84,9 +84,9 @@ public class KafkaReader {
         while (itr.hasNext()) {
             String rawData = itr.next().value();
             data = new ObjectMapper().readValue(rawData, HashMap.class);
-            kafkaDataParser.update(kafkaDataCacher.getCache(), data);
-            kafkaDataCacher.setLatestMoment(data.get("moment").toString());
-            System.out.println(data.get("moment").toString());
+            String moment = data.get("moment").toString();
+            kafkaDataParser.update(moment, kafkaDataCacher.getCache(), data);
+            System.out.println(moment);
         }
         sendCacheToWS();
     }
@@ -94,7 +94,7 @@ public class KafkaReader {
     //    @Scheduled(fixedRate = 500)
     private void sendCacheToWS() {
         List<WSSinteringMachine> wsSinteringMachines = kafkaDataCacher.getCache().values().stream().map(kafkaSinteringMachineToWS).collect(Collectors.toList());
-        SinteringMachineListResponse response = new SinteringMachineListResponse(kafkaDataCacher.getLatestMoment(), wsSinteringMachines);
+        SinteringMachineListResponse response = new SinteringMachineListResponse(wsSinteringMachines);
         wsController.sendUpdate(response);
     }
 }
