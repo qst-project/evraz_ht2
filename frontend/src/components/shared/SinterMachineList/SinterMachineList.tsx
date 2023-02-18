@@ -14,8 +14,11 @@ function SinterMachineList({
         <Card title='Главный экран' className={styles.main}>
             <TimingInfo moment={moment} delay={delay} />
             <div className={styles.list}>
-                {sinterMachines.map((item) => (
-                    <SinterMachine sinterMachineData={item} key={item.id} />
+                {sinterMachines.map((sinterMachine) => (
+                    <SinterMachine
+                        sinterMachineData={sinterMachine}
+                        key={sinterMachine.id}
+                    />
                 ))}
             </div>
         </Card>

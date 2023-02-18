@@ -40,6 +40,6 @@ export const getExhausterState = (
             .find((exhauster) => exhauster.id === exhausterNumber)
         : null
 )
-export const getSinterMachinesMoment = (state: SinterMachinesState) => state.moment
+export const getSinterMachinesTiming = (state: SinterMachinesState) => [state.moment, state.delay]
 
 export default sinterMachinesSlice.reducer

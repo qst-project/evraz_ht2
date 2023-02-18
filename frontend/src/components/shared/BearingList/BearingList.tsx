@@ -8,7 +8,7 @@ const { Panel } = Collapse;
 
 function BearingList({ exhausterData }: BearingListProps) {
     return (
-        <Collapse>
+        <Collapse defaultActiveKey={['1']}>
             <Panel
                 key={1}
                 header='Предупреждения'

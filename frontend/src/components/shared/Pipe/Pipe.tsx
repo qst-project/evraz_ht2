@@ -31,22 +31,17 @@ const typeStatusColor = new Map<StatusType, string>([
     [StatusType.WARNING, Colors.ORANGE],
 ]);
 
-function Pipe({ style }: PipeProps) {
+function Pipe({ style, temperature, underpressure }: PipeProps) {
     const gasTemperatureData: GasTemperatureData = {
-        value: 34,
-        status: StatusType.DANGER,
+        value: temperature,
+        status: StatusType.DEFAULT,
     }
 
     const characteristics = [
         {
-            status: StatusType.WARNING,
-            type: Characteristics.UNDERPRESSURE,
-            value: 10,
-        },
-        {
             status: StatusType.DEFAULT,
-            type: Characteristics.DUST_LEVEL,
-            value: 0,
+            type: Characteristics.UNDERPRESSURE,
+            value: underpressure,
         },
     ]
 

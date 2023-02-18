@@ -3,12 +3,12 @@ import React from 'react'
 import { StatusType } from '@services/types';
 import TemperatureSensor from './TemperatureSensor'
 
-function TemperatureSensorContainer({ style }: any) {
+function TemperatureSensorContainer({ style, value }: any) {
     return (
         <div style={style}>
             <TemperatureSensor
-                value={100}
-                status={StatusType.WARNING}
+                value={value}
+                status={StatusType.DEFAULT}
             />
         </div>
     )

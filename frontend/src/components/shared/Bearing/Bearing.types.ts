@@ -4,6 +4,6 @@ import React from 'react';
 export interface BearingProps {
     name: string;
     status: StatusType,
-    characteristics: CharacteristicData[];
+    characteristics: CharacteristicData[] | undefined;
     style?: React.CSSProperties,
 }
