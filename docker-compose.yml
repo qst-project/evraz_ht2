@@ -44,6 +44,15 @@ services:
       - '--web.listen-address=:9099'
     network_mode: host
 
+  # data prediction
+  data_prediction_service:
+    container_name: data_prediction_service
+    build:
+      context: data_prediction_service
+      dockerfile: Dockerfile
+    ports:
+      - "8765:8765"
+
   # kafka
   #  zookeeper:
   #    image: confluentinc/cp-zookeeper:latest
