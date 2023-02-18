@@ -40,6 +40,18 @@ export interface ExhausterData {
     date: string,
     lastRotorReplacement: string,
     forecast: string,
+    mainDriveCharacteristics: CharacteristicData[],
+    oilLevel: number,
+    oilPressure: number,
+    coolerOilTemperatureAfter: number,
+    coolerOilTemperatureBefore: number,
+    coolerWaterTemperatureAfter: number,
+    coolerWaterTemperatureBefore: number,
+    gasValveClosed:boolean,
+    gasValveOpen:boolean,
+    gasValvePosition: number,
+    // gasCollectorTemperatureAfter: number,
+    gasCollectorTemperatureBefore: number,
     bearings: BearingData[],
     problems: BearingData[],
 }
@@ -83,11 +95,27 @@ export interface KafkaExhauster {
         warn: KafkaBearing[],
         other: KafkaBearing[],
     },
+    coolerOilTemperatureAfter: number,
+    coolerOilTemperatureBefore: number,
+    coolerWaterTemperatureAfter: number,
+    coolerWaterTemperatureBefore: number,
+    // gasCollectorTemperatureAfter: number,
+    gasCollectorTemperatureBefore: number,
+    gasValveClosed:boolean,
+    gasValveOpen:boolean,
+    gasValvePosition: number,
+    mainDriveRotorCurrent: number,
+    mainDriveRotorVoltage: number,
+    mainDriveStatorCurrent: number,
+    mainDriveStatorVoltage: number,
+    oilLevel: number,
+    oilPressure: number,
 }
 
 export interface KafkaSinterMachine {
     number: number,
     exhausters: KafkaExhauster[],
+    work:boolean,
 }
 
 export interface SinterMachinesResponse {

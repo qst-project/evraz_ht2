@@ -7,7 +7,7 @@ import {
 } from '@services/types';
 
 export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
-: [SinterMachineData[], string] => {
+    : [SinterMachineData[], string] => {
     const sinterMachines: SinterMachineData[] = response.machines.map((machine) => ({
         name: `Агломашина №${machine.number}`,
         id: machine.number,
@@ -73,6 +73,38 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
             isActive: true,
             date: '',
             forecast: '',
+            mainDriveCharacteristics: [
+                {
+                    status: StatusType.DEFAULT,
+                    value: ex.mainDriveRotorCurrent,
+                    type: Characteristics.DRIVE_AMPERAGE,
+                },
+                {
+                    status: StatusType.DEFAULT,
+                    value: ex.mainDriveStatorCurrent,
+                    type: Characteristics.AMPERAGE,
+                },
+                {
+                    status: StatusType.DEFAULT,
+                    value: ex.mainDriveRotorVoltage,
+                    type: Characteristics.ROTOR_VOLTAGE,
+                },
+                {
+                    status: StatusType.DEFAULT,
+                    value: ex.mainDriveStatorVoltage,
+                    type: Characteristics.STARTER_VOLTAGE,
+                },
+            ],
+            oilLevel: Number(ex.oilLevel.toFixed(2)),
+            oilPressure: Number(ex.oilPressure.toFixed(2)),
+            coolerOilTemperatureAfter: Number(ex.coolerOilTemperatureAfter.toFixed(2)),
+            coolerOilTemperatureBefore: Number(ex.coolerOilTemperatureBefore.toFixed(2)),
+            coolerWaterTemperatureAfter: Number(ex.coolerWaterTemperatureAfter.toFixed(2)),
+            coolerWaterTemperatureBefore: Number(ex.coolerWaterTemperatureBefore.toFixed(2)),
+            gasValvePosition: ex.gasValvePosition,
+            gasValveOpen: ex.gasValveOpen,
+            gasValveClosed: ex.gasValveClosed,
+            gasCollectorTemperatureBefore: Number(ex.gasCollectorTemperatureBefore.toFixed(2)),
             rotorName: '',
             lastRotorReplacement: '',
         })),

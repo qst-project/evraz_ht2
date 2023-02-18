@@ -7,25 +7,10 @@ import { OilTankProps } from '@shared/OilTank/OilTank.types';
 import { IOilLevelData } from '../OilLevel/OilLevel.types';
 import OilLevelContainer from '../OilLevel';
 
-const defaultStyle = {
-}
-
-const dangerStyle = {
-}
-
-const warningStyle = {
-}
-
-const typeStatusClassName = new Map<StatusType, object>([
-    [StatusType.DEFAULT, defaultStyle],
-    [StatusType.DANGER, dangerStyle],
-    [StatusType.WARNING, warningStyle],
-]);
-
-function OilTank({ style }: OilTankProps) {
+function OilTank({ style, value }: OilTankProps) {
     const oilLevelData: IOilLevelData = {
-        status: StatusType.DANGER,
-        value: 5.4,
+        status: StatusType.DEFAULT,
+        value,
     }
     const a = '#e8e8e8';
 
@@ -34,7 +19,6 @@ function OilTank({ style }: OilTankProps) {
             bordered
             title='Маслобак'
             style={{
-                ...typeStatusClassName.get(oilLevelData.status),
                 ...style,
                 border: '2px solid rgb(142,161,161)',
             }}

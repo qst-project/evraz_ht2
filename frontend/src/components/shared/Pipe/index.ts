@@ -1,3 +1,3 @@
-import PipeContainer from './PipeContainer'
+import Pipe from './Pipe'
 
-export default PipeContainer
+export default Pipe

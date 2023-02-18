@@ -1,12 +1,13 @@
 import React from 'react';
 import Bearing from '@shared/Bearing/Bearing';
-import { Characteristics, StatusType } from '@services/types';
+import { StatusType } from '@services/types';
 import MainDrive from '@shared/MainDrive/MainDrive';
 import OilTank from '@shared/OilTank';
 import Pipe from '@shared/Pipe/Pipe';
 import BearingTrigger from '@shared/BearingTrigger';
 import TemperatureSensorContainer from '@shared/TemperatureSensor';
 import TimingInfo from '@shared/TimingInfo';
+import GasValve from '@components/GasValve/GasValve';
 
 import styles from './Exhauster.module.scss';
 import OilPressureContainer from '../OilPressure';
@@ -21,24 +22,28 @@ function Exhauster({ exhauster, moment, delay }: ExhausterProps) {
                     top: '25px',
                     left: '1067px',
                 }}
+                value={exhauster.coolerWaterTemperatureBefore}
             />
             <TemperatureSensorContainer
                 style={{
                     top: '25px',
                     left: '1150px',
                 }}
+                value={exhauster.coolerWaterTemperatureAfter}
             />
             <TemperatureSensorContainer
                 style={{
                     top: '195px',
                     left: '1110px',
                 }}
+                value={exhauster.coolerOilTemperatureAfter}
             />
             <TemperatureSensorContainer
                 style={{
                     top: '119px',
                     left: '993px',
                 }}
+                value={exhauster.coolerOilTemperatureBefore}
             />
             {exhauster
                 ? (
@@ -227,42 +232,29 @@ function Exhauster({ exhauster, moment, delay }: ExhausterProps) {
                 ) : null}
             <MainDrive
                 status={StatusType.DEFAULT}
-                characteristics={[
-                    {
-                        status: StatusType.DANGER,
-                        type: Characteristics.AMPERAGE,
-                        value: 210,
-                    },
-                    {
-                        status: StatusType.WARNING,
-                        type: Characteristics.DRIVE_AMPERAGE,
-                        value: 210,
-                    },
-                    {
-                        status: StatusType.DEFAULT,
-                        type: Characteristics.ROTOR_VOLTAGE,
-                        value: 210,
-                    },
-                    {
-                        status: StatusType.DEFAULT,
-                        type: Characteristics.STARTER_VOLTAGE,
-                        value: 210,
-                    },
-                ]}
+                characteristics={exhauster.mainDriveCharacteristics}
                 style={{ top: '276px', left: '966px' }}
             />
-            <OilTank style={{ top: '36px', right: '530px' }} />
-            <Pipe style={{ top: '169px', left: '272px' }} />
+            <OilTank
+                value={exhauster.oilLevel}
+                style={{ top: '36px', right: '530px' }}
+            />
+            <Pipe
+                temperature={exhauster.gasCollectorTemperatureBefore}
+                underpressure={10}
+                style={{ top: '169px', left: '272px' }}
+            />
             <OilPressureContainer
                 style={{
                     top: '202px',
                     left: '1227px',
                 }}
                 oilPressureData={{
-                    status: StatusType.WARNING,
-                    value: 2.1,
+                    status: StatusType.DEFAULT,
+                    value: exhauster.oilPressure,
                 }}
             />
+            <GasValve value={exhauster.gasValvePosition} />
         </section>
     );
 }
