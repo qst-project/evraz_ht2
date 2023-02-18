@@ -1,5 +1,6 @@
 import asyncio
 import websockets
+import json
 
 '''
     Data format json: 
@@ -18,22 +19,22 @@ import websockets
     }
 '''
 
-async def send_prediction(websocket):
-    async for msg in websocket:
-        json = json.dumps([{
-                "exhauter_name": "\u0423-171",
-                "hours_to_failure": 120,
-                "precision": 100,
-            }, {
-                "exhauter_name": "\u0423-172",
-                "hours_to_failure": 120,
-                "precision": 100,
-            }])
-        await websocket.send(json)
-        
-async def serve():
-    async with websockets.serve(send_prediction, "localhost", 8765):
-        await asyncio.Future()
+async def send_prediction(websocket, path):
+    msg = await websocket.recv()
+    _json = json.dumps([{
+            "exhauter_name": "У-171",
+            "hours_to_failure": 120,
+            "precision": 100,
+        }, {
+            "exhauter_name": "Ф-172",
+            "hours_to_failure": 120,
+            "precision": 100,
+        }])
+    await websocket.send(_json)
         
 if __name__ == "__main__":
-    asyncio.run(serve())
+    print("Running server")
+    ws_server = websockets.serve(send_prediction, "127.0.0.1", 8765)
+    
+    asyncio.get_event_loop().run_until_complete(ws_server)
+    asyncio.get_event_loop().run_forever()
