@@ -112,11 +112,11 @@ temperature_before,SM_Exgauster\[2:24],Температура перед экс�
 underpressure_before,SM_Exgauster\[2:61],Разрежение перед эксгаустером №1,analog,1,gas_collector,0
 gas_valve_closed,SM_Exgauster\[4.1],ЗАКРЫТО задвижка газ эксгаустер №1,digital,1,valve,0
 gas_valve_open,SM_Exgauster\[4.2],ОТКРЫТО задвижка газ эксгаустер №1,digital,1,valve,0
-gas_valve_position,SM_Exgauster\[4.6],Положение задвижки газ эксгаустера №1,analog,0,valve,0
-rotor_current,SM_Exgauster\[4.2],Ток ротора эксгаустера №1,analog,0,rotor,0
-rotor_voltage,SM_Exgauster\[4.4],Напряжение ротора эксгаустера №1,analog,0,rotor,0
-stator_current,SM_Exgauster\[4.3],Ток статора эксгаустера №1,analog,1,stator,0
-stator_voltage,SM_Exgauster\[4.5],Напряжение статора эксгаустера №1,analog,0,stator,0
-oil_level,SM_Exgauster\[4.0],Уровень масла в маслосистеме эксгаустера №1,analog,1,oil_system,0
-oil_pressure,SM_Exgauster\[4.1],Давление масла в маслосистеме эксгаустера №1,analog,1,oil_system,0
+gas_valve_position,SM_Exgauster\[4:6],Положение задвижки газ эксгаустера №1,analog,0,valve,0
+rotor_current,SM_Exgauster\[4:2],Ток ротора эксгаустера №1,analog,0,rotor,0
+rotor_voltage,SM_Exgauster\[4:4],Напряжение ротора эксгаустера №1,analog,0,rotor,0
+stator_current,SM_Exgauster\[4:3],Ток статора эксгаустера №1,analog,1,stator,0
+stator_voltage,SM_Exgauster\[4:5],Напряжение статора эксгаустера №1,analog,0,stator,0
+oil_level,SM_Exgauster\[4:0],Уровень масла в маслосистеме эксгаустера №1,analog,1,oil_system,0
+oil_pressure,SM_Exgauster\[4:1],Давление масла в маслосистеме эксгаустера №1,analog,1,oil_system,0
 work,SM_Exgauster\[2.0],46 Работа эксгаустера №1,digital,1,is_working,0
