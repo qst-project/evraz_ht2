@@ -15,6 +15,7 @@ columns = [
     'sinmachine_number',
     'exhauster_number',
     'exhauster_name',
+    'bearing_number',
     'measure',  # ['bearing_temperature', 'bearing_temperature_alarm_max', ...
     # 'cooler_oil', 'cooler_water', 'gas_collector', 'valve_pos', 'main_drive', 'oil', '']
     'signal',
@@ -49,7 +50,8 @@ for sheet_name in sheet_names:
                     cur_bearing_signal, optional_limits = res_row['signal'], ''
                 else:
                     optional_limits = '_' + res_row['signal']
-                res_row['measure'] = f'bearing_{number}_{cur_bearing_signal}' + optional_limits
+                res_row['bearing_number'] = number
+                res_row['measure'] = f'bearing_{cur_bearing_signal}' + optional_limits
             case "Охладитель":  # коллектор
                 match row[1]:
                     case 'Масло':
@@ -70,5 +72,6 @@ for sheet_name in sheet_names:
         if i + 1 < df.shape[0] and df.at[i + 1, df.columns[0]] == '':
             df.at[i + 1, df.columns[0]] = row[0]
         res = res.append(res_row, ignore_index=True)
+        res_row['bearing_number'] = None
 
 res.to_csv('ou.csv', index=False)
