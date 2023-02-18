@@ -7,7 +7,6 @@ import (
 	"github.com/Shopify/sarama"
 	"io/ioutil"
 	"os"
-	"os/signal"
 )
 
 type YandexKafkaClient struct {
@@ -58,27 +57,15 @@ func NewYandexKafkaClient() (res YandexKafkaClient) {
 	}
 	return
 }
-func (client YandexKafkaClient) poll(messages chan string) {
-
-	signals := make(chan os.Signal, 1)
-	signal.Notify(signals, os.Interrupt)
-
-	// Get signal to finish
-	doneCh := make(chan struct{})
-	go func() {
-		for {
-			select {
-			case err := <-client.PartitionConsumer.Errors():
-				fmt.Println(err)
-			case msg := <-client.PartitionConsumer.Messages():
-				messages <- string(msg.Value)
-			case <-signals:
-				fmt.Println("Interrupt is detected")
-				doneCh <- struct{}{}
-			}
+func (client YandexKafkaClient) poll(callback func(message []byte)) {
+	for {
+		select {
+		case err := <-client.PartitionConsumer.Errors():
+			fmt.Println(err)
+		case msg := <-client.PartitionConsumer.Messages():
+			callback(msg.Value)
 		}
-	}()
-	<-doneCh
+	}
 }
 
 func (client YandexKafkaClient) close() {

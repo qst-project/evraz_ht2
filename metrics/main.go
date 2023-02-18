@@ -1,15 +1,40 @@
 package main
 
-func main2() {
-	messages := make(chan string, 1)
-	go func() {
-		for {
-			select {
-			case msg := <-messages:
-				println(msg)
+import (
+	"encoding/json"
+	"time"
+)
+
+func unmarshal(message json.RawMessage, value any) {
+	if err := json.Unmarshal(message, value); err != nil {
+		panic(err)
+	}
+}
+
+func unmarshalTime(message json.RawMessage) (res time.Time) {
+	var momentString string
+	unmarshal(message, &momentString)
+	res, err := time.Parse("2006-01-02T15:04:05.000000", momentString)
+	if err != nil {
+		panic(err)
+	}
+	return
+}
+func main() {
+	schemasByCode := ReadSchemas()
+	collector := NewPrometheusCollector(schemasByCode)
+	go NewYandexKafkaClient().poll(func(rawMessage []byte) {
+		var data map[string]json.RawMessage
+		unmarshal(rawMessage, &data)
+		moment := unmarshalTime(data["moment"])
+		for code, rawValue := range data {
+			if code == "moment" {
+				continue
 			}
+			var value float64
+			unmarshal(rawValue, &value)
+			collector.UpdateMetric(code, value, moment)
 		}
-	}()
-	yandexKafkaClient := NewYandexKafkaClient()
-	yandexKafkaClient.poll(messages)
+	})
+	collector.Run()
 }

@@ -1,43 +1,76 @@
 package main
 
 import (
-	"math/rand"
+	cmap "github.com/orcaman/concurrent-map/v2"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
+type ValueWithTime struct {
+	float64
+	time.Time
+}
 type PrometheusCollector struct {
-	metric *prometheus.Desc
+	metrics       cmap.ConcurrentMap[string, *prometheus.Desc]
+	metricsValues cmap.ConcurrentMap[string, ValueWithTime]
 }
 
+func NewPrometheusCollector(schemas map[string]*CsvSchema) (res PrometheusCollector) {
+	res.metrics = cmap.New[*prometheus.Desc]()
+	res.metricsValues = cmap.New[ValueWithTime]()
+	for code, schema := range schemas {
+		var name = strings.ToLower(code)
+		name = strings.Replace(name, "\\", "", -1)
+		name = strings.Replace(name, "]", "", -1)
+		name = strings.Replace(name, "[", "_", -1)
+		name = strings.Replace(name, ":", "__", -1)
+		name = strings.Replace(name, ".", "_", -1)
+		desc := prometheus.NewDesc(
+			name,
+			schema.Description,
+			nil,
+			map[string]string{
+				"sinmachine_number": schema.SinmachineNumber,
+				"exhauster_number":  schema.ExhausterNumber,
+				"exhauster_name":    schema.ExhausterName,
+				"bearing_number":    schema.BearingNumber,
+				"measure":           schema.Measure,
+				"type":              schema.Type,
+				"activity":          schema.Activity,
+				"signal":            schema.Signal,
+			},
+		)
+		res.metrics.Set(schema.Code, desc)
+	}
+	prometheus.MustRegister(&res)
+	return
+}
 func (c *PrometheusCollector) Describe(ch chan<- *prometheus.Desc) {
-	ch <- c.metric
+	for _, metric := range c.metrics.Items() {
+		ch <- metric
+	}
 }
 
 func (c *PrometheusCollector) Collect(ch chan<- prometheus.Metric) {
-	// your logic should be placed here
-
-	t := time.Now()
-	s := prometheus.NewMetricWithTimestamp(t, prometheus.MustNewConstMetric(c.metric, prometheus.CounterValue, float64(rand.Intn(100))))
-
-	ch <- s
+	for code, value := range c.metricsValues.Items() {
+		desc, res := c.metrics.Get(code)
+		if res {
+			metric := prometheus.MustNewConstMetric(desc, prometheus.CounterValue, value.float64)
+			ch <- prometheus.NewMetricWithTimestamp(value.Time, metric)
+		}
+	}
 }
 
-func main() {
-	collector := &PrometheusCollector{
-		metric: prometheus.NewDesc(
-			"my_metric",
-			"This is my metric with custom TS",
-			nil,
-			nil,
-		),
-	}
-	prometheus.MustRegister(collector)
-
+func (c *PrometheusCollector) UpdateMetric(metricCode string, value float64, lastTimeMetricsUpdated time.Time) {
+	c.metricsValues.Set(metricCode, ValueWithTime{value, lastTimeMetricsUpdated})
+}
+func (c *PrometheusCollector) Run() {
 	http.Handle("/metrics", promhttp.Handler())
-	//log.Info("Beginning to serve on port :8080")
-	http.ListenAndServe(":2112", nil)
+	if err := http.ListenAndServe(":2112", nil); err != nil {
+		panic(err)
+	}
 }
