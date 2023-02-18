@@ -3,7 +3,6 @@ package main
 import (
 	cmap "github.com/orcaman/concurrent-map/v2"
 	"net/http"
-	"strings"
 	"time"
 
 	"github.com/prometheus/client_golang/prometheus"
@@ -17,32 +16,28 @@ type ValueWithTime struct {
 type PrometheusCollector struct {
 	metrics       cmap.ConcurrentMap[string, *prometheus.Desc]
 	metricsValues cmap.ConcurrentMap[string, ValueWithTime]
+	schemas       map[string]*CsvSchema
 }
 
 func NewPrometheusCollector(schemas map[string]*CsvSchema) (res PrometheusCollector) {
 	res.metrics = cmap.New[*prometheus.Desc]()
 	res.metricsValues = cmap.New[ValueWithTime]()
-	for code, schema := range schemas {
-		var name = strings.ToLower(code)
-		name = strings.Replace(name, "\\", "", -1)
-		name = strings.Replace(name, "]", "", -1)
-		name = strings.Replace(name, "[", "_", -1)
-		name = strings.Replace(name, ":", "__", -1)
-		name = strings.Replace(name, ".", "_", -1)
+	res.schemas = schemas
+	for _, schema := range schemas {
 		desc := prometheus.NewDesc(
-			name,
-			schema.Description,
-			nil,
-			map[string]string{
-				"sinmachine_number": schema.SinmachineNumber,
-				"exhauster_number":  schema.ExhausterNumber,
-				"exhauster_name":    schema.ExhausterName,
-				"bearing_number":    schema.BearingNumber,
-				"measure":           schema.Measure,
-				"type":              schema.Type,
-				"activity":          schema.Activity,
-				"signal":            schema.Signal,
+			schema.Signal,
+			"",
+			[]string{
+				"description",
+				"sinmachine_number",
+				"exhauster_number",
+				"exhauster_name",
+				"bearing_number",
+				"measure",
+				"type",
+				"activity",
 			},
+			nil,
 		)
 		res.metrics.Set(schema.Code, desc)
 	}
@@ -57,11 +52,28 @@ func (c *PrometheusCollector) Describe(ch chan<- *prometheus.Desc) {
 
 func (c *PrometheusCollector) Collect(ch chan<- prometheus.Metric) {
 	for code, value := range c.metricsValues.Items() {
-		desc, res := c.metrics.Get(code)
-		if res {
-			metric := prometheus.MustNewConstMetric(desc, prometheus.CounterValue, value.float64)
-			ch <- prometheus.NewMetricWithTimestamp(value.Time, metric)
+		desc, ok := c.metrics.Get(code)
+		if !ok {
+			continue
 		}
+		schema, ok := c.schemas[code]
+		if !ok {
+			continue
+		}
+		metric := prometheus.MustNewConstMetric(
+			desc,
+			prometheus.CounterValue,
+			value.float64,
+			schema.Description,
+			schema.SinmachineNumber,
+			schema.ExhausterNumber,
+			schema.ExhausterName,
+			schema.BearingNumber,
+			schema.Measure,
+			schema.Type,
+			schema.Activity,
+		)
+		ch <- prometheus.NewMetricWithTimestamp(value.Time, metric)
 	}
 }
 
