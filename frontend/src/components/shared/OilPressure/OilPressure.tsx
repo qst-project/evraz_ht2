@@ -25,16 +25,19 @@ const typeStatusClassName = new Map<StatusType, object>([
     [StatusType.WARNING, warningStyle],
 ]);
 
+const a = '#e8e8e8';
+
 function OilPressure({
     strokeColor = '',
     value = 0,
-    status = StatusType.WARNING,
+    status = StatusType.DEFAULT,
 }: OilPressureProps) {
     return (
         <Card
             bordered
             className={styles.oilPressure}
-            style={typeStatusClassName.get(status)}
+            bodyStyle={{ padding: '12px', backgroundColor: a }}
+            style={{ ...typeStatusClassName.get(status), border: '2px solid rgb(142,161,161)' }}
         >
             <Col span={24}>
                 <Progress

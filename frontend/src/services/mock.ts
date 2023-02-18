@@ -11,6 +11,7 @@ export const exhausterMock: ExhausterData = {
     sinterMachineId: 1,
     bearings: [
         {
+            number: 1,
             name: 'PS 1',
             characteristics: [
                 {
@@ -21,6 +22,7 @@ export const exhausterMock: ExhausterData = {
             ],
         },
         {
+            number: 1,
             name: 'PS 2',
             characteristics: [
                 {
@@ -31,6 +33,7 @@ export const exhausterMock: ExhausterData = {
             ],
         },
         {
+            number: 1,
             name: 'PS 3',
             characteristics: [
                 {
@@ -56,6 +59,7 @@ export const exhausterMock: ExhausterData = {
             ],
         },
         {
+            number: 1,
             name: 'PS 4',
             characteristics: [
                 {
@@ -82,4 +86,16 @@ export const exhausterMock: ExhausterData = {
         },
     ],
     problems: [],
+    mainDriveCharacteristics: [],
+    oilLevel: 0,
+    oilPressure: 0,
+    coolerOilTemperatureAfter: 0,
+    coolerOilTemperatureBefore: 0,
+    coolerWaterTemperatureAfter: 0,
+    coolerWaterTemperatureBefore: 0,
+    gasValveClosed: true,
+    gasValveOpen: true,
+    gasValvePosition: 0,
+    gasCollectorTemperatureBefore: 0,
+    gasCollectorUnderPressureBefore: 0,
 }

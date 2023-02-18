@@ -1,4 +1,5 @@
 import React from 'react';
+import { Row, Tooltip } from 'antd';
 import { Characteristics, StatusType } from '@services/types';
 import { ReactComponent as ThermometerIcon } from '@images/thermometer.svg';
 import { ReactComponent as DropIcon } from '@images/drop.svg';
@@ -49,8 +50,12 @@ function BearingItem({ bearingData }: BearingItemProps) {
                         className={getCharacteristicClassName(item.status)}
                         key={item.type}
                     >
-                        {abbreviations[item.type]}
-                        {getIcon(item.type, { className: styles.icon })}
+                        <Tooltip title={item.value}>
+                            <Row align={'middle'} justify={'center'}>
+                                {abbreviations[item.type]}
+                                {getIcon(item.type, { className: styles.icon })}
+                            </Row>
+                        </Tooltip>
                     </li>
                 ))}
             </ul>
