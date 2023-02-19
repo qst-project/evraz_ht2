@@ -12,7 +12,6 @@ export function subscribe(
             const now = new Date();
             const nowGMT = now.valueOf() + (now.getTimezoneOffset() * 60000)
             const res = JSON.parse(msg.body);
-            console.log(res)
             const [exhausters, moment] = (mapSinterMachinesResponse(res));
             const delay = ((nowGMT - new Date(moment).valueOf()) / 1000).toFixed(2)
             dispatch(setSinterMachines([
