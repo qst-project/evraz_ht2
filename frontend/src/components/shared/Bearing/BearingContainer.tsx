@@ -1,5 +1,5 @@
 import React from 'react'
-import { Characteristics, StatusType } from '@services/types';
+import { CharacteristicsBackend, StatusType } from '@services/types';
 import Bearing from './Bearing';
 
 interface BearingContainerProps {
@@ -12,22 +12,22 @@ function BearingContainer({
     const characteristics = [
         {
             status: StatusType.DANGER,
-            type: Characteristics.TEMPERATURE,
+            type: CharacteristicsBackend.TEMPERATURE,
             value: 200,
         },
         {
             status: StatusType.WARNING,
-            type: Characteristics.VERTICAL,
+            type: CharacteristicsBackend.VERTICAL,
             value: 140,
         },
         {
             status: StatusType.DEFAULT,
-            type: Characteristics.HORIZONTAL,
+            type: CharacteristicsBackend.HORIZONTAL,
             value: 298,
         },
         {
             status: StatusType.DEFAULT,
-            type: Characteristics.AXIS,
+            type: CharacteristicsBackend.AXIS,
             value: 200,
         },
     ];
@@ -40,7 +40,7 @@ function BearingContainer({
                     name='9 ПС'
                     status={StatusType.WARNING}
                     // characteristics={characteristics}
-                    characteristics={[{ status: StatusType.DANGER, value: { value: 0, moment: '', }, type: Characteristics.AMPERAGE }]}
+                    characteristics={[{ status: StatusType.DANGER, value: { value: 0, moment: '', }, type: CharacteristicsBackend.AMPERAGE }]}
                 />
             )
             : null

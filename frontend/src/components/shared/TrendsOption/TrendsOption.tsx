@@ -9,7 +9,6 @@ import { TrendsOptionProps } from './TrendsOption.types';
 
 function TrendsOption({
     label,
-    value,
     name,
 }: TrendsOptionProps) {
     const { selectedOptions } = useAppSelector((state) => state.trendsReducer);
@@ -28,7 +27,7 @@ function TrendsOption({
                 defaultChecked={selectedOptions.includes(name)}
                 onChange={onChange}
             >
-                {`${characteristicUnits.get(label)}: ${value}`}
+                {`${characteristicUnits.get(label)}: ${0}`}
             </Checkbox>
         </div>
     );

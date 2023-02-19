@@ -1,27 +1,27 @@
 import React from 'react';
 import { Row, Tooltip } from 'antd';
-import { Characteristics, StatusType } from '@services/types';
+import { CharacteristicsBackend, StatusType } from '@services/types';
 import { ReactComponent as ThermometerIcon } from '@images/thermometer.svg';
 import { ReactComponent as DropIcon } from '@images/drop.svg';
 import { BearingItemProps } from './BearingList.types';
 import styles from './BearingList.module.scss';
 
 const abbreviations: Record<string, string> = {
-    [Characteristics.TEMPERATURE]: 'T',
-    [Characteristics.OIL_LEVEL]: 'L',
-    [Characteristics.AXIS]: 'A',
-    [Characteristics.HORIZONTAL]: 'H',
-    [Characteristics.VERTICAL]: 'V',
-    [Characteristics.AMPERAGE]: 'A',
-    [Characteristics.OIL_PRESSURE]: 'P',
+    [CharacteristicsBackend.TEMPERATURE]: 'T',
+    [CharacteristicsBackend.OIL_LEVEL]: 'L',
+    [CharacteristicsBackend.AXIS]: 'A',
+    [CharacteristicsBackend.HORIZONTAL]: 'H',
+    [CharacteristicsBackend.VERTICAL]: 'V',
+    [CharacteristicsBackend.AMPERAGE]: 'A',
+    [CharacteristicsBackend.OIL_PRESSURE]: 'P',
 };
 
 function BearingItem({ bearingData }: BearingItemProps) {
-    const getIcon = (characteristic: Characteristics, props: any = {}) => {
+    const getIcon = (characteristic: CharacteristicsBackend, props: any = {}) => {
         switch (characteristic) {
-            case Characteristics.TEMPERATURE:
+            case CharacteristicsBackend.TEMPERATURE:
                 return <ThermometerIcon {...props} />;
-            case Characteristics.OIL_LEVEL:
+            case CharacteristicsBackend.OIL_LEVEL:
                 return <DropIcon {...props} />;
             default:
                 return null;

@@ -7,19 +7,19 @@ import styles from './TrendsSidebar.module.scss';
 const { Panel } = Collapse;
 
 function TrendsSidebar() {
-    const { exhauster } = useAppSelector((state) => state.trendsReducer);
+    // const { exhauster } = useAppSelector((state) => state.trendsReducer);
 
     return (
         <div className={styles.main}>
             <Collapse size='small'>
-                <Panel key={1} header='Подшипники'>
+                {/* <Panel key={1} header='Подшипники'>
                     {exhauster.problems.map((bearing) => (
                         <TrendsItem bearing={bearing} key={bearing.name} />
                     ))}
                     {exhauster.bearings.map((bearing) => (
                         <TrendsItem bearing={bearing} key={bearing.name} />
                     ))}
-                </Panel>
+                </Panel> */}
             </Collapse>
         </div>
     );

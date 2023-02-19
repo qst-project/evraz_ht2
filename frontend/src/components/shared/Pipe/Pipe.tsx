@@ -2,7 +2,7 @@ import React from 'react'
 import GasTemperature from '@shared/GasTemperature';
 import { Card } from 'antd';
 
-import { Characteristics, StatusType } from '@services/types';
+import { CharacteristicsBackend, StatusType } from '@services/types';
 import { Colors } from '@services/constants';
 
 import styles from './Pipe.module.scss'
@@ -41,7 +41,7 @@ function Pipe({ style, temperature, underpressure }: PipeProps) {
     const characteristics = [
         {
             status: StatusType.DEFAULT,
-            type: Characteristics.UNDERPRESSURE,
+            type: CharacteristicsBackend.UNDERPRESSURE,
             value: {
                 value: underpressure.value,
                 moment: underpressure.moment,
