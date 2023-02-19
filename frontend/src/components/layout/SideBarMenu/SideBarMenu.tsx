@@ -46,11 +46,6 @@ function SideBarMenu({ collapsed }: MenuProps) {
                     <Link to='/' />
                 </Menu.Item>
                 <Menu.Item key='2'>
-                    <LineChartOutlined />
-                    <span>Тренды</span>
-                    <Link to='/trends' />
-                </Menu.Item>
-                <Menu.Item key='3'>
                     <ReadOutlined />
                     <span>Журнал</span>
                     <Link to='/notifications' />
