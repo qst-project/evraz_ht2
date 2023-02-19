@@ -72,8 +72,9 @@ def stft_distance(df_orig: pd.DataFrame, df_new: pd.DataFrame) -> float:
 
 class ExhausterData():
     
-    def __init__(self, name: str, scheme: str) -> None:
+    def __init__(self, number:int, name: str, scheme: str) -> None:
         self.__name = name
+        self.__number = number
         self.__exhauster_scheme_df = pd.read_csv(scheme)
         _columns = ["moment"]
         for i in self.__exhauster_scheme_df.index:
@@ -146,5 +147,8 @@ class ExhausterData():
     def get_name(self) -> str:
         return self.__name
     
-    def get_last_moment(self):
+    def get_last_moment(self) -> str:
         return self.__last_moment
+    
+    def get_number(self) -> int:
+        return self.__number

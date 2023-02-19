@@ -22,15 +22,16 @@ async def send_prediction(websocket, path):
 def update_failure(l, conn):
     first_res = []
     streamer = consumer.DataStreamer()
-    exhauster_list = [data.ExhausterData("У-171", "config/signals_mapping_u171.csv"),
-                      data.ExhausterData("У-172", "config/signals_mapping_u172.csv"),
-                      data.ExhausterData("Ф-171", "config/signals_mapping_f171.csv"),
-                      data.ExhausterData("Ф-172", "config/signals_mapping_f172.csv"),
-                      data.ExhausterData("Х-171", "config/signals_mapping_x171.csv"),
-                      data.ExhausterData("Х-172", "config/signals_mapping_x172.csv")]
+    exhauster_list = [data.ExhausterData(1, "У-171", "config/signals_mapping_u171.csv"),
+                      data.ExhausterData(1, "У-172", "config/signals_mapping_u172.csv"),
+                      data.ExhausterData(2, "Ф-171", "config/signals_mapping_f171.csv"),
+                      data.ExhausterData(2, "Ф-172", "config/signals_mapping_f172.csv"),
+                      data.ExhausterData(3, "Х-171", "config/signals_mapping_x171.csv"),
+                      data.ExhausterData(3, "Х-172", "config/signals_mapping_x172.csv")]
     for exhauster in exhauster_list:
         first_res.append({
                 "exhauster_name": exhauster.get_name(),
+                "number": exhauster.get_number(),
                 "hours_to_failure": exhauster.get_time_to_failure(),
                 "precision": exhauster.get_precision(),
                 "moment": exhauster.get_last_moment()
@@ -53,6 +54,7 @@ def update_failure(l, conn):
             exhauster.update_failure()
             res.append({
                 "exhauster_name": exhauster.get_name(),
+                "number": exhauster.get_number(),
                 "hours_to_failure": exhauster.get_time_to_failure(),
                 "precision": exhauster.get_precision(),
                 "moment": exhauster.get_last_moment()
