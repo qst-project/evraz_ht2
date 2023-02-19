@@ -22,7 +22,12 @@ async def send_prediction(websocket, path):
 def update_failure(l, conn):
     first_res = []
     streamer = consumer.DataStreamer()
-    exhauster_list = [data.ExhausterData("У-171", "config/signals_mapping_u171.csv")]
+    exhauster_list = [data.ExhausterData("У-171", "config/signals_mapping_u171.csv"),
+                      data.ExhausterData("У-172", "config/signals_mapping_u172.csv"),
+                      data.ExhausterData("Ф-171", "config/signals_mapping_f171.csv"),
+                      data.ExhausterData("Ф-172", "config/signals_mapping_f172.csv"),
+                      data.ExhausterData("Х-171", "config/signals_mapping_x171.csv"),
+                      data.ExhausterData("Х-172", "config/signals_mapping_x172.csv")]
     for exhauster in exhauster_list:
         first_res.append({
                 "exhauster_name": exhauster.get_name(),

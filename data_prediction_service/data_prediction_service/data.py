@@ -85,8 +85,8 @@ class ExhausterData():
         self.__last_df = None
         self.__exhauster_df = pd.DataFrame(columns=_columns)
         self.__time_base = None
-        self.__threshold = 5.0
-        self.__hours_penality = 0.25
+        self.__hours_penality = 0.05
+        self.__threshold = 5.5
         self.__to_failure = 720.0
         self.__precision = 100
         
@@ -126,11 +126,11 @@ class ExhausterData():
     def update_failure(self) -> None:
         d = stft_distance(self.__exhauster_df, self.__last_df)
         self.__to_failure -= (1 / 60)
+        self.__to_failure -= self.__hours_penality * d
         if d > self.__threshold:
-            self.__to_failure -= self.__hours_penality
             self.__precision -= 5
         else:
-            self.__precision += 5
+            self.__precision += 2
         
     def get_data_frame(self) -> pd.DataFrame:
         return self.__exhauster_df

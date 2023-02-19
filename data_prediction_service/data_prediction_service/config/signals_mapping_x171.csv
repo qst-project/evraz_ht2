@@ -1,0 +1,122 @@
+measure,signal,description,type,activity,component,number
+temperature,SM_Exgauster\[3:43],Температура нагрева подшипника №1 (ротора привода эксгаустера №6),analog,1,bearing,1
+alarm_max,SM_Exgauster\[3:99],Уставка аварийная max ТП т1 Эксгаустер №6,analog,1,bearing,1
+alarm_min,SM_Exgauster\[3:108],Уставка аварийная min ТП т1 Эксгаустер №6,analog,1,bearing,1
+warning_max,SM_Exgauster\[3:117],Уставка предупредительная max ТП т1 Эксгаустер №6,analog,1,bearing,1
+warning_min,SM_Exgauster\[3:126],Уставка предупредительная min ТП т1 Эксгаустер №6,analog,1,bearing,1
+vibration_axial,SM_Exgauster\[3:14],Осевая вибрация подшипника №1. Эксгаустер №6,analog,1,bearing,1
+alarm_max,SM_Exgauster\[3:185],Уставка аварийная max ОВ 1т Эксгаустер №6,analog,1,bearing,1
+alarm_min,SM_Exgauster\[3:197],Уставка аварийная min ОВ 1т Эксгаустер №6,analog,1,bearing,1
+warning_max,SM_Exgauster\[3:209],Уставка предупредительная max ОВ 1т Эксгаустер №6,analog,1,bearing,1
+warning_min,SM_Exgauster\[3:221],Уставка предупредительная min ОВ 1т Эксгаустер №6,analog,1,bearing,1
+vibration_horizontal,SM_Exgauster\[3:12],Горизонтал вибрация подшипника №1. Эксгаустер №6,analog,1,bearing,1
+alarm_max,SM_Exgauster\[3:183],Уставка аварийная max ГВ 1т Эксгаустер №6,analog,1,bearing,1
+alarm_min,SM_Exgauster\[3:195],Уставка аварийная min ГВ 1т Эксгаустер №6,analog,1,bearing,1
+warning_max,SM_Exgauster\[3:207],Уставка предупредительная max ГВ 1т Эксгаустер №6,analog,1,bearing,1
+warning_min,SM_Exgauster\[3:219],Уставка предупредительная min ГВ 1т Эксгаустер №6,analog,1,bearing,1
+vibration_vertical,SM_Exgauster\[3:13],Вертикал вибрация подшипника №1. Эксгаустер №6,analog,1,bearing,1
+alarm_max,SM_Exgauster\[3:184],Уставка аварийная max ВВ 1т Эксгаустер №6,analog,1,bearing,1
+alarm_min,SM_Exgauster\[3:196],Уставка аварийная min ВВ 1т Эксгаустер №6,analog,1,bearing,1
+warning_max,SM_Exgauster\[3:208],Уставка предупредительная max ВВ 1т Эксгаустер №6,analog,1,bearing,1
+warning_min,SM_Exgauster\[3:220],Уставка предупредительная min ВВ 1т Эксгаустер №6,analog,1,bearing,1
+temperature,SM_Exgauster\[3:44],Температура нагрева подшипника №2 (ротора привода эксгаустера №6),analog,1,bearing,2
+alarm_max,SM_Exgauster\[3:100],Уставка аварийная max ТП т2 Эксгаустер №6,analog,1,bearing,2
+alarm_min,SM_Exgauster\[3:109],Уставка аварийная min ТП т2 Эксгаустер №6,analog,1,bearing,2
+warning_max,SM_Exgauster\[3:118],Уставка предупредительная max ТП т2 Эксгаустер №6,analog,1,bearing,2
+warning_min,SM_Exgauster\[3:127],Уставка предупредительная min ТП т2 Эксгаустер №6,analog,1,bearing,2
+vibration_axial,SM_Exgauster\[3:17],Осевая вибрация подшипника №2. Эксгаустер №6,analog,1,bearing,2
+alarm_max,SM_Exgauster\[3:188],Уставка аварийная max ОВ 2т Эксгаустер №6,analog,1,bearing,2
+alarm_min,SM_Exgauster\[3:200],Уставка аварийная min ОВ 2т Эксгаустер №6,analog,1,bearing,2
+warning_max,SM_Exgauster\[3:212],Уставка предупредительная max ОВ 2т Эксгаустер №6,analog,1,bearing,2
+warning_min,SM_Exgauster\[3:224],Уставка предупредительная min ОВ 2т Эксгаустер №6,analog,1,bearing,2
+vibration_horizontal,SM_Exgauster\[3:15],Горизонтал вибрация подшипника №2. Эксгаустер №6,analog,1,bearing,2
+alarm_max,SM_Exgauster\[3:186],Уставка аварийная max ГВ 2т Эксгаустер №6,analog,1,bearing,2
+alarm_min,SM_Exgauster\[3:198],Уставка аварийная min ГВ 2т Эксгаустер №6,analog,1,bearing,2
+warning_max,SM_Exgauster\[3:210],Уставка предупредительная max ГВ 2т Эксгаустер №6,analog,1,bearing,2
+warning_min,SM_Exgauster\[3:222],Уставка предупредительная min ГВ 2т Эксгаустер №6,analog,1,bearing,2
+vibration_vertical,SM_Exgauster\[3:16],Вертикал вибрация подшипника №2. Эксгаустер №6,analog,1,bearing,2
+alarm_max,SM_Exgauster\[3:187],Уставка аварийная max ВВ 2т Эксгаустер №6,analog,1,bearing,2
+alarm_min,SM_Exgauster\[3:199],Уставка аварийная min ВВ 2т Эксгаустер №6,analog,1,bearing,2
+warning_max,SM_Exgauster\[3:211],Уставка предупредительная max ВВ 2т Эксгаустер №6,analog,1,bearing,2
+warning_min,SM_Exgauster\[3:223],Уставка предупредительная min ВВ 2т Эксгаустер №6,analog,1,bearing,2
+temperature,SM_Exgauster\[3:45],Температура нагрева подшипника №3 (редуктор эксгаустера №6),analog,1,bearing,3
+alarm_max,SM_Exgauster\[3:101],Уставка аварийная max ТП т3 Эксгаустер №6,analog,1,bearing,3
+alarm_min,SM_Exgauster\[3:110],Уставка аварийная min ТП т3 Эксгаустер №6,analog,1,bearing,3
+warning_max,SM_Exgauster\[3:119],Уставка предупредительная max ТП т3 Эксгаустер №6,analog,1,bearing,3
+warning_min,SM_Exgauster\[3:128],Уставка предупредительная min ТП т3 Эксгаустер №6,analog,1,bearing,3
+temperature,SM_Exgauster\[3:47],Температура нагрева подшипника №4 (редуктор эксгаустера №6),analog,1,bearing,4
+alarm_max,SM_Exgauster\[3:102],Уставка аварийная max ТП т4 Эксгаустер №6,analog,1,bearing,4
+alarm_min,SM_Exgauster\[3:111],Уставка аварийная min ТП т4 Эксгаустер №6,analog,1,bearing,4
+warning_max,SM_Exgauster\[3:120],Уставка предупредительная max ТП т4 Эксгаустер №6,analog,1,bearing,4
+warning_min,SM_Exgauster\[3:129],Уставка предупредительная min ТП т4 Эксгаустер №6,analog,1,bearing,4
+temperature,SM_Exgauster\[3:48],Температура нагрева подшипника №5 (редуктор эксгаустера №6),analog,1,bearing,5
+alarm_max,SM_Exgauster\[3:103],Уставка аварийная max ТП т5 Эксгаустер №6,analog,1,bearing,5
+alarm_min,SM_Exgauster\[3:112],Уставка аварийная min ТП т5 Эксгаустер №6,analog,1,bearing,5
+warning_max,SM_Exgauster\[3:121],Уставка предупредительная max ТП т5 Эксгаустер №6,analog,1,bearing,5
+warning_min,SM_Exgauster\[3:130],Уставка предупредительная min ТП т5 Эксгаустер №6,analog,1,bearing,5
+temperature,SM_Exgauster\[3:49],Температура нагрева подшипника №6 (редуктор эксгаустера №6),analog,1,bearing,6
+alarm_max,SM_Exgauster\[3:104],Уставка аварийная max ТП т6 Эксгаустер №6,analog,1,bearing,6
+alarm_min,SM_Exgauster\[3:113],Уставка аварийная min ТП т6 Эксгаустер №6,analog,1,bearing,6
+warning_max,SM_Exgauster\[3:122],Уставка предупредительная max ТП т6 Эксгаустер №6,analog,1,bearing,6
+warning_min,SM_Exgauster\[3:131],Уставка предупредительная min ТП т6 Эксгаустер №6,analog,1,bearing,6
+temperature,SM_Exgauster\[3:50],Температура нагрева подшипника №7 (ротор эксгаустера №6),analog,1,bearing,7
+alarm_max,SM_Exgauster\[3:105],Уставка аварийная max ТП т7 Эксгаустер №6,analog,1,bearing,7
+alarm_min,SM_Exgauster\[3:114],Уставка аварийная min ТП т7 Эксгаустер №6,analog,1,bearing,7
+warning_max,SM_Exgauster\[3:123],Уставка предупредительная max ТП т7 Эксгаустер №6,analog,1,bearing,7
+warning_min,SM_Exgauster\[3:132],Уставка предупредительная min ТП т7 Эксгаустер №6,analog,1,bearing,7
+vibration_axial,SM_Exgauster\[3:20],Осевая вибрация подшипника №7. Эксгаустер №6,analog,1,bearing,7
+alarm_max,SM_Exgauster\[3:191],Уставка аварийная max ОВ 7т Эксгаустер №6,analog,1,bearing,7
+alarm_min,SM_Exgauster\[3:203],Уставка аварийная min ОВ 7т Эксгаустер №6,analog,1,bearing,7
+warning_max,SM_Exgauster\[3:215],Уставка предупредительная max ОВ 7т Эксгаустер №6,analog,1,bearing,7
+warning_min,SM_Exgauster\[3:227],Уставка предупредительная min ОВ 7т Эксгаустер №6,analog,1,bearing,7
+vibration_horizontal,SM_Exgauster\[3:18],Горизонтал вибрация подшипника №7. Эксгаустер №6,analog,1,bearing,7
+alarm_max,SM_Exgauster\[3:189],Уставка аварийная max ГВ 7т Эксгаустер №6,analog,1,bearing,7
+alarm_min,SM_Exgauster\[3:201],Уставка аварийная min ГВ 7т Эксгаустер №6,analog,1,bearing,7
+warning_max,SM_Exgauster\[3:213],Уставка предупредительная max ГВ 7т Эксгаустер №6,analog,1,bearing,7
+warning_min,SM_Exgauster\[3:225],Уставка предупредительная min ГВ 7т Эксгаустер №6,analog,1,bearing,7
+vibration_vertical,SM_Exgauster\[3:19],Вертикал вибрация подшипника №7. Эксгаустер №6,analog,1,bearing,7
+alarm_max,SM_Exgauster\[3:190],Уставка аварийная max ВВ 7т Эксгаустер №6,analog,1,bearing,7
+alarm_min,SM_Exgauster\[3:202],Уставка аварийная min ВВ 7т Эксгаустер №6,analog,1,bearing,7
+warning_max,SM_Exgauster\[3:214],Уставка предупредительная max ВВ 7т Эксгаустер №6,analog,1,bearing,7
+warning_min,SM_Exgauster\[3:226],Уставка предупредительная min ВВ 7т Эксгаустер №6,analog,1,bearing,7
+temperature,SM_Exgauster\[3:51],Температура нагрева подшипника №8 (ротор эксгаустера №6),analog,1,bearing,8
+alarm_max,SM_Exgauster\[3:106],Уставка аварийная max ТП т8 Эксгаустер №6,analog,1,bearing,8
+alarm_min,SM_Exgauster\[3:115],Уставка аварийная min ТП т8 Эксгаустер №6,analog,1,bearing,8
+warning_max,SM_Exgauster\[3:124],Уставка предупредительная max ТП т8 Эксгаустер №6,analog,1,bearing,8
+warning_min,SM_Exgauster\[3:133],Уставка предупредительная min ТП т8 Эксгаустер №6,analog,1,bearing,8
+vibration_axial,SM_Exgauster\[3:23],Осевая вибрация подшипника №8. Эксгаустер №6,analog,1,bearing,8
+alarm_max,SM_Exgauster\[3:194],Уставка аварийная max ОВ 8т Эксгаустер №6,analog,1,bearing,8
+alarm_min,SM_Exgauster\[3:206],Уставка аварийная min ОВ 8т Эксгаустер №6,analog,1,bearing,8
+warning_max,SM_Exgauster\[3:218],Уставка предупредительная max ОВ 8т Эксгаустер №6,analog,1,bearing,8
+warning_min,SM_Exgauster\[3:230],Уставка предупредительная min ОВ 8т Эксгаустер №6,analog,1,bearing,8
+vibration_horizontal,SM_Exgauster\[3:21],Горизонтал вибрация подшипника №8. Эксгаустер №6,analog,1,bearing,8
+alarm_max,SM_Exgauster\[3:192],Уставка аварийная max ГВ 8т Эксгаустер №6,analog,1,bearing,8
+alarm_min,SM_Exgauster\[3:204],Уставка аварийная min ГВ 8т Эксгаустер №6,analog,1,bearing,8
+warning_max,SM_Exgauster\[3:216],Уставка предупредительная max ГВ 8т Эксгаустер №6,analog,1,bearing,8
+warning_min,SM_Exgauster\[3:228],Уставка предупредительная min ГВ 8т Эксгаустер №6,analog,1,bearing,8
+vibration_vertical,SM_Exgauster\[3:22],Вертикал вибрация подшипника №8. Эксгаустер №6,analog,1,bearing,8
+alarm_max,SM_Exgauster\[3:193],Уставка аварийная max ВВ 8т Эксгаустер №6,analog,1,bearing,8
+alarm_min,SM_Exgauster\[3:205],Уставка аварийная min ВВ 8т Эксгаустер №6,analog,1,bearing,8
+warning_max,SM_Exgauster\[3:217],Уставка предупредительная max ВВ 8т Эксгаустер №6,analog,1,bearing,8
+warning_min,SM_Exgauster\[3:229],Уставка предупредительная min ВВ 8т Эксгаустер №6,analog,1,bearing,8
+temperature,SM_Exgauster\[3:52],Температура нагрева подшипника №9 (ротор эксгаустера №6),analog,1,bearing,9
+alarm_max,SM_Exgauster\[3:107],Уставка аварийная max ТП т9 Эксгаустер №6,analog,1,bearing,9
+alarm_min,SM_Exgauster\[3:116],Уставка аварийная min ТП т9 Эксгаустер №6,analog,1,bearing,9
+warning_max,SM_Exgauster\[3:125],Уставка предупредительная max ТП т9 Эксгаустер №6,analog,1,bearing,9
+warning_min,SM_Exgauster\[3:134],Уставка предупредительная min ТП т9 Эксгаустер №6,analog,1,bearing,9
+temperature_after,SM_Exgauster\[3:60],Температура масла после охладителя. Эксгаустер №6,analog,1,oil,0
+temperature_before,SM_Exgauster\[3:59],Температура масла до охладителя. Эксгаустер №6,analog,1,oil,0
+temperature_after,SM_Exgauster\[3:54],Температура воды на выходе охладителя. Эксгаустер №6,analog,1,water,0
+temperature_before,SM_Exgauster\[3:53],Температура воды до охладителя. Эксгаустер №6,analog,1,water,0
+temperature_before,SM_Exgauster\[3:25],Температура перед эксгаустером №6,analog,1,gas_collector,0
+underpressure_before,SM_Exgauster\[3:62],Разрежение перед эксгаустером №6,analog,1,gas_collector,0
+gas_valve_closed,SM_Exgauster\[5.6],ЗАКРЫТО задвижка газ эксгаустер №6,digital,1,valve,0
+gas_valve_open,SM_Exgauster\[5.7],ОТКРЫТО задвижка газ эксгаустер №6,digital,1,valve,0
+gas_valve_position,SM_Exgauster\[5:13],Положение задвижки газ эксгаустера №6,analog,1,valve,0
+rotor_current,SM_Exgauster\[5:9],Ток ротора эксгаустера №6,analog,1,rotor,0
+rotor_voltage,SM_Exgauster\[5:11],Напряжение ротора эксгаустера №6,analog,1,rotor,0
+stator_current,SM_Exgauster\[5:10],Ток статора эксгаустера №6,analog,1,stator,0
+stator_voltage,SM_Exgauster\[5:12],Напряжение статораэксгаустера №6,analog,1,stator,0
+oil_level,SM_Exgauster\[5:7],Уровень масла в маслосистеме эксгаустера №6,analog,1,oil_system,0
+oil_pressure,SM_Exgauster\[5:8],Давление масла в маслосистеме эксгаустера №6,analog,1,oil_system,0
+work,SM_Exgauster\[3.1],62 Работа эксгаустера №6,digital,1,is_working,0
