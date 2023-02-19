@@ -1,17 +1,16 @@
 version: '2'
 services:
-  # front
   front:
-    build:
-      context: frontend
-      dockerfile: Dockerfile
-    command: npm run --port 8080
-    stdin_open: true
-    ports:
-      - "8080:8080"
-    environment:
-      - PORT=8080
-      - HOST=0.0.0.0
+      build:
+        context: frontend
+        dockerfile: Dockerfile
+      command: npm run --port 8080
+      stdin_open: true
+      ports:
+        - "8080:8080"
+      environment:
+        - PORT=8080
+        - HOST=0.0.0.0
 
   rest-backend:
     container_name: monolith
@@ -26,13 +25,14 @@ services:
     container_name: postgres
     image: postgres
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: changeme
+      POSTGRES_DB: evraz
       PGDATA: /data/postgres
     volumes:
       - ./backend/postgres-data:/data/postgres
     ports:
-      - "2112:2112"
+      - "5432:5432"
 
   metrics:
     container_name: metrics
