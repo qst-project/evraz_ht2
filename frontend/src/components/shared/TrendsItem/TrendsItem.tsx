@@ -8,13 +8,13 @@ import { useAppSelector } from '@hooks/redux';
 const { Panel } = Collapse;
 
 function TrendsItem({ bearing }: TrendsItemProps) {
-    const { exhauster } = useAppSelector((state) => state.trendsReducer);
+    // const { exhauster } = useAppSelector((state) => state.trendsReducer);
 
-    const getTrendsOptionName = (_bearing: BearingData, characteristic: CharacteristicData) => `${exhauster.id}/${_bearing.number}/${characteristic.type}`;
+    // const getTrendsOptionName = (_bearing: BearingData, characteristic: CharacteristicData) => `${exhauster.id}/${_bearing.number}/${characteristic.type}`;
 
     return (
         <Collapse size='small' bordered={false}>
-            <Panel key={1} header={bearing.name}>
+            {/* <Panel key={1} header={bearing.name}>
                 {bearing.characteristics.map((characteristic) => (
                     <TrendsOption
                         label={characteristic.type}
@@ -23,7 +23,7 @@ function TrendsItem({ bearing }: TrendsItemProps) {
                         key={characteristic.type}
                     />
                 ))}
-            </Panel>
+            </Panel> */}
         </Collapse>
     );
 }

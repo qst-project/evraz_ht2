@@ -12,6 +12,7 @@ function Bearing({
     characteristics,
     style,
 }: BearingProps) {
+    console.log(characteristics)
     return (
         <Card
             bordered

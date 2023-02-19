@@ -2,18 +2,16 @@ import { createSlice } from '@reduxjs/toolkit'
 
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { DAY } from '@services/constants';
-import { ExhausterData } from '@services/types';
-import { exhausterMock } from '@services/mock';
 
 export interface TrendsState {
-    exhauster: ExhausterData,
+    exhauster: undefined,
     dateFrom: number,
     dateTo: number,
     selectedOptions: string[]
 }
 
 const initialState: TrendsState = {
-    exhauster: exhausterMock,
+    exhauster: undefined,
     dateFrom: Date.now() - DAY,
     dateTo: Date.now(),
     selectedOptions: [],
