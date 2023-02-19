@@ -17,7 +17,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component
@@ -66,7 +65,7 @@ public class KafkaDataHandler {
 
     private void sendCacheToWS() {
         List<WSSinteringMachine> wsSinteringMachines = kafkaDataCacher.getCache().values().stream().map(kafkaSinteringMachineToWS).collect(Collectors.toList());
-        SinteringMachineListResponse response = new SinteringMachineListResponse(wsSinteringMachines);
+        SinteringMachineListResponse response = new SinteringMachineListResponse(kafkaDataCacher.getMoment(), wsSinteringMachines);
         wsController.sendUpdateMachines(response);
     }
 }
