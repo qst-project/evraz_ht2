@@ -48,18 +48,20 @@ function useWebSocket(onConnected: Function, deps: Array<any>) {
 
     const fetchPredictionData = useCallback(async () => {
         const socket = new WebSocket('ws://0.0.0.0:8765/');
-
         socket.onopen = function () {
             console.log('[open] Соединение установлено');
-            socket.send('Меня зовут skinny')
-        };
+            socket.send('skinny')
+        }
 
         socket.onmessage = function (event) {
             const prediction = JSON.parse(event.data);
+            console.log(prediction)
             dispatch(setPrediction(prediction))
         };
-
+        // socket.close(1000, 'fk')
     }, [])
+
+
 
     useEffect(() => {
         subscribe()

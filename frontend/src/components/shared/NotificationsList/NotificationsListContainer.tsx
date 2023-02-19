@@ -1,3 +1,4 @@
+import { useCallback, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import NotificationsList from './NotificationsList'
@@ -12,6 +13,12 @@ function NotificationsListContainer() {
         searchParams.set('page', String(page))
         setSearchParams(searchParams)
     }
+
+    fetch('http://localhost:9090/notofications?pageNumber=1&pageOffset=10&pageSize=10')
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+        });
 
     const data: INotificationItem[] = [
         {
