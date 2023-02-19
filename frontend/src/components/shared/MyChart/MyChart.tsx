@@ -12,9 +12,10 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { PrometheusDriver } from 'prometheus-query';
-import { useAppSelector } from '@hooks/redux';
+import { useAppDispatch, useAppSelector } from '@hooks/redux';
 import { getRandomColor } from '@services/utils';
 import { Characteristics } from '@services/types';
+import { setIsLoading } from '@reduxToolkit/slices/trends';
 
 const prom = new PrometheusDriver({
     endpoint: 'http://localhost:9099',
@@ -68,17 +69,24 @@ const getPromQueryFromName = (name: string) => {
 const getChartTime = (date: Date) => date.toString().split(' ')[4]
 
 function MyChart() {
-    const { dateFrom, dateTo, selectedOptions } = useAppSelector((state) => state.trendsReducer);
+    const {
+        dateFrom,
+        dateTo,
+        selectedOptions,
+    } = useAppSelector((state) => state.trendsReducer);
+    const dispatch = useAppDispatch();
     const [labels, setLabels] = useState<string[]>([]);
     const [datasets, setDatasets] = useState<ChartDataset<'line', number[]>[]>([]);
+    const step = 200;
 
     const parseSelectedOptions = (_options: string[]) => {
+        dispatch(setIsLoading(true));
         setDatasets([]);
         let shouldUpdateLabels = true;
-        const step = 200;
+        const promises: Promise<void>[] = [];
         _options.forEach((option) => {
             const query = getPromQueryFromName(option);
-            prom.rangeQuery(query, dateFrom, dateTo, step)
+            const promise = prom.rangeQuery(query, dateFrom, dateTo, step)
                 .then((res) => {
                     const innerDatasets: ChartDataset<'line', number[]>[] = [];
                     const series = res.result;
@@ -102,8 +110,9 @@ function MyChart() {
                     setDatasets((prevState) => [...prevState, ...innerDatasets]);
                 })
                 .catch(console.error);
+            promises.push(promise);
         })
-        return '';
+        Promise.all(promises).then(() => dispatch(setIsLoading(false)));
     }
 
     useEffect(() => {

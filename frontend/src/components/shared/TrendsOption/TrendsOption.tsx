@@ -11,7 +11,7 @@ function TrendsOption({
     label,
     name,
 }: TrendsOptionProps) {
-    const { selectedOptions } = useAppSelector((state) => state.trendsReducer);
+    const { selectedOptions, isLoading } = useAppSelector((state) => state.trendsReducer);
     const dispatch = useAppDispatch();
     const onChange = (e: CheckboxChangeEvent) => {
         if (e.target.checked) {
@@ -26,6 +26,7 @@ function TrendsOption({
             <Checkbox
                 defaultChecked={selectedOptions.includes(name)}
                 onChange={onChange}
+                disabled={isLoading}
             >
                 {characteristicUnits.get(label)}
             </Checkbox>

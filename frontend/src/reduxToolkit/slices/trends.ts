@@ -7,7 +7,8 @@ export interface TrendsState {
     exhauster: undefined,
     dateFrom: number,
     dateTo: number,
-    selectedOptions: string[]
+    selectedOptions: string[],
+    isLoading: boolean,
 }
 
 const initialState: TrendsState = {
@@ -15,6 +16,7 @@ const initialState: TrendsState = {
     dateFrom: Date.now() - DAY,
     dateTo: Date.now(),
     selectedOptions: [],
+    isLoading: false,
 }
 
 // actions
@@ -40,6 +42,10 @@ export const trendsSlice = createSlice({
             state.selectedOptions = state
                 .selectedOptions.filter((option) => option !== action.payload);
         },
+        setIsLoading(state, action: PayloadAction<boolean>) {
+            // eslint-disable-next-line no-param-reassign
+            state.isLoading = action.payload;
+        },
     },
 })
 
@@ -48,6 +54,7 @@ export const {
     setDateTo,
     addOption,
     removeOption,
+    setIsLoading,
 } = trendsSlice.actions
 export const getTrendsState = (state: TrendsState) => state
 
