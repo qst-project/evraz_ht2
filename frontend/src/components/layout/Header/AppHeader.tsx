@@ -22,9 +22,9 @@ function AppHeader({ setCollapsed, collapsed }: HeaderProps) {
                     })
                 }
             </Col>
-            <Col span={2}>
+            {/* <Col span={2}>
                 <NotificationModal />
-            </Col>
+            </Col> */}
         </Row>
     );
 }
