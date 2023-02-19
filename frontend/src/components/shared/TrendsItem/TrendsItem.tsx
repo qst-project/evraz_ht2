@@ -18,7 +18,6 @@ function TrendsItem({ bearing }: TrendsItemProps) {
                 {bearing.characteristics.map((characteristic) => (
                     <TrendsOption
                         label={characteristic.type}
-                        value={characteristic.value}
                         name={getTrendsOptionName(bearing, characteristic)}
                         key={characteristic.type}
                     />

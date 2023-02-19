@@ -5,18 +5,27 @@ export enum StatusType {
 }
 
 export enum Characteristics {
+    // подшипник
     TEMPERATURE = 'temperature',
-    OIL_LEVEL = 'oil_Level',
+    AXIS = 'vibration_axial',
     VERTICAL = 'vibration_vertical',
     HORIZONTAL = 'vibration_horizontal',
-    AXIS = 'vibration_axial',
+    // маслобак
+    OIL_LEVEL = 'oil_level',
     OIL_PRESSURE = 'oil_pressure',
-    AMPERAGE = 'AMPERAGE',
-    DRIVE_AMPERAGE = 'DRIVE_AMPERAGE',
-    ROTOR_VOLTAGE = 'ROTOR_VOLTAGE',
-    STARTER_VOLTAGE = 'STARTER_VOLTAGE',
-    UNDERPRESSURE = 'UNDERPRESSURE',
-    DUST_LEVEL = 'DUST_LEVEL',
+    // главный привод
+    AMPERAGE = 'rotor_current',
+    DRIVE_AMPERAGE = 'stator_current',
+    ROTOR_VOLTAGE = 'rotor_voltage',
+    STARTER_VOLTAGE = 'stator_voltage',
+    // охладитель
+    WATER_BEFORE = 'water_before',
+    WATER_AFTER = 'water_after',
+    OIL_BEFORE = 'oil_before',
+    OIL_AFTER = 'oil_after',
+    // газовый коллектор
+    GAS_TEMPERATURE = 'temperature_before',
+    UNDERPRESSURE = 'underpressure_before',
 }
 
 export interface CharacteristicData {

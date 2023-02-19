@@ -24,7 +24,10 @@ function TrendsChart() {
     }
 
     return (
-        <Card title='Эксгаустер X-172' className={styles.main}>
+        <Card
+            title='Эксгаустер X-172'
+            className={styles.main}
+        >
             <div className={styles.rangePicker}>
                 <RangePicker
                     showTime={{ format: 'HH:mm' }}
