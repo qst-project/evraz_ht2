@@ -28,9 +28,24 @@ export enum Characteristics {
     UNDERPRESSURE = 'underpressure_before',
 }
 
+export enum CharacteristicsBackend {
+    TEMPERATURE = 'temperature',
+    OIL_LEVEL = 'oil_Level',
+    VERTICAL = 'vibrationVertical',
+    HORIZONTAL = 'vibrationHorizontal',
+    AXIS = 'vibrationAxial',
+    OIL_PRESSURE = 'oil_pressure',
+    AMPERAGE = 'AMPERAGE',
+    DRIVE_AMPERAGE = 'DRIVE_AMPERAGE',
+    ROTOR_VOLTAGE = 'ROTOR_VOLTAGE',
+    STARTER_VOLTAGE = 'STARTER_VOLTAGE',
+    UNDERPRESSURE = 'UNDERPRESSURE',
+    DUST_LEVEL = 'DUST_LEVEL',
+}
+
 export interface CharacteristicData {
-    type: Characteristics,
-    value: number,
+    type: CharacteristicsBackend,
+    value: { value: number | string, moment: string },
     status: StatusType,
 }
 
@@ -43,24 +58,54 @@ export interface BearingData {
 export interface ExhausterData {
     id: number,
     sinterMachineId: number;
-    isActive: boolean,
+    isActive: {
+        value: boolean,
+        moment: string,
+    },
     name: string,
     rotorName: string,
     date: string,
     lastRotorReplacement: string,
     forecast: string,
     mainDriveCharacteristics: CharacteristicData[],
-    oilLevel: number,
-    oilPressure: number,
-    coolerOilTemperatureAfter: number,
-    coolerOilTemperatureBefore: number,
-    coolerWaterTemperatureAfter: number,
-    coolerWaterTemperatureBefore: number,
-    gasCollectorUnderPressureBefore: number,
-    gasValveClosed:boolean,
-    gasValveOpen:boolean,
-    gasValvePosition: number,
-    gasCollectorTemperatureBefore: number,
+    oilLevel: {
+        value: number,
+        moment: string,
+    },
+    oilPressure: {
+        value: number,
+        moment: string,
+    },
+    coolerOilTemperatureAfter: {
+        value: number,
+        moment: string,
+    },
+    coolerOilTemperatureBefore: {
+        value: number,
+        moment: string,
+    },
+    coolerWaterTemperatureAfter: {
+        value: number,
+        moment: string,
+    },
+    coolerWaterTemperatureBefore: {
+        value: number,
+        moment: string,
+    },
+    gasCollectorUnderPressureBefore: {
+        value: number,
+        moment: string,
+    },
+    gasValveClosed: boolean,
+    gasValveOpen: boolean,
+    gasValvePosition: {
+        value: number,
+        moment: string,
+    },
+    gasCollectorTemperatureBefore: {
+        value: number,
+        moment: string,
+    },
     bearings: BearingData[],
     problems: BearingData[],
 }
@@ -104,30 +149,78 @@ export interface KafkaExhauster {
         warn: KafkaBearing[],
         other: KafkaBearing[],
     },
-    coolerOilTemperatureAfter: number,
-    coolerOilTemperatureBefore: number,
-    coolerWaterTemperatureAfter: number,
-    coolerWaterTemperatureBefore: number,
-    gasCollectorTemperatureBefore: number,
-    gasValveClosed:boolean,
-    gasValveOpen:boolean,
-    gasValvePosition: number,
-    mainDriveRotorCurrent: number,
-    mainDriveRotorVoltage: number,
-    mainDriveStatorCurrent: number,
-    mainDriveStatorVoltage: number,
-    gasCollectorUnderPressureBefore: number,
-    oilLevel: number,
-    oilPressure: number,
+    coolerOilTemperatureAfter: {
+        value: number,
+        moment: string,
+    },
+    coolerOilTemperatureBefore: {
+        value: number,
+        moment: string,
+    },
+    coolerWaterTemperatureAfter: {
+        value: number,
+        moment: string,
+    },
+    coolerWaterTemperatureBefore: {
+        value: number,
+        moment: string,
+    },
+    gasCollectorTemperatureBefore: {
+        value: number,
+        moment: string,
+    },
+    gasValveClosed: {
+        value: boolean,
+        moment: string,
+    },
+    gasValveOpen: {
+        value: boolean,
+        moment: string,
+    },
+    gasValvePosition: {
+        value: number,
+        moment: string,
+    },
+    mainDriveRotorCurrent: {
+        value: number,
+        moment: string,
+    },
+    mainDriveRotorVoltage: {
+        value: number,
+        moment: string,
+    },
+    mainDriveStatorCurrent: {
+        value: number,
+        moment: string,
+    },
+    mainDriveStatorVoltage: {
+        value: number,
+        moment: string,
+    },
+    gasCollectorUnderPressureBefore: {
+        value: number,
+        moment: string,
+    },
+    oilLevel: {
+        value: number,
+        moment: string,
+    },
+    oilPressure: {
+        value: number,
+        moment: string,
+    },
+    work: {
+        value: boolean,
+        moment: string,
+    },
 }
 
 export interface KafkaSinterMachine {
     number: number,
     exhausters: KafkaExhauster[],
-    work:boolean,
 }
 
 export interface SinterMachinesResponse {
-    moment: string,
     machines: KafkaSinterMachine[],
+    moment: string,
 }

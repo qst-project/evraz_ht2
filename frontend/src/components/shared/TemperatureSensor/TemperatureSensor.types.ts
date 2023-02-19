@@ -2,5 +2,8 @@ import { StatusType } from '@services/types';
 
 export interface TemperatureSensorProps {
     status: StatusType;
-    value: number;
+    value: {
+        value: number,
+        moment: string,
+    },
 }

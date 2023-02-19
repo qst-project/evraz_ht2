@@ -15,7 +15,7 @@ function GasTemperatureContainer({
 }: GasTemperatureContainerProps) {
     return (
         <GasTemperature
-            value={gasTemperatureData.value}
+            value={gasTemperatureData}
             status={gasTemperatureData.status}
             strokeColor={typeStatusColor.get(gasTemperatureData.status)}
         />

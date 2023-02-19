@@ -1,4 +1,4 @@
-import { Characteristics } from '@services/types';
+import { Characteristics, CharacteristicsBackend } from '@services/types';
 
 export const SECOND = 1000;
 export const MINUTE = 60 * SECOND;
@@ -34,6 +34,21 @@ export const characteristicUnits = new Map<Characteristics, string>([
     [Characteristics.WATER_AFTER, 'T воды после, °C'],
     [Characteristics.OIL_BEFORE, 'T масла до, °C'],
     [Characteristics.OIL_AFTER, 'T масла после, °C'],
+]);
+
+export const characteristicBackendUnits = new Map<CharacteristicsBackend, string>([
+    [CharacteristicsBackend.TEMPERATURE, 'T, °C'],
+    [CharacteristicsBackend.VERTICAL, 'Верт, мм/с'],
+    [CharacteristicsBackend.HORIZONTAL, 'Гориз, мм/с'],
+    [CharacteristicsBackend.OIL_LEVEL, 'Уровень масла, %'],
+    [CharacteristicsBackend.OIL_PRESSURE, 'Давление масла, кг/см2'],
+    [CharacteristicsBackend.AXIS, 'Ось, мм/с'],
+    [CharacteristicsBackend.AMPERAGE, 'Ток, А'],
+    [CharacteristicsBackend.DRIVE_AMPERAGE, 'Ток двигателя, А'],
+    [CharacteristicsBackend.ROTOR_VOLTAGE, 'Напряжение ротора, кВт'],
+    [CharacteristicsBackend.STARTER_VOLTAGE, 'Напряжение стартера, кВт'],
+    [CharacteristicsBackend.UNDERPRESSURE, 'Разряжение, мм, в ст '],
+    [CharacteristicsBackend.DUST_LEVEL, 'Уровень пыли, мг/м3 '],
 ]);
 
 export const trendsColors = [

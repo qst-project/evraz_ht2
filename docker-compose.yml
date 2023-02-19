@@ -1,27 +1,39 @@
 version: '2'
 services:
-  # front
   # front:
-  #   build:
-  #     context: frontend
-  #     dockerfile: Dockerfile
-  #   command: npm run --port 8080
-  #   stdin_open: true
-  #   ports:
-  #     - "8080:8080"
-  #   environment:
-  #     - PORT=8080
-  #     - HOST=0.0.0.0
+  #     build:
+  #       context: frontend
+  #       dockerfile: Dockerfile
+  #     command: npm run --port 8080
+  #     stdin_open: true
+  #     ports:
+  #       - "8080:8080"
+  #     environment:
+  #       - PORT=8080
+  #       - HOST=0.0.0.0
 
-  # back
   rest-backend:
     container_name: monolith
     build:
       context: backend
       dockerfile: Dockerfile
     network_mode: host
+    depends_on:
+      - backend-postgres
 
-  # metrics
+  backend-postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: changeme
+      POSTGRES_DB: evraz
+      PGDATA: /data/postgres
+    volumes:
+      - ./backend/postgres-data:/data/postgres
+    ports:
+      - "5432:5432"
+
   metrics:
     container_name: metrics
     build:
@@ -30,7 +42,6 @@ services:
     ports:
       - "2112:2112"
 
-  # prometheus
   prometheus:
     image: prom/prometheus:v2.37.0
     container_name: prometheus
@@ -44,7 +55,6 @@ services:
       - '--web.listen-address=:9099'
     network_mode: host
 
-  # data prediction
   data_prediction_service:
     container_name: data_prediction_service
     build:
@@ -54,24 +64,6 @@ services:
       - "8765:8765"
     network_mode: host
 
-  # kafka
-  #  zookeeper:
-  #    image: confluentinc/cp-zookeeper:latest
-  #    environment:
-  #      ZOOKEEPER_CLIENT_PORT: 2181
-  #      ZOOKEEPER_TICK_TIME: 2000
-  #    ports:
-  #      - "22181:2181"
-  #  kafka:
-  #    image: confluentinc/cp-kafka:latest
-  #    depends_on:
-  #      - zookeeper
-  #    ports:
-  #      - "29092:29092"
-  #    environment:
-  #      KAFKA_BROKER_ID: 1
-  #      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-  #      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
-  #      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-  #      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
-  #      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+networks:
+  postgres:
+    driver: bridge

@@ -2,12 +2,18 @@ import { StatusType } from '@services/types';
 
 export interface OilPressureProps {
     strokeColor: string | undefined;
-    value: number;
+    value: {
+        value: number,
+        moment: string,
+    };
     status: StatusType;
 }
 
 export interface IOilPressureData {
-    value: number;
+    value: {
+        value: number,
+        moment: string,
+    };
     status: StatusType;
 }
 

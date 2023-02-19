@@ -1,45 +1,22 @@
 package org.qst.evrazht2backend.service.kafka;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.log4j.Log4j2;
 import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.common.serialization.StringDeserializer;
-import org.qst.evrazht2backend.controller.WSController;
-import org.qst.evrazht2backend.mapper.KafkaSinteringMachineToWS;
-import org.qst.evrazht2backend.model.SinteringMachineListResponse;
-import org.qst.evrazht2backend.model.ws.WSSinteringMachine;
-import org.qst.evrazht2backend.repository.KafkaDataCacher;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Component
 @Log4j2
-@EnableScheduling
 @ConditionalOnProperty(value = "kafka.enable", havingValue = "true")
 public class KafkaReader {
     private final Consumer<String, String> consumer;
 
-    final WSController wsController;
-
-    final KafkaSinteringMachineToWS kafkaSinteringMachineToWS;
-
-    final KafkaDataParser kafkaDataParser;
-
-    final KafkaDataCacher kafkaDataCacher;
-
     public KafkaReader(
-            WSController wsController,
-            KafkaSinteringMachineToWS kafkaSinteringMachineToWS,
-            KafkaDataParser kafkaDataParser,
-            KafkaDataCacher kafkaDataCacher,
             @Value("${kafka.user}") String user,
             @Value("${kafka.pass}") String pass,
             @Value("${kafka.host}") String host,
@@ -48,11 +25,6 @@ public class KafkaReader {
             @Value("${kafka.topic}") String topicName,
             @Value("${kafka.group-id}") String groupId
     ) {
-        this.wsController = wsController;
-        this.kafkaSinteringMachineToWS = kafkaSinteringMachineToWS;
-        this.kafkaDataParser = kafkaDataParser;
-        this.kafkaDataCacher = kafkaDataCacher;
-
         String jaasTemplate = "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"%s\" password=\"%s\";";
         String jaasCfg = String.format(jaasTemplate, user, pass);
 
@@ -73,28 +45,17 @@ public class KafkaReader {
         consumer.subscribe(Collections.singletonList(topicName));
     }
 
-    @Scheduled(fixedRate = 500)
-    public void poll() throws JsonProcessingException {
+    //    @Scheduled(fixedRate = 500)
+    public List<String> pollMessages() {
         ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
         final Iterator<ConsumerRecord<String, String>> itr = records.iterator();
         if (!itr.hasNext()) {
-            return;
+            return Collections.emptyList();
         }
-        Map<String, Object> data;
+        ArrayList<String> res = new ArrayList<>();
         while (itr.hasNext()) {
-            String rawData = itr.next().value();
-            data = new ObjectMapper().readValue(rawData, HashMap.class);
-            String moment = data.get("moment").toString();
-            kafkaDataParser.update(moment, kafkaDataCacher.getCache(), data);
-            System.out.println(moment);
+            res.add(itr.next().value());
         }
-        sendCacheToWS();
-    }
-
-    //    @Scheduled(fixedRate = 500)
-    private void sendCacheToWS() {
-        List<WSSinteringMachine> wsSinteringMachines = kafkaDataCacher.getCache().values().stream().map(kafkaSinteringMachineToWS).collect(Collectors.toList());
-        SinteringMachineListResponse response = new SinteringMachineListResponse(wsSinteringMachines);
-        wsController.sendUpdate(response);
+        return res;
     }
 }

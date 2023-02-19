@@ -8,6 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 public class KafkaDataCacher {
+    String moment;
     ConcurrentHashMap<Integer, KafkaSinteringMachine> cache;
 
     KafkaDataCacher() {
@@ -16,5 +17,13 @@ public class KafkaDataCacher {
 
     public Map<Integer, KafkaSinteringMachine> getCache() {
         return cache;
+    }
+
+    public void setMoment(String moment) {
+        this.moment = moment;
+    }
+
+    public String getMoment() {
+        return moment;
     }
 }

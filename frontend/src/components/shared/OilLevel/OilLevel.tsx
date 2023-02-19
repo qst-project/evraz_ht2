@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    Col, Progress, Row, Typography,
+    Col, Progress, Row, Tooltip, Typography,
 } from 'antd';
 
 import { OilLevelProps } from './OilLevel.types';
@@ -17,12 +17,14 @@ function OilLevel({
                     strokeLinecap='butt'
                     type='circle'
                     strokeColor={strokeColor}
-                    percent={value}
+                    percent={value.value}
                 />
             </Row>
-            <Row justify='center'>
-                <Typography.Text strong>Уровень масла</Typography.Text>
-            </Row>
+            <Tooltip title={value.moment}>
+                <Row justify='center'>
+                    <Typography.Text strong>Уровень масла</Typography.Text>
+                </Row>
+            </Tooltip>
         </Col>
     );
 }

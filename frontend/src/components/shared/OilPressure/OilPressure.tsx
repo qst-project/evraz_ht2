@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    Card, Col, Progress, Row, Typography,
+    Card, Col, Progress, Row, Tooltip, Typography,
 } from 'antd';
 import { Colors } from '@services/constants'
 import { StatusType } from '@services/types';
@@ -29,7 +29,7 @@ const a = '#e8e8e8';
 
 function OilPressure({
     strokeColor = '',
-    value = 0,
+    value,
     status = StatusType.DEFAULT,
 }: OilPressureProps) {
     return (
@@ -49,17 +49,19 @@ function OilPressure({
                         // eslint-disable-next-line react/no-unstable-nested-components
                         () => (
                             <>
-                                {value}
+                                {value.value}
                                 мг/см
                                 <sup>2</sup>
                             </>
                         )
                     }
-                    percent={(value * 100) / 6}
+                    percent={(value.value * 100) / 6}
                 />
-                <Row justify='center'>
-                    <Typography.Text strong>Давление масла</Typography.Text>
-                </Row>
+                <Tooltip title={value.moment}>
+                    <Row justify='center'>
+                        <Typography.Text strong>Давление масла</Typography.Text>
+                    </Row>
+                </Tooltip>
             </Col>
         </Card>
     );
