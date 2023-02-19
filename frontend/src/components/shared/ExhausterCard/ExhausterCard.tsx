@@ -18,7 +18,6 @@ function ExhausterCard({ exhausterData, predictionData, index }: any | undefined
             sinter_machines,
         }: RootState) => getPredictions(sinter_machines),
     )
-    console.log(predictionData)
     return (
         <Card className={styles.main}>
             <div className={styles.header}>
@@ -37,7 +36,7 @@ function ExhausterCard({ exhausterData, predictionData, index }: any | undefined
                     className={styles.watch}
                     onClick={() => navigation(`/exhauster?machine_id=${exhausterData.sinterMachineId}&exhauster_id=${exhausterData.id}`)}
                 >
-                    Перейте
+                    Перейти
                 </Button>
             </div>
 
@@ -46,11 +45,12 @@ function ExhausterCard({ exhausterData, predictionData, index }: any | undefined
                 <span>{exhausterData.date}</span>
             </div>
             <div className={styles.replacement}>
-                <p>Последняя замена ротора</p>
-                <span>{exhausterData.lastRotorReplacement}</span>
+                {/* <p>Последняя замена ротора</p>
+                <span>{exhausterData.lastRotorReplacement}</span> */}
                 <div className={styles.forecast}>
-                    <span>Прогноз</span>
-                    {predictions ? predictions[index]?.hours_to_failure : ''}
+                    <span>Прогноз </span>
+                    {predictions ? predictions[index]?.hours_to_failure.toFixed(2) : ''}
+                    <span> часов</span>
                 </div>
             </div>
             <BearingList exhausterData={exhausterData} />
