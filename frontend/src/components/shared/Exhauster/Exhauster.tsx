@@ -61,7 +61,7 @@ function Exhauster({ exhauster, moment, delay }: ExhausterProps) {
                         />
                         <BearingTrigger
                             bearingName='1'
-                            bearingStatus={StatusType.WARNING}
+                            bearingStatus={StatusType.DEFAULT}
                             style={{
                                 position: 'absolute',
                                 top: '371px',
@@ -81,7 +81,7 @@ function Exhauster({ exhauster, moment, delay }: ExhausterProps) {
                         />
                         <BearingTrigger
                             bearingName='2'
-                            bearingStatus={StatusType.WARNING}
+                            bearingStatus={StatusType.DEFAULT}
                             style={{
                                 position: 'absolute',
                                 top: '360px',
@@ -101,7 +101,7 @@ function Exhauster({ exhauster, moment, delay }: ExhausterProps) {
                         />
                         <BearingTrigger
                             bearingName='5'
-                            bearingStatus={StatusType.WARNING}
+                            bearingStatus={StatusType.DEFAULT}
                             style={{
                                 position: 'absolute',
                                 top: '434px',
@@ -121,7 +121,7 @@ function Exhauster({ exhauster, moment, delay }: ExhausterProps) {
                         />
                         <BearingTrigger
                             bearingName='4'
-                            bearingStatus={StatusType.WARNING}
+                            bearingStatus={StatusType.DEFAULT}
                             style={{
                                 position: 'absolute',
                                 top: '352px',
@@ -141,7 +141,7 @@ function Exhauster({ exhauster, moment, delay }: ExhausterProps) {
                         />
                         <BearingTrigger
                             bearingName='3'
-                            bearingStatus={StatusType.WARNING}
+                            bearingStatus={StatusType.DEFAULT}
                             style={{
                                 position: 'absolute',
                                 top: '352px',
@@ -161,7 +161,7 @@ function Exhauster({ exhauster, moment, delay }: ExhausterProps) {
                         />
                         <BearingTrigger
                             bearingName='6'
-                            bearingStatus={StatusType.WARNING}
+                            bearingStatus={StatusType.DEFAULT}
                             style={{
                                 position: 'absolute',
                                 top: '434px',
@@ -181,7 +181,7 @@ function Exhauster({ exhauster, moment, delay }: ExhausterProps) {
                         />
                         <BearingTrigger
                             bearingName='7'
-                            bearingStatus={StatusType.WARNING}
+                            bearingStatus={StatusType.DEFAULT}
                             style={{
                                 position: 'absolute',
                                 top: '402px',
@@ -201,7 +201,7 @@ function Exhauster({ exhauster, moment, delay }: ExhausterProps) {
                         />
                         <BearingTrigger
                             bearingName='8'
-                            bearingStatus={StatusType.WARNING}
+                            bearingStatus={StatusType.DEFAULT}
                             style={{
                                 position: 'absolute',
                                 top: '402px',
@@ -221,7 +221,7 @@ function Exhauster({ exhauster, moment, delay }: ExhausterProps) {
                         />
                         <BearingTrigger
                             bearingName='9'
-                            bearingStatus={StatusType.DANGER}
+                            bearingStatus={StatusType.DEFAULT}
                             style={{
                                 position: 'absolute',
                                 top: '372px',

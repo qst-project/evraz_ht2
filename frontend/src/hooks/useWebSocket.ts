@@ -51,14 +51,13 @@ function useWebSocket(onConnected: Function, deps: Array<any>) {
 
         socket.onopen = function () {
             console.log('[open] Соединение установлено');
-            setInterval(() => socket.send('Меня зовут skinny'), 10000)
+           socket.send('Меня зовут skinny')
         };
 
         socket.onmessage = function (event) {
-            console.log(JSON.parse(event.data));
+           const prediction = JSON.parse(event.data);
         };
 
-        socket.close(1000, 'работа закончена');
     }, [])
 
     useEffect(() => {
