@@ -27,7 +27,7 @@ function TrendsOption({
                 defaultChecked={selectedOptions.includes(name)}
                 onChange={onChange}
             >
-                {`${characteristicUnits.get(label)}: ${0}`}
+                {characteristicUnits.get(label)}
             </Checkbox>
         </div>
     );

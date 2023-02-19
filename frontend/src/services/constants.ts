@@ -28,8 +28,12 @@ export const characteristicUnits = new Map<Characteristics, string>([
     [Characteristics.DRIVE_AMPERAGE, 'Ток двигателя, А'],
     [Characteristics.ROTOR_VOLTAGE, 'Напряжение ротора, кВт'],
     [Characteristics.STARTER_VOLTAGE, 'Напряжение стартера, кВт'],
-    [Characteristics.UNDERPRESSURE, 'Разряжение, мм, в ст '],
-    [Characteristics.DUST_LEVEL, 'Уровень пыли, мг/м3 '],
+    [Characteristics.UNDERPRESSURE, 'Разряжение, мм.р.ст'],
+    [Characteristics.GAS_TEMPERATURE, 'T газа, °C'],
+    [Characteristics.WATER_BEFORE, 'T воды до, °C'],
+    [Characteristics.WATER_AFTER, 'T воды после, °C'],
+    [Characteristics.OIL_BEFORE, 'T масла до, °C'],
+    [Characteristics.OIL_AFTER, 'T масла после, °C'],
 ]);
 
 export const characteristicBackendUnits = new Map<CharacteristicsBackend, string>([
