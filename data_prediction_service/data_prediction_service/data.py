@@ -89,6 +89,7 @@ class ExhausterData():
         self.__threshold = 5.5
         self.__to_failure = 720.0
         self.__precision = 100
+        self.__last_moment = "NaN"
         
     def reset(self):
         self.__exhauster_df.iloc[0:0]
@@ -111,6 +112,7 @@ class ExhausterData():
                 _value = _msg_value[self.__exhauster_scheme_df["signal"][i]]
             
             _moment = _msg_value["moment"]
+            self.__last_moment = _moment
             
             _row[_key] = _value
             if self.__time_base is None:
@@ -145,4 +147,4 @@ class ExhausterData():
         return self.__name
     
     def get_last_moment(self):
-        return self.__exhauster_df["moment"].iloc[:-1]
+        return self.__last_moment
