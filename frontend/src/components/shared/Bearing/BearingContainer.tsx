@@ -39,7 +39,8 @@ function BearingContainer({
                     key={1}
                     name='9 ПС'
                     status={StatusType.WARNING}
-                    characteristics={characteristics}
+                    // characteristics={characteristics}
+                    characteristics={[{ status: StatusType.DANGER, value: { value: 0, moment: '', }, type: Characteristics.AMPERAGE }]}
                 />
             )
             : null

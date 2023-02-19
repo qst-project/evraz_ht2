@@ -1,3 +1,3 @@
-import MainDriveContainer from './MainDriveContainer'
+import MainDrive from './MainDrive'
 
-export default MainDriveContainer
+export default MainDrive

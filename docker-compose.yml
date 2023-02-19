@@ -1,18 +1,19 @@
 version: '2'
 services:
+  # front
   front:
-     build:
-       context: frontend
-       dockerfile: Dockerfile
-     command: npm run --port 8080
-     stdin_open: true
-     ports:
-       - "8080:8080"
-     environment:
-       - PORT=8080
-       - HOST=0.0.0.0
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    command: npm run --port 8080
+    stdin_open: true
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - HOST=0.0.0.0
 
-  backend:
+  rest-backend:
     container_name: monolith
     build:
       context: backend
@@ -33,7 +34,14 @@ services:
     ports:
       - "2112:2112"
 
-  # prometheus
+  metrics:
+    container_name: metrics
+    build:
+      context: metrics
+      dockerfile: Dockerfile
+    ports:
+      - "2112:2112"
+
   prometheus:
     image: prom/prometheus:v2.37.0
     container_name: prometheus
@@ -47,7 +55,6 @@ services:
       - '--web.listen-address=:9099'
     network_mode: host
 
-  # data prediction
   data_prediction_service:
     container_name: data_prediction_service
     build:

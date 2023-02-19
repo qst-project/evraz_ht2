@@ -2,8 +2,8 @@ import { StatusType } from '@services/types';
 import React from 'react';
 
 export interface PipeProps {
-    temperature: number,
-    underpressure: number,
+    temperature: { value: number, moment: string },
+    underpressure: { value: number, moment: string },
     style?: React.CSSProperties,
 }
 

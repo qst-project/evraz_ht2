@@ -1,11 +1,11 @@
 import { StatusType } from '@services/types';
 
 export interface IOilLevelData {
-    value: number;
+    value: { value: number, moment: string };
     status: StatusType;
 }
 
 export interface OilLevelProps {
     strokeColor: string | undefined;
-    value: number;
+    value: { value: number, moment: string };
 }

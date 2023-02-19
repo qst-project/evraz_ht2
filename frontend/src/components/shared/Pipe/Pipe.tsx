@@ -33,7 +33,8 @@ const typeStatusColor = new Map<StatusType, string>([
 
 function Pipe({ style, temperature, underpressure }: PipeProps) {
     const gasTemperatureData: GasTemperatureData = {
-        value: temperature,
+        value: temperature.value,
+        moment: temperature.moment,
         status: StatusType.DEFAULT,
     }
 
@@ -41,7 +42,10 @@ function Pipe({ style, temperature, underpressure }: PipeProps) {
         {
             status: StatusType.DEFAULT,
             type: Characteristics.UNDERPRESSURE,
-            value: underpressure,
+            value: {
+                value: underpressure.value,
+                moment: underpressure.moment,
+            },
         },
     ]
 
@@ -56,7 +60,7 @@ function Pipe({ style, temperature, underpressure }: PipeProps) {
         >
             <GasTemperature
                 status={StatusType.DEFAULT}
-                value={gasTemperatureData.value}
+                value={gasTemperatureData}
                 strokeColor={typeStatusColor.get(gasTemperatureData.status)}
             />
             <div className={styles.characteristics}>

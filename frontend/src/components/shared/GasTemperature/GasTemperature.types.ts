@@ -2,12 +2,13 @@ import { StatusType } from '@services/types';
 
 export interface GasTemperatureProps {
     strokeColor: string | undefined;
-    value: number;
+    value: { value: number, moment: string, };
     status: StatusType;
 }
 
 export interface GasTemperatureData {
     value: number;
+    moment: string,
     status: StatusType;
 }
 
