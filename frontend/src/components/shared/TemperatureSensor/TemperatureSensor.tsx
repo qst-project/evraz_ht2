@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography } from 'antd';
+import { Tooltip, Typography } from 'antd';
 
 import { StatusType } from '@services/types';
 
@@ -27,11 +27,14 @@ function TemperatureSensor({
         <div
             className={getStatusClassName(status, styles.wrapper)}
         >
-            <Typography.Text>
-                {value}
-                {' '}
-                °C
-            </Typography.Text>
+            <Tooltip title={value.moment}>
+                <Typography.Text>
+                    {value.value}
+                    {' '}
+                    °C
+                </Typography.Text>
+            </Tooltip>
+
         </div>
     )
 }

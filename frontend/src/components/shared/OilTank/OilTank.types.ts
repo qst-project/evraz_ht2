@@ -1,6 +1,6 @@
 import React from 'react';
 
 export interface OilTankProps {
-    value: number,
+    value: { value: number, moment: string },
     style?: React.CSSProperties,
 }

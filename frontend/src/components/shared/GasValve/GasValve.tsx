@@ -1,5 +1,5 @@
 import { ReactComponent as Valve } from '@images/union.svg';
-import { Row } from 'antd';
+import { Row, Tooltip } from 'antd';
 
 function GasValve({
     value,
@@ -7,8 +7,8 @@ function GasValve({
     gasValveClosed,
 }: any) {
     let left
-    if (value !== null) {
-        left = `${233 + ((value * 79) / 100)}px`
+    if (value.value !== null && value.value !== undefined) {
+        left = `${233 + ((value.value * 79) / 100)}px`
     } else if (gasValveOpen) {
         left = '233px'
     } else {
@@ -20,10 +20,13 @@ function GasValve({
             top: '660px',
             left,
         }}>
-            <Row align='middle' justify='center'>
-                <Valve />
-            </Row>
-            {value}
+            <Tooltip title={value.moment}>
+                <Row align='middle' justify='center'>
+                    <Valve />
+                </Row>
+                {value.value}
+            </Tooltip>
+
         </div>
     )
 }

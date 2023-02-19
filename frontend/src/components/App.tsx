@@ -23,7 +23,6 @@ function App() {
             sinter_machines,
         }: RootState) => getWebConnectionError(sinter_machines),
     )
-    console.log(error)
     return (
         <div className='app'>
             <ConfigProvider

@@ -50,7 +50,7 @@ function BearingItem({ bearingData }: BearingItemProps) {
                         className={getCharacteristicClassName(item.status)}
                         key={item.type}
                     >
-                        <Tooltip title={item.value}>
+                        <Tooltip title={item.value.value}>
                             <Row align={'middle'} justify={'center'}>
                                 {abbreviations[item.type]}
                                 {getIcon(item.type, { className: styles.icon })}
