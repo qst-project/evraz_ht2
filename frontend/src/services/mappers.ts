@@ -30,7 +30,10 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
                         res.characteristics.push({
                             type: key as Characteristics,
                             status: StatusType.DEFAULT,
-                            value: value.value?.toFixed(2) || null,
+                            value: {
+                                value: value.value.value?.toFixed(2) || null,
+                                moment: new Date(new Date(value.value?.moment).valueOf() - (new Date().getTimezoneOffset() * 60000)).toLocaleString('ru'),
+                            },
                         })
                     }
                 }
@@ -63,7 +66,13 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
                         res.characteristics.push({
                             type: key as Characteristics,
                             status,
-                            value: value.value.toFixed(2) || null,
+                            value: {
+                                value: value.value.value?.toFixed(2) || null,
+                                moment: new Date(
+                                    new Date(value.value?.moment).valueOf()
+                                    - (new Date().getTimezoneOffset() * 60000)
+                                ).toLocaleString('ru'),
+                            },
                         })
                     }
                 }
@@ -76,39 +85,119 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
             mainDriveCharacteristics: [
                 {
                     status: StatusType.DEFAULT,
-                    value: ex.mainDriveRotorCurrent,
+                    value: {
+                        value: Number(ex?.mainDriveRotorCurrent?.value?.toFixed(2)) || '',
+                        moment: new Date(
+                            new Date(ex?.mainDriveRotorCurrent?.moment).valueOf()
+                            - (new Date().getTimezoneOffset() * 60000)
+                        ).toLocaleString('ru') || '',
+                    },
                     type: Characteristics.DRIVE_AMPERAGE,
                 },
                 {
                     status: StatusType.DEFAULT,
-                    value: ex.mainDriveStatorCurrent,
+                    value: {
+                        value: Number(ex?.mainDriveStatorCurrent?.value.toFixed(2)) || '',
+                        moment: new Date(
+                            new Date(ex?.mainDriveStatorCurrent?.moment).valueOf()
+                            - (new Date().getTimezoneOffset() * 60000)
+                        ).toLocaleString('ru') || '',
+                    },
                     type: Characteristics.AMPERAGE,
                 },
                 {
                     status: StatusType.DEFAULT,
-                    value: ex.mainDriveRotorVoltage,
+                    value: {
+                        value: ex?.mainDriveRotorVoltage?.value.toFixed(2) || '',
+                        moment: new Date(
+                            new Date(ex?.mainDriveRotorVoltage?.moment).valueOf()
+                            - (new Date().getTimezoneOffset() * 60000)
+                        ).toLocaleString('ru') || '',
+                    },
                     type: Characteristics.ROTOR_VOLTAGE,
                 },
                 {
                     status: StatusType.DEFAULT,
-                    value: ex.mainDriveStatorVoltage,
+                    value: {
+                        value: ex?.mainDriveStatorVoltage?.value.toFixed(2) || '',
+                        moment: new Date(
+                            new Date(ex?.mainDriveStatorVoltage?.moment).valueOf()
+                            - (new Date().getTimezoneOffset() * 60000)
+                        ).toLocaleString('ru') || '',
+                    },
                     type: Characteristics.STARTER_VOLTAGE,
                 },
             ],
-            oilLevel: Number(ex.oilLevel.toFixed(2)),
-            oilPressure: Number(ex.oilPressure.toFixed(2)),
-            coolerOilTemperatureAfter: Number(ex.coolerOilTemperatureAfter.toFixed(2)),
-            coolerOilTemperatureBefore: Number(ex.coolerOilTemperatureBefore.toFixed(2)),
-            coolerWaterTemperatureAfter: Number(ex.coolerWaterTemperatureAfter.toFixed(2)),
-            coolerWaterTemperatureBefore: Number(ex.coolerWaterTemperatureBefore.toFixed(2)),
-            gasValvePosition: ex.gasValvePosition,
-            gasValveOpen: ex.gasValveOpen,
-            gasValveClosed: ex.gasValveClosed,
-            gasCollectorTemperatureBefore: Number(ex.gasCollectorTemperatureBefore.toFixed(2)),
-            gasCollectorUnderPressureBefore: Number(ex.gasCollectorUnderPressureBefore.toFixed(2)),
+            oilLevel: {
+                value: Number(ex.oilLevel?.value.toFixed(2)),
+                moment: new Date(
+                    new Date(ex?.oilLevel?.moment).valueOf()
+                    - (new Date().getTimezoneOffset() * 60000)
+                ).toLocaleString('ru') || '',
+            },
+            oilPressure: {
+                value: Number(ex.oilPressure?.value.toFixed(2)),
+                moment: new Date(
+                    new Date(ex?.oilPressure?.moment).valueOf()
+                    - (new Date().getTimezoneOffset() * 60000)
+                ).toLocaleString('ru') || '',
+            },
+            coolerOilTemperatureAfter: {
+                value: Number(ex.coolerOilTemperatureAfter?.value.toFixed(2)),
+                moment: new Date(
+                    new Date(ex?.coolerOilTemperatureAfter?.moment).valueOf()
+                    - (new Date().getTimezoneOffset() * 60000)
+                ).toLocaleString('ru') || '',
+            },
+            coolerOilTemperatureBefore: {
+                value: Number(ex.coolerOilTemperatureBefore?.value.toFixed(2)),
+                moment: new Date(
+                    new Date(ex?.coolerOilTemperatureBefore?.moment).valueOf()
+                    - (new Date().getTimezoneOffset() * 60000)
+                ).toLocaleString('ru') || '',
+            },
+            coolerWaterTemperatureAfter: {
+                value: Number(ex.coolerWaterTemperatureAfter?.value.toFixed(2)),
+                moment: new Date(
+                    new Date(ex?.coolerWaterTemperatureAfter?.moment).valueOf()
+                    - (new Date().getTimezoneOffset() * 60000)
+                ).toLocaleString('ru') || '',
+            },
+            coolerWaterTemperatureBefore:{
+                value: Number(ex.coolerWaterTemperatureBefore?.value.toFixed(2)),
+                moment: new Date(
+                    new Date(ex?.coolerWaterTemperatureBefore?.moment).valueOf()
+                    - (new Date().getTimezoneOffset() * 60000)
+                ).toLocaleString('ru') || '',
+            },
+            gasValvePosition: {
+                value: ex.gasValvePosition?.value,
+                moment: new Date(
+                    new Date(ex?.gasValvePosition?.moment).valueOf()
+                    - (new Date().getTimezoneOffset() * 60000)
+                ).toLocaleString('ru') || '',
+            },
+            gasValveOpen: ex.gasValveOpen?.value,
+            gasValveClosed: ex.gasValveClosed?.value,
+            gasCollectorTemperatureBefore:
+            {
+                value: Number(ex.gasCollectorTemperatureBefore?.value.toFixed(2)),
+                moment: new Date(
+                    new Date(ex?.gasCollectorTemperatureBefore?.moment).valueOf()
+                    - (new Date().getTimezoneOffset() * 60000)
+                ).toLocaleString('ru') || '',
+            },
+            gasCollectorUnderPressureBefore:
+            {
+                value: Number(ex.gasCollectorUnderPressureBefore?.value.toFixed(2)),
+                moment: new Date(
+                    new Date(ex?.gasCollectorUnderPressureBefore?.moment).valueOf()
+                    - (new Date().getTimezoneOffset() * 60000)
+                ).toLocaleString('ru') || '',
+            },
             rotorName: '',
             lastRotorReplacement: '',
         })),
     }))
-    return [sinterMachines, response.moment];
+    return [sinterMachines, '20220.02.03'];
 }

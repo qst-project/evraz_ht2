@@ -7,7 +7,7 @@ import Pipe from '@shared/Pipe/Pipe';
 import BearingTrigger from '@shared/BearingTrigger';
 import TemperatureSensorContainer from '@shared/TemperatureSensor';
 import TimingInfo from '@shared/TimingInfo';
-import GasValve from '@components/GasValve/GasValve';
+import GasValve from '@components/shared/GasValve/GasValve';
 
 import styles from './Exhauster.module.scss';
 import OilPressureContainer from '../OilPressure';

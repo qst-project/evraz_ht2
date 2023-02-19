@@ -11,16 +11,16 @@ const mock: ExhausterTrends = {
         {
             name: '1 ПС',
             characteristics: [
-                { type: Characteristics.TEMPERATURE, value: 233, status: StatusType.DEFAULT },
-                { type: Characteristics.VERTICAL, value: 12, status: StatusType.DEFAULT },
-                { type: Characteristics.HORIZONTAL, value: 423, status: StatusType.DEFAULT },
-                { type: Characteristics.AXIS, value: 23, status: StatusType.DEFAULT },
+                { type: Characteristics.TEMPERATURE, value: { value: 233, moment: '' }, status: StatusType.DEFAULT },
+                { type: Characteristics.VERTICAL, value: { value: 233, moment: '' }, status: StatusType.DEFAULT },
+                { type: Characteristics.HORIZONTAL, value: { value: 233, moment: '' }, status: StatusType.DEFAULT },
+                { type: Characteristics.AXIS, value: { value: 233, moment: '' }, status: StatusType.DEFAULT },
             ],
         },
         {
             name: '2 ПС',
             characteristics: [
-                { type: Characteristics.TEMPERATURE, value: 0, status: StatusType.DEFAULT },
+                { type: Characteristics.TEMPERATURE, value: { value: 233, moment: '' }, status: StatusType.DEFAULT },
             ],
         },
     ],
@@ -28,14 +28,14 @@ const mock: ExhausterTrends = {
         {
             name: 'Маслоблок',
             characteristics: [
-                { type: Characteristics.OIL_LEVEL, value: 233, status: StatusType.DEFAULT },
-                { type: Characteristics.OIL_PRESSURE, value: 12, status: StatusType.DEFAULT },
+                { type: Characteristics.OIL_LEVEL, value: { value: 233, moment: '' }, status: StatusType.DEFAULT },
+                { type: Characteristics.OIL_PRESSURE, value: { value: 233, moment: '' }, status: StatusType.DEFAULT },
             ],
         },
         {
             name: 'Главный привод',
             characteristics: [
-                { type: Characteristics.AMPERAGE, value: 5, status: StatusType.DEFAULT },
+                { type: Characteristics.AMPERAGE, value: { value: 233, moment: '' }, status: StatusType.DEFAULT },
             ],
         },
     ],
@@ -52,7 +52,7 @@ function TrendsSidebar() {
                                 {item.characteristics.map((_item) => (
                                     <TrendsOption
                                         name={_item.type}
-                                        value={_item.value}
+                                        value={_item.value.value}
                                         key={_item.type}
                                     />
                                 ))}
@@ -65,7 +65,7 @@ function TrendsSidebar() {
                         {item.characteristics.map((_item) => (
                             <TrendsOption
                                 name={_item.type}
-                                value={_item.value}
+                                value={_item.value.value}
                                 key={_item.type}
                             />
                         ))}
