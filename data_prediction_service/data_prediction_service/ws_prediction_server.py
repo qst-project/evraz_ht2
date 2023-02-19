@@ -32,7 +32,8 @@ def update_failure(l, conn):
         first_res.append({
                 "exhauster_name": exhauster.get_name(),
                 "hours_to_failure": exhauster.get_time_to_failure(),
-                "precision": exhauster.get_precision()
+                "precision": exhauster.get_precision(),
+                "moment": exhauster.get_last_moment()
         })
     l.acquire()
     conn.send(first_res)
@@ -53,7 +54,8 @@ def update_failure(l, conn):
             res.append({
                 "exhauster_name": exhauster.get_name(),
                 "hours_to_failure": exhauster.get_time_to_failure(),
-                "precision": exhauster.get_precision()
+                "precision": exhauster.get_precision(),
+                "moment": exhauster.get_last_moment()
             })
             
         l.acquire()
