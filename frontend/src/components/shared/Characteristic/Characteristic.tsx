@@ -1,5 +1,5 @@
 import React from 'react';
-import { characteristicUnits } from '@services/constants';
+import { characteristicBackendUnits } from '@services/constants';
 import { StatusType } from '@services/types';
 import styles from './Characteristic.module.scss';
 import { CharacteristicProps } from './Characteristic.types';
@@ -28,7 +28,7 @@ function Characteristic({ characteristic }: CharacteristicProps) {
                 }}
             />
             <div className={getStatusClassName(characteristic.status, styles.wrapper)}>
-                <span className={styles.type}>{characteristicUnits.get(characteristic.type)}</span>
+                <span className={styles.type}>{characteristicBackendUnits.get(characteristic.type)}</span>
                 <span className={styles.value}>
                     <Tooltip title={characteristic.value.moment}>
                         {

@@ -1,6 +1,6 @@
 import {
     BearingData,
-    Characteristics,
+    CharacteristicsBackend,
     SinterMachineData,
     SinterMachinesResponse,
     StatusType,
@@ -26,12 +26,12 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
                     if (value?.value === null) {
                         break;
                     }
-                    if (Object.values(Characteristics).includes(key as Characteristics)) {
+                    if (Object.values(CharacteristicsBackend).includes(key as CharacteristicsBackend)) {
                         res.characteristics.push({
-                            type: key as Characteristics,
+                            type: key as CharacteristicsBackend,
                             status: StatusType.DEFAULT,
                             value: {
-                                value: value.value.value?.toFixed(2) || null,
+                                value: value.value.value.toFixed(2) || '',
                                 moment: new Date(new Date(value.value?.moment).valueOf() - (new Date().getTimezoneOffset() * 60000)).toLocaleString('ru'),
                             },
                         })
@@ -62,12 +62,12 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
                             status = StatusType.DEFAULT;
                             break;
                     }
-                    if (Object.values(Characteristics).includes(key as Characteristics)) {
+                    if (Object.values(CharacteristicsBackend).includes(key as CharacteristicsBackend)) {
                         res.characteristics.push({
-                            type: key as Characteristics,
+                            type: key as CharacteristicsBackend,
                             status,
                             value: {
-                                value: value.value.value?.toFixed(2) || null,
+                                value: value.value.value.toFixed(2) || '',
                                 moment: new Date(
                                     new Date(value.value?.moment).valueOf()
                                     - (new Date().getTimezoneOffset() * 60000)
@@ -98,7 +98,7 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
                             - (new Date().getTimezoneOffset() * 60000)
                         ).toLocaleString('ru') || '',
                     },
-                    type: Characteristics.DRIVE_AMPERAGE,
+                    type: CharacteristicsBackend.DRIVE_AMPERAGE,
                 },
                 {
                     status: StatusType.DEFAULT,
@@ -109,7 +109,7 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
                             - (new Date().getTimezoneOffset() * 60000)
                         ).toLocaleString('ru') || '',
                     },
-                    type: Characteristics.AMPERAGE,
+                    type: CharacteristicsBackend.AMPERAGE,
                 },
                 {
                     status: StatusType.DEFAULT,
@@ -120,7 +120,7 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
                             - (new Date().getTimezoneOffset() * 60000)
                         ).toLocaleString('ru') || '',
                     },
-                    type: Characteristics.ROTOR_VOLTAGE,
+                    type: CharacteristicsBackend.ROTOR_VOLTAGE,
                 },
                 {
                     status: StatusType.DEFAULT,
@@ -131,7 +131,7 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
                             - (new Date().getTimezoneOffset() * 60000)
                         ).toLocaleString('ru') || '',
                     },
-                    type: Characteristics.STARTER_VOLTAGE,
+                    type: CharacteristicsBackend.STARTER_VOLTAGE,
                 },
             ],
             oilLevel: {
@@ -169,7 +169,7 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
                     - (new Date().getTimezoneOffset() * 60000)
                 ).toLocaleString('ru') || '',
             },
-            coolerWaterTemperatureBefore:{
+            coolerWaterTemperatureBefore: {
                 value: Number(ex.coolerWaterTemperatureBefore?.value.toFixed(2)),
                 moment: new Date(
                     new Date(ex?.coolerWaterTemperatureBefore?.moment).valueOf()

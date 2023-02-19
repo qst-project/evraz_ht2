@@ -19,8 +19,23 @@ export enum Characteristics {
     DUST_LEVEL = 'DUST_LEVEL',
 }
 
+export enum CharacteristicsBackend {
+    TEMPERATURE = 'temperature',
+    OIL_LEVEL = 'oil_Level',
+    VERTICAL = 'vibrationVertical',
+    HORIZONTAL = 'vibrationHorizontal',
+    AXIS = 'vibrationAxial',
+    OIL_PRESSURE = 'oil_pressure',
+    AMPERAGE = 'AMPERAGE',
+    DRIVE_AMPERAGE = 'DRIVE_AMPERAGE',
+    ROTOR_VOLTAGE = 'ROTOR_VOLTAGE',
+    STARTER_VOLTAGE = 'STARTER_VOLTAGE',
+    UNDERPRESSURE = 'UNDERPRESSURE',
+    DUST_LEVEL = 'DUST_LEVEL',
+}
+
 export interface CharacteristicData {
-    type: Characteristics,
+    type: CharacteristicsBackend,
     value: { value: number | string, moment: string },
     status: StatusType,
 }

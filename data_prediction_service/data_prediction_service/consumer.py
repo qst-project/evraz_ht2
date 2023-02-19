@@ -42,7 +42,7 @@ class DataStreamer():
                     if _c in _conf:
                         self.__setattr__("_DataStreamer__" + _c, _conf[_c])
                     
-        self.__consumer = KafkaConsumer(
+        self.consumer = KafkaConsumer(
             bootstrap_servers=[self.__server],
             security_protocol=self.__security_protocol,
             sasl_mechanism=self.__sasl_mechanism,
@@ -56,25 +56,32 @@ class DataStreamer():
             fetch_max_wait_ms=20
         )
         
-        self.__topic_partition = TopicPartition(self.__topic, 0)
-        self.__consumer.assign([self.__topic_partition])
+        self.topic_partition = TopicPartition(self.__topic, 0)
+        self.consumer.assign([self.topic_partition])
         
-        self.__callbacks = []
         self.stored_data = []
         
+    def fill_first(self) -> int:
+        self.set_real_time()
+        msg = next(self.consumer)
+        _offset = msg.offset
+        self.get_data_batch(_offset - 100, 100, 1)
+        return _offset
+        
     def close(self):
-        self.__consumer.close()
+        self.consumer.close()
         
     def set_to_start(self):
-        self.__consumer.seek_to_beginning()
+        self.consumer.seek_to_beginning()
         
     def set_real_time(self):
-        self.__consumer.seek_to_end()
+        self.consumer.seek_to_end()
         
-    def get_data_batch(self, batch_size: int, interval: int = 0) -> None:
+    def get_data_batch(self, start: int, batch_size: int, interval: int = 1) -> None:
+        self.consumer.seek(self.topic_partition, start)
         for _ in range(batch_size):
-            msg = next(self.__consumer)
+            msg = next(self.consumer)
             print("Message retieved with offset " + str(msg.offset))
             self.stored_data.append(msg)
-            self.__consumer.seek(self.__topic_partition, msg.offset + interval)
+            self.consumer.seek(self.topic_partition, msg.offset + interval)
             print("Offset changed")
