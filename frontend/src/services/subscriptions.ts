@@ -1,5 +1,6 @@
 import { setSinterMachines, setWebSockerConnectionError } from '@reduxToolkit/slices/sinterMachines';
 import { mapSinterMachinesResponse } from '@services/mappers';
+import { notification } from 'antd';
 
 export function subscribe(
     stompClient: any,
@@ -18,6 +19,18 @@ export function subscribe(
                 exhausters,
                 new Date(new Date(moment).valueOf() - (now.getTimezoneOffset() * 60000)).toLocaleString('ru'),
                 Number(delay)]));
+        },
+    );
+}
+
+export function notif(
+    stompClient: any,
+    dispatch: any,
+) {
+    stompClient.subscribe(
+        '/user/1/queue/notifications',
+        (msg: any) => {
+            notification.info({ message: 'Новое уведомление в журнале' })
         },
     );
 }
