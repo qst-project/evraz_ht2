@@ -32,12 +32,12 @@ public class DataWarnsNotifier {
 
     public void check(TimestampedValue<Double> newValue, String type, Limits limits, BearingMetricLocation location) {
         Double oldValue = lastValues.computeIfAbsent(location, e -> newValue.getValue());
-//        if (fits(oldValue, limits)) {
-//            return;
-//        }
-//        if (fits(newValue.getValue(), limits)) {
-//            return;
-//        }
+        if (fits(oldValue, limits)) {
+            return;
+        }
+        if (fits(newValue.getValue(), limits)) {
+            return;
+        }
         Notification notification = new Notification();
         notification.sinMachineNumber = location.sinMachineNumber;
         notification.exhausterNumber = location.exhausterNumber;
