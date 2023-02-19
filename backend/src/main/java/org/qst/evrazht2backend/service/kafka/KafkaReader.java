@@ -1,25 +1,14 @@
 package org.qst.evrazht2backend.service.kafka;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.log4j.Log4j2;
 import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.common.serialization.StringDeserializer;
-import org.qst.evrazht2backend.controller.WSController;
-import org.qst.evrazht2backend.mapper.KafkaSinteringMachineToWS;
-import org.qst.evrazht2backend.model.SinteringMachineListResponse;
-import org.qst.evrazht2backend.model.ws.WSSinteringMachine;
-import org.qst.evrazht2backend.repository.KafkaDataCacher;
-import org.qst.evrazht2backend.service.DataWarnsNotifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Component
 @Log4j2
@@ -28,18 +17,14 @@ public class KafkaReader {
     private final Consumer<String, String> consumer;
 
     public KafkaReader(
-            WSController wsController,
-            KafkaSinteringMachineToWS kafkaSinteringMachineToWS,
-            KafkaDataParser kafkaDataParser,
-            KafkaDataCacher kafkaDataCacher,
             @Value("${kafka.user}") String user,
             @Value("${kafka.pass}") String pass,
             @Value("${kafka.host}") String host,
             @Value("${kafka.ts-file}") String tsFile,
             @Value("${kafka.ts-pass}") String tsPass,
             @Value("${kafka.topic}") String topicName,
-            @Value("${kafka.group-id}") String groupId,
-            DataWarnsNotifier dataWarnsNotifier) {
+            @Value("${kafka.group-id}") String groupId
+    ) {
         String jaasTemplate = "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"%s\" password=\"%s\";";
         String jaasCfg = String.format(jaasTemplate, user, pass);
 
@@ -60,7 +45,7 @@ public class KafkaReader {
         consumer.subscribe(Collections.singletonList(topicName));
     }
 
-//    @Scheduled(fixedRate = 500)
+    //    @Scheduled(fixedRate = 500)
     public List<String> pollMessages() {
         ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
         final Iterator<ConsumerRecord<String, String>> itr = records.iterator();
