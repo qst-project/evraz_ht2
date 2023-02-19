@@ -15,7 +15,10 @@ public class Notification {
     public Number exhausterNumber;
     public Number bearingNumber;
     public String fieldName;
-    public String type; // warn or
+    public String type;
     public String moment;
+    public double max;
+    public double min;
+    public double value;
 
 }

@@ -32,12 +32,12 @@ public class DataWarnsNotifier {
 
     public void check(TimestampedValue<Double> newValue, String type, Limits limits, BearingMetricLocation location) {
         Double oldValue = lastValues.computeIfAbsent(location, e -> newValue.getValue());
-        if (fits(oldValue, limits)) {
-            return;
-        }
-        if (fits(newValue.getValue(), limits)) {
-            return;
-        }
+//        if (fits(oldValue, limits)) {
+//            return;
+//        }
+//        if (fits(newValue.getValue(), limits)) {
+//            return;
+//        }
         Notification notification = new Notification();
         notification.sinMachineNumber = location.sinMachineNumber;
         notification.exhausterNumber = location.exhausterNumber;
@@ -45,6 +45,9 @@ public class DataWarnsNotifier {
         notification.fieldName = location.fieldName;
         notification.type = type;
         notification.moment = newValue.moment;
+        notification.max = limits.max;
+        notification.min = limits.min;
+        notification.value = newValue.value;
         notificationRepository.save(notification);
         wsController.sendUpdateNotification(notification);
     }
