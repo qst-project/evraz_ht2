@@ -5,6 +5,8 @@ import org.qst.evrazht2backend.model.TimestampedValue;
 import org.qst.evrazht2backend.model.kafka.KafkaBearing;
 import org.qst.evrazht2backend.model.kafka.KafkaExhauster;
 import org.qst.evrazht2backend.model.kafka.KafkaSinteringMachine;
+import org.qst.evrazht2backend.service.DataWarnsNotifier;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

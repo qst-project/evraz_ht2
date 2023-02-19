@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class TimestampedValue<T> {
-    String moment;
-    T value;
+    public String moment;
+    public T value;
 }
