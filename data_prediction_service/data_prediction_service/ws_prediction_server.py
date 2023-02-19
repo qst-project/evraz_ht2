@@ -1,40 +1,71 @@
 import asyncio
 import websockets
 import json
+import consumer
+import data
+import multiprocessing as mp
 
-'''
-    Data format json: 
-    {
-        "<exhauster_name>(u171)" : [ 
-            {
-                "component" : "<component_name>(bearing_1)"
-                "days_to_failure": <prediction>
-                "precision": <precision>
-            },
-            {...},
-            ...
-        ],
-        "...": [...],
-        ...
-    }
-'''
+parent_conn, child_conn = mp.Pipe()
+l = mp.Lock()
+last_data_ = []
 
 async def send_prediction(websocket, path):
     msg = await websocket.recv()
-    _json = json.dumps([{
-            "exhauter_name": "У-171",
-            "hours_to_failure": 120,
-            "precision": 100,
-        }, {
-            "exhauter_name": "Ф-172",
-            "hours_to_failure": 120,
-            "precision": 100,
-        }])
+    global last_data_
+    l.acquire()
+    if parent_conn.poll():
+        last_data_ = parent_conn.recv()
+    l.release()
+    _json = json.dumps(last_data_)
     await websocket.send(_json)
+    
+def update_failure(l, conn):
+    first_res = []
+    streamer = consumer.DataStreamer()
+    exhauster_list = [data.ExhausterData("У-171", "config/signals_mapping_u171.csv")]
+    for exhauster in exhauster_list:
+        first_res.append({
+                "exhauster_name": exhauster.get_name(),
+                "hours_to_failure": exhauster.get_time_to_failure(),
+                "precision": exhauster.get_precision()
+        })
+    l.acquire()
+    conn.send(first_res)
+    l.release()
+    _offset = streamer.fill_first()
+    for exhauster in exhauster_list:
+        for _d in streamer.stored_data:
+            exhauster.kafka_msg_to_row(_d)
+            
+    streamer.consumer.seek(streamer.topic_partition, _offset)
+    while True:
+        _msg = next(streamer.consumer)
+        res = []
+        for exhauster in exhauster_list:
+            exhauster.row_pop()
+            exhauster.kafka_msg_to_row(_msg)
+            exhauster.update_failure()
+            res.append({
+                "exhauster_name": exhauster.get_name(),
+                "hours_to_failure": exhauster.get_time_to_failure(),
+                "precision": exhauster.get_precision()
+            })
+            
+        l.acquire()
+        conn.send(res)
+        l.release()
+            
+    conn.close()
         
 if __name__ == "__main__":
+    print("Running streamer")
+    p = mp.Process(target=update_failure, args=(l, child_conn,))
+    p.start()
+    
     print("Running server")
     ws_server = websockets.serve(send_prediction, "127.0.0.1", 8765)
     
     asyncio.get_event_loop().run_until_complete(ws_server)
     asyncio.get_event_loop().run_forever()
+    
+    
