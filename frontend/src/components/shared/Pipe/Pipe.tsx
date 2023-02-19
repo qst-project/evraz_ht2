@@ -26,7 +26,7 @@ const typeStatusClassName = new Map<StatusType, object>([
 ]);
 
 const typeStatusColor = new Map<StatusType, string>([
-    [StatusType.DEFAULT, Colors.GREY],
+    [StatusType.DEFAULT,'green'],
     [StatusType.DANGER, Colors.RED],
     [StatusType.WARNING, Colors.ORANGE],
 ]);

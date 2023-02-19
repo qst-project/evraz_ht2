@@ -4,7 +4,7 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import useWebSocket from '@hooks/useWebSocket';
-import { subscribe } from '@services/subscriptions';
+import { notif, subscribe } from '@services/subscriptions';
 import { Colors } from '@services/constants';
 import { getWebConnectionError } from '@reduxToolkit/slices/sinterMachines';
 
@@ -15,9 +15,11 @@ import NotificationsPage from '@pages/NotificationsPage';
 import { RootState } from '@reduxToolkit/index';
 
 import PageLayout from './layout/PageLayout';
+import useNotif from '@hooks/useNotif';
 
 function App() {
     useWebSocket(subscribe, [])
+    useNotif(notif, [])
     const error = useSelector(
         ({
             sinter_machines,
