@@ -1,3 +1,5 @@
+import { characteristicUnits } from '@services/constants'
+import { Characteristics } from '@services/types'
 import { List } from 'antd'
 import { INotificationItem, NotificationsPageProps } from './NotificationsList.types'
 
@@ -6,6 +8,7 @@ function NotificationsList({
     pageSize,
     currentPage,
     dataItems,
+    total,
 }: NotificationsPageProps) {
     return (
         <List
@@ -13,7 +16,7 @@ function NotificationsList({
             size='large'
             pagination={{
                 onChange: onChangePage,
-                total: 2,
+                total,
                 current: +currentPage,
                 defaultCurrent: 1,
                 defaultPageSize: pageSize,
@@ -24,7 +27,13 @@ function NotificationsList({
                 <List.Item
                     key={index}
                 >
-                    {notificationItem?.message}
+                    <p>
+                        {`
+                            Ошибка типа ${notificationItem.type} в агломашине ${notificationItem.sinMachineNumber} в эксгаустере ${notificationItem.exhausterNumber}
+                            в подшипникe ${notificationItem.bearingNumber}. Значение ${notificationItem.fieldName} было ${notificationItem.value} в ${notificationItem.moment}                            
+                        `
+                        }
+                    </p>
                 </List.Item>
             )}
         />

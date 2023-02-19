@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import NotificationsList from './NotificationsList'
@@ -7,39 +7,29 @@ import { INotificationItem } from './NotificationsList.types'
 function NotificationsListContainer() {
     const [searchParams, setSearchParams] = useSearchParams()
     const currentPage: string = searchParams.get('page') || '1'
-    const pageSize: number = 1
+    const pageSize: number = 10
+    const [item, setItems] = useState([] as INotificationItem[])
+    const [total, setTotal] = useState(0)
 
     const onChangePage = (page: number): void => {
         searchParams.set('page', String(page))
         setSearchParams(searchParams)
     }
 
-    fetch('http://localhost:9090/notofications?pageNumber=1&pageOffset=10&pageSize=10')
+    fetch(`http://localhost:9090/notifications?size=${pageSize}&page=${Number(currentPage) - 1}`)
         .then((response) => response.json())
         .then((data) => {
-            console.log(data)
+            setItems(data.content)
+            setTotal(data.totalPages)
         });
 
-    const data: INotificationItem[] = [
-        {
-            date: '30.01.2000',
-            dateCreatedAt: '30.01.2000',
-            message: 'Ошибка 1',
-            counteRepetition: 10,
-        },
-        {
-            date: '30.01.2000',
-            dateCreatedAt: '30.01.2000',
-            message: 'Ошибка 2',
-            counteRepetition: 10,
-        },
-    ]
     return (
         <NotificationsList
+            total={total}
             currentPage={Number(currentPage)}
             pageSize={pageSize}
             onChangePage={onChangePage}
-            dataItems={data}
+            dataItems={item}
         />
     )
 }

@@ -3,11 +3,17 @@ export interface NotificationsPageProps {
     onChangePage(page: number, pageSize: number): void;
     pageSize: number;
     dataItems: any;
+    total: number;
 }
 
 export interface INotificationItem {
-    date: string;
-    dateCreatedAt: string;
-    message: string;
-    counteRepetition: number;
+    bearingNumber: number;
+    exhausterNumber: number;
+    fieldName: string;
+    id: number;
+    max: number;
+    moment: string;
+    sinMachineNumber: number;
+    type: string;
+    value: number;
 }
