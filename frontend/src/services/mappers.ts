@@ -205,5 +205,5 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
             lastRotorReplacement: '',
         })),
     }))
-    return [sinterMachines, '20220.02.03'];
+    return [sinterMachines, response.moment];
 }

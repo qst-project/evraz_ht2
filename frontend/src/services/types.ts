@@ -213,4 +213,5 @@ export interface KafkaSinterMachine {
 
 export interface SinterMachinesResponse {
     machines: KafkaSinterMachine[],
+    moment: string,
 }

@@ -31,14 +31,17 @@ export const sinterMachinesSlice = createSlice({
             state.webSockerConnectionError = action.payload
         },
         // setPrediction(state, action: PayloadAction<string, number>) {
-        //     // eslint-disable-next-line no-param-reassign
-        //     const state.
-        //     state.webSockerConnectionError = action.payload
+        //     // eslint-disable-next-line no-param-reassign, @typescript-eslint/naming-convention
+           
         // },
     },
 })
 
-export const { setSinterMachines, setWebSockerConnectionError } = sinterMachinesSlice.actions
+export const {
+    setSinterMachines,
+    setWebSockerConnectionError,
+    // setPrediction,
+} = sinterMachinesSlice.actions
 export const getSinterMachinesState = (state: SinterMachinesState) => state
 export const getExhausterState = (
     state: SinterMachinesState,
