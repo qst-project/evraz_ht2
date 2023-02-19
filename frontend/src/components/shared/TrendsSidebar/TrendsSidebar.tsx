@@ -1,20 +1,14 @@
 import React from 'react';
 import { Collapse } from 'antd';
-import { useAppSelector } from '@hooks/redux';
 import TrendsItem from '@shared/TrendsItem';
 import TrendsOption from '@shared/TrendsOption';
 import { Characteristics } from '@services/types';
+import { TrendsSidebarProps } from '@shared/TrendsSidebar/TrendsSidebar.types';
 import styles from './TrendsSidebar.module.scss';
 
 const { Panel } = Collapse;
 
-function TrendsSidebar() {
-    const { machines } = useAppSelector((state) => state.sinter_machines);
-    if (!machines) {
-        return null;
-    }
-    const exhauster = machines[0].exhausters[0];
-
+function TrendsSidebar({ exhauster }: TrendsSidebarProps) {
     const getOptionName = (characteristic: Characteristics) => (
         `${exhauster.id}/${characteristic}`
     )
@@ -24,10 +18,18 @@ function TrendsSidebar() {
             <Collapse size='small'>
                 <Panel key={1} header='Подшипники'>
                     {exhauster.problems.map((bearing) => (
-                        <TrendsItem bearing={bearing} key={bearing.name} />
+                        <TrendsItem
+                            bearing={bearing}
+                            exhauster={exhauster}
+                            key={bearing.name}
+                        />
                     ))}
                     {exhauster.bearings.map((bearing) => (
-                        <TrendsItem bearing={bearing} key={bearing.name} />
+                        <TrendsItem
+                            bearing={bearing}
+                            exhauster={exhauster}
+                            key={bearing.name}
+                        />
                     ))}
                 </Panel>
                 <Panel key={2} header='Маслобак'>

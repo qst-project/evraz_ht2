@@ -3,8 +3,7 @@ import { RootState } from '@reduxToolkit/index';
 import { useSearchParams } from 'react-router-dom';
 
 import { getExhausterState, getSinterMachinesTiming } from '@reduxToolkit/slices/sinterMachines';
-import { ExhausterData, StatusType } from '@services/types';
-import { ExhausterState } from '@reduxToolkit/slices/exhauster';
+import { ExhausterData } from '@services/types';
 
 import Exhauster from './Exhauster';
 

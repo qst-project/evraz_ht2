@@ -49,7 +49,31 @@ export const characteristicBackendUnits = new Map<CharacteristicsBackend, string
     [CharacteristicsBackend.STARTER_VOLTAGE, 'Напряжение стартера, кВт'],
     [CharacteristicsBackend.UNDERPRESSURE, 'Разряжение, мм, в ст '],
     [CharacteristicsBackend.DUST_LEVEL, 'Уровень пыли, мг/м3 '],
+    [CharacteristicsBackend.GAS_TEMPERATURE, 'T газа, °C'],
+    [CharacteristicsBackend.WATER_BEFORE, 'T воды до, °C'],
+    [CharacteristicsBackend.WATER_AFTER, 'T воды после, °C'],
+    [CharacteristicsBackend.OIL_BEFORE, 'T масла до, °C'],
+    [CharacteristicsBackend.OIL_AFTER, 'T масла после, °C'],
 ]);
+
+export const convertCharacteristics = new Map<CharacteristicsBackend, Characteristics>([
+    [CharacteristicsBackend.TEMPERATURE, Characteristics.TEMPERATURE],
+    [CharacteristicsBackend.AXIS, Characteristics.AXIS],
+    [CharacteristicsBackend.VERTICAL, Characteristics.VERTICAL],
+    [CharacteristicsBackend.HORIZONTAL, Characteristics.HORIZONTAL],
+    [CharacteristicsBackend.OIL_LEVEL, Characteristics.OIL_LEVEL],
+    [CharacteristicsBackend.OIL_PRESSURE, Characteristics.OIL_PRESSURE],
+    [CharacteristicsBackend.AMPERAGE, Characteristics.AMPERAGE],
+    [CharacteristicsBackend.DRIVE_AMPERAGE, Characteristics.DRIVE_AMPERAGE],
+    [CharacteristicsBackend.ROTOR_VOLTAGE, Characteristics.ROTOR_VOLTAGE],
+    [CharacteristicsBackend.STARTER_VOLTAGE, Characteristics.STARTER_VOLTAGE],
+    [CharacteristicsBackend.WATER_BEFORE, Characteristics.WATER_BEFORE],
+    [CharacteristicsBackend.WATER_AFTER, Characteristics.WATER_AFTER],
+    [CharacteristicsBackend.OIL_BEFORE, Characteristics.OIL_BEFORE],
+    [CharacteristicsBackend.OIL_AFTER, Characteristics.OIL_AFTER],
+    [CharacteristicsBackend.GAS_TEMPERATURE, Characteristics.GAS_TEMPERATURE],
+    [CharacteristicsBackend.UNDERPRESSURE, Characteristics.UNDERPRESSURE],
+])
 
 export const trendsColors = [
     '#ee2c2c',

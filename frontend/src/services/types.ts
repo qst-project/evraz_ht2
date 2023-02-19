@@ -41,6 +41,11 @@ export enum CharacteristicsBackend {
     STARTER_VOLTAGE = 'STARTER_VOLTAGE',
     UNDERPRESSURE = 'UNDERPRESSURE',
     DUST_LEVEL = 'DUST_LEVEL',
+    WATER_BEFORE = 'water_before',
+    WATER_AFTER = 'water_after',
+    OIL_BEFORE = 'oil_before',
+    OIL_AFTER = 'oil_after',
+    GAS_TEMPERATURE = 'GAS_TEMPERATURE',
 }
 
 export interface CharacteristicData {

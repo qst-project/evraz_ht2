@@ -1,3 +1,5 @@
-export interface MyChartProps {
+import { ExhausterData } from '@services/types';
 
+export interface MyChartProps {
+    exhauster: ExhausterData,
 }

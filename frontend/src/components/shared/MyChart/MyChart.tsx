@@ -40,7 +40,7 @@ const options = {
         },
         title: {
             display: true,
-            text: 'Chart.js Line Chart',
+            text: 'График эксгаустера',
         },
     },
 };
@@ -66,7 +66,7 @@ const getPromQueryFromName = (name: string) => {
     return `{__name__="${split[2]}", exhauster_number=~"${split[0]}", bearing_number="${split[1]}"}`;
 }
 
-const getChartTime = (date: Date) => date.toString().split(' ')[4]
+const getChartTime = (date: Date) => date.toString().split(' ')[4];
 
 function MyChart() {
     const {
@@ -77,7 +77,7 @@ function MyChart() {
     const dispatch = useAppDispatch();
     const [labels, setLabels] = useState<string[]>([]);
     const [datasets, setDatasets] = useState<ChartDataset<'line', number[]>[]>([]);
-    const step = 200;
+    const step = 100;
 
     const parseSelectedOptions = (_options: string[]) => {
         dispatch(setIsLoading(true));
@@ -100,7 +100,7 @@ function MyChart() {
                         const color = getRandomColor();
                         const data = {
                             data: serie.values.map((value: { value: number }) => value.value),
-                            label: serie.metric.labels.measure as string,
+                            label: serie.metric.labels.description as string,
                             backgroundColor: color,
                             borderColor: color,
                         }

@@ -1,14 +1,13 @@
 import React from 'react';
 
-import TrendsChart from '@shared/TrendsChart';
-
+import TrendsChartContainer from '@shared/TrendsChart/TrendsChartContainer';
 import styles from './TrendsPage.module.scss';
 
 function TrendsPage() {
     return (
         <section className={styles.main}>
             <div className='container'>
-                <TrendsChart />
+                <TrendsChartContainer />
             </div>
         </section>
     );
