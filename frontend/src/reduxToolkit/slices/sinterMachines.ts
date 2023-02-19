@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import {
+    PredictionData,
     SinterMachineData,
 } from '@services/types'
 
@@ -10,6 +11,7 @@ export interface SinterMachinesState {
     webSockerConnectionError: boolean,
     moment: string;
     machines?: SinterMachineData[];
+    predictions?: PredictionData[],
 }
 
 const initialState: SinterMachinesState = {
@@ -30,17 +32,17 @@ export const sinterMachinesSlice = createSlice({
             // eslint-disable-next-line no-param-reassign
             state.webSockerConnectionError = action.payload
         },
-        // setPrediction(state, action: PayloadAction<string, number>) {
-        //     // eslint-disable-next-line no-param-reassign, @typescript-eslint/naming-convention
-           
-        // },
+        setPrediction(state, action: PayloadAction<PredictionData[]>) {
+            // eslint-disable-next-line no-param-reassign, @typescript-eslint/naming-convention
+            state.predictions = action.payload
+        },
     },
 })
 
 export const {
     setSinterMachines,
     setWebSockerConnectionError,
-    // setPrediction,
+    setPrediction,
 } = sinterMachinesSlice.actions
 export const getSinterMachinesState = (state: SinterMachinesState) => state
 export const getExhausterState = (
@@ -56,5 +58,6 @@ export const getExhausterState = (
 )
 export const getSinterMachinesTiming = (state: SinterMachinesState) => [state.moment, state.delay]
 export const getWebConnectionError = (state: SinterMachinesState) => state.webSockerConnectionError
+export const getPredictions = (state: SinterMachinesState) => state.predictions
 
 export default sinterMachinesSlice.reducer

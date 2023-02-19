@@ -1,7 +1,7 @@
 import { notification } from 'antd'
 import { useCallback, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { setSinterMachines, setWebSockerConnectionError } from '@reduxToolkit/slices/sinterMachines';
+import { setPrediction, setSinterMachines, setWebSockerConnectionError } from '@reduxToolkit/slices/sinterMachines';
 import { mapSinterMachinesResponse } from '@services/mappers';
 
 const Stomp = require('stompjs')
@@ -51,11 +51,12 @@ function useWebSocket(onConnected: Function, deps: Array<any>) {
 
         socket.onopen = function () {
             console.log('[open] Соединение установлено');
-           socket.send('Меня зовут skinny')
+            socket.send('Меня зовут skinny')
         };
 
         socket.onmessage = function (event) {
-           const prediction = JSON.parse(event.data);
+            const prediction = JSON.parse(event.data);
+            dispatch(setPrediction(prediction))
         };
 
     }, [])
