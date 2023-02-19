@@ -48,6 +48,9 @@ public class KafkaDataHandler {
     @Scheduled(fixedRate = 500)
     private void handle() {
         List<String> messages = kafkaReader.pollMessages();
+        if (messages.isEmpty()) {
+            return;
+        }
         messages.stream().map(message -> {
             try {
                 return new ObjectMapper().readValue(message, HashMap.class);
