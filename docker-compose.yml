@@ -19,7 +19,7 @@ services:
       dockerfile: Dockerfile
     network_mode: host
     depends_on:
-      - postgres
+      - backend-postgres
 
   backend-postgres:
     container_name: postgres
