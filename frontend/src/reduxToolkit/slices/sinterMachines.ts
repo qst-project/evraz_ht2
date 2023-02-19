@@ -30,6 +30,11 @@ export const sinterMachinesSlice = createSlice({
             // eslint-disable-next-line no-param-reassign
             state.webSockerConnectionError = action.payload
         },
+        // setPrediction(state, action: PayloadAction<string, number>) {
+        //     // eslint-disable-next-line no-param-reassign
+        //     const state.
+        //     state.webSockerConnectionError = action.payload
+        // },
     },
 })
 

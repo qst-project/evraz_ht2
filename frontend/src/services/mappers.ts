@@ -79,7 +79,13 @@ export const mapSinterMachinesResponse = (response: SinterMachinesResponse)
                 return res;
             }),
             // TODO: need to get these parameters
-            isActive: true,
+            isActive: {
+                value: ex?.work?.value,
+                moment: new Date(
+                    new Date(ex?.work?.moment).valueOf()
+                    - (new Date().getTimezoneOffset() * 60000)
+                ).toLocaleString('ru') || '',
+            },
             date: '',
             forecast: '',
             mainDriveCharacteristics: [

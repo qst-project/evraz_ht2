@@ -34,7 +34,10 @@ export interface BearingData {
 export interface ExhausterData {
     id: number,
     sinterMachineId: number;
-    isActive: boolean,
+    isActive: {
+        value: boolean,
+        moment: string,
+    },
     name: string,
     rotorName: string,
     date: string,
@@ -182,12 +185,15 @@ export interface KafkaExhauster {
         value: number,
         moment: string,
     },
+    work: {
+        value: boolean,
+        moment: string,
+    },
 }
 
 export interface KafkaSinterMachine {
     number: number,
     exhausters: KafkaExhauster[],
-    work: boolean,
 }
 
 export interface SinterMachinesResponse {
