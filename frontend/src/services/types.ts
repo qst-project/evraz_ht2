@@ -101,6 +101,14 @@ export interface ExhausterData {
     problems: BearingData[],
 }
 
+export interface PredictionData {
+    exhauster_name: string,
+    number_machine: number,
+    hours_to_failure: number,
+    moment: string,
+    precision: number,
+}
+
 export interface SinterMachineData {
     id: number,
     name: string,

@@ -7,9 +7,18 @@ import { Colors } from '@services/constants';
 
 import { ExhausterProps } from '@shared/ExhausterCard/ExhausterCard.types';
 import styles from './ExhausterCard.module.scss';
+import { getPredictions } from '@reduxToolkit/slices/sinterMachines';
+import { RootState } from '@reduxToolkit/index';
+import { useSelector } from 'react-redux';
 
-function ExhausterCard({ exhausterData }: ExhausterProps) {
+function ExhausterCard({ exhausterData, predictionData, index }: any | undefined) {
     const navigation = useNavigate()
+    const predictions = useSelector(
+        ({
+            sinter_machines,
+        }: RootState) => getPredictions(sinter_machines),
+    )
+    console.log(predictionData)
     return (
         <Card className={styles.main}>
             <div className={styles.header}>
@@ -41,7 +50,7 @@ function ExhausterCard({ exhausterData }: ExhausterProps) {
                 <span>{exhausterData.lastRotorReplacement}</span>
                 <div className={styles.forecast}>
                     <span>Прогноз</span>
-                    {exhausterData.forecast}
+                    {predictions ? predictions[index]?.hours_to_failure : ''}
                 </div>
             </div>
             <BearingList exhausterData={exhausterData} />

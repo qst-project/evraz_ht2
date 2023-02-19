@@ -9,7 +9,6 @@ function GasTemperature({
     strokeColor = '',
     value,
 }: GasTemperatureProps) {
-    console.log(value)
     return (
         <Tooltip title={value.moment} zIndex={100}>
             <Col span={24}>
