@@ -56,6 +56,7 @@ public class KafkaReader {
         while (itr.hasNext()) {
             res.add(itr.next().value());
         }
+        log.warn((long) res.size());
         return res;
     }
 }
