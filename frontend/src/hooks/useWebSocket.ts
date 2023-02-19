@@ -46,7 +46,7 @@ function useWebSocket(onConnected: Function, deps: Array<any>) {
             });
     }, [])
 
-    const fetchPredictionData = useCallback(async () => {
+    const fetchPredictionData = useCallback( () => {
         const socket = new WebSocket('ws://0.0.0.0:8765/');
         socket.onopen = function () {
             console.log('[open] Соединение установлено');
