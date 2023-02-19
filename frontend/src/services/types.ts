@@ -6,11 +6,11 @@ export enum StatusType {
 
 export enum Characteristics {
     TEMPERATURE = 'temperature',
-    OIL_LEVEL = 'oilLevel',
-    VERTICAL = 'vibrationVertical',
-    HORIZONTAL = 'vibrationHorizontal',
-    AXIS = 'vibrationAxial',
-    OIL_PRESSURE = 'OIL_PRESSURE',
+    OIL_LEVEL = 'oil_Level',
+    VERTICAL = 'vibration_vertical',
+    HORIZONTAL = 'vibration_horizontal',
+    AXIS = 'vibration_axial',
+    OIL_PRESSURE = 'oil_pressure',
     AMPERAGE = 'AMPERAGE',
     DRIVE_AMPERAGE = 'DRIVE_AMPERAGE',
     ROTOR_VOLTAGE = 'ROTOR_VOLTAGE',

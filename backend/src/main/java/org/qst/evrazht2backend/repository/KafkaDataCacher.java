@@ -17,6 +17,4 @@ public class KafkaDataCacher {
     public Map<Integer, KafkaSinteringMachine> getCache() {
         return cache;
     }
-
-
 }

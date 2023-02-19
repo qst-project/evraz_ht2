@@ -31,3 +31,14 @@ export const characteristicUnits = new Map<Characteristics, string>([
     [Characteristics.UNDERPRESSURE, 'Разряжение, мм, в ст '],
     [Characteristics.DUST_LEVEL, 'Уровень пыли, мг/м3 '],
 ]);
+
+export const trendsColors = [
+    '#ee2c2c',
+    '#f5813b',
+    '#e1bd30',
+    '#6de73a',
+    '#44eaa4',
+    '#4b82fd',
+    '#8952e5',
+    '#e7579e',
+]
